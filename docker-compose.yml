@@ -1,0 +1,43 @@
+services:
+  certifpass:
+    build: .
+    image: certifpass:latest
+    container_name: certifpass
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:3000/healthz').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: certifpass-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${PGUSER:-certifpass}
+      POSTGRES_PASSWORD: ${PGPASSWORD:-certifpass}
+      POSTGRES_DB: ${PGDATABASE:-certifpass}
+    volumes:
+      - certifpass_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${PGUSER:-certifpass} -d ${PGDATABASE:-certifpass}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+    # Décommentez pour accéder à la base depuis votre machine (ex: avec un
+    # client SQL comme DBeaver ou TablePlus) — pas nécessaire en production.
+    # ports:
+    #   - "5432:5432"
+
+volumes:
+  certifpass_pgdata:

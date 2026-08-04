@@ -1,7 +1,7 @@
 services:
   certifpass:
     build: .
-    image: certifpass:latest
+    image:nasser207/certifpass:latest
     container_name: certifpass
     restart: unless-stopped
     ports:

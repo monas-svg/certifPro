@@ -85,9 +85,16 @@ app.use(express.json());
 // conteneur héberge donc à la fois le site et l'API.
 app.use(express.static(path.join(__dirname, 'public')));
 
-const KPAY_API_URL = 'https://api.k-pay.site/v1/payments';
+// Make K-PAY host configurable via .env for maximum compatibility and security
+const KPAY_API_URL = process.env.KPAY_API_URL || 'https://api.k-pay.site/v1/payments';
 const KPAY_SECRET_KEY = process.env.KPAY_SECRET_KEY;
 const KPAY_WEBHOOK_SECRET = process.env.KPAY_WEBHOOK_SECRET;
+// Allow webhook header name and HMAC algorithm to be configured (safer)
+const KPAY_WEBHOOK_HEADER = process.env.KPAY_WEBHOOK_HEADER || 'x-kpay-signature';
+const KPAY_WEBHOOK_ALGO = process.env.KPAY_WEBHOOK_ALGO || 'sha256';
+const KPAY_FETCH_TIMEOUT_MS = Number(process.env.KPAY_FETCH_TIMEOUT_MS || 15000);
+// Mode mock : si vrai, on ne contacte pas K-PAY et on simule un paiement réussi
+const KPAY_MOCK = (String(process.env.KPAY_MOCK || '').toLowerCase() === 'true') || KPAY_API_URL === 'mock';
 
 // --- Notification immédiate à VOUS (l'administrateur), pas au client ---
 const GMAIL_USER = process.env.GMAIL_USER;
@@ -102,6 +109,14 @@ const mailTransporter = (GMAIL_USER && GMAIL_APP_PASSWORD)
       auth: { user: GMAIL_USER, pass: GMAIL_APP_PASSWORD }
     })
   : null;
+
+// Warn early if critical K-PAY config is missing
+if (!KPAY_SECRET_KEY) {
+  console.warn('ATTENTION: KPAY_SECRET_KEY non configurée — paiements impossibles');
+}
+if (!KPAY_WEBHOOK_SECRET) {
+  console.warn('ATTENTION: KPAY_WEBHOOK_SECRET non configurée — webhooks non vérifiables');
+}
 
 // Très simple "base" en mémoire pour la démo — remplacez par une vraie base
 // de données (Postgres, MySQL, etc.) en production.
@@ -163,7 +178,45 @@ app.post('/api/create-payment', paymentRateLimiter, async (req, res) => {
   const orderId = 'order_' + crypto.randomBytes(6).toString('hex');
 
   try {
-    const kpayRes = await fetch(KPAY_API_URL, {
+    // helper: fetch with timeout to avoid hanging the server
+    const kpayFetch = async (url, opts = {}) => {
+      const controller = new AbortController();
+      const id = setTimeout(() => controller.abort(), KPAY_FETCH_TIMEOUT_MS);
+      try {
+        const r = await fetch(url, { signal: controller.signal, ...opts });
+        return r;
+      } finally {
+        clearTimeout(id);
+      }
+    };
+
+    // If mock mode is enabled, don't call external K-PAY API — simulate response
+    if (KPAY_MOCK) {
+      const payment = { id: 'mock_' + crypto.randomBytes(6).toString('hex'), status: 'succeeded', checkout_url: null };
+
+      orders.set(orderId, {
+        status: 'succeeded',
+        fullname,
+        email,
+        phone,
+        quantity: qty,
+        amount,
+        kpay_payment_id: payment.id
+      });
+
+      // Immediately deliver coupons and notify admin to exercise full flow
+      try {
+        const order = orders.get(orderId);
+        deliverCoupon(order);
+        await notifyAdmin(order);
+      } catch (err) {
+        console.error('Erreur lors du mock delivery/notify:', err && err.message ? err.message : err);
+      }
+
+      return res.json({ id: payment.id, status: payment.status, checkout_url: payment.checkout_url, order_id: orderId, mock: true });
+    }
+
+    const kpayRes = await kpayFetch(KPAY_API_URL, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${KPAY_SECRET_KEY}`,
@@ -220,11 +273,10 @@ app.post(
   webhookRateLimiter,
   express.raw({ type: '*/*' }), // on garde le corps brut pour vérifier la signature
   (req, res) => {
-    const signatureHeader = req.headers['x-kpay-signature'] || req.headers['signature'];
+    const signatureHeader = req.headers[KPAY_WEBHOOK_HEADER] || req.headers['signature'];
 
-    // Vérification de signature façon HMAC — ADAPTEZ le nom de l'en-tête et
-    // l'algorithme exact d'après la documentation "Webhooks" de votre
-    // tableau de bord K-PAY avant la mise en production.
+      // Vérification de signature façon HMAC — header et algorithme configurables
+      // (définissez KPAY_WEBHOOK_HEADER et KPAY_WEBHOOK_ALGO dans .env si nécessaire)
     //
     // IMPORTANT : la signature est désormais OBLIGATOIRE. Une requête sans
     // en-tête de signature (ou si KPAY_WEBHOOK_SECRET n'est pas configuré)
@@ -236,7 +288,7 @@ app.post(
     }
 
     const expected = crypto
-      .createHmac('sha256', KPAY_WEBHOOK_SECRET)
+      .createHmac(KPAY_WEBHOOK_ALGO, KPAY_WEBHOOK_SECRET)
       .update(req.body)
       .digest('hex');
 

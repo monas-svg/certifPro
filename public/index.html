@@ -3,643 +3,1129 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CertifPass — Un coupon, 9 certifications Google</title>
-<meta name="description" content="Achetez un coupon unique et accédez aux 9 certifications professionnelles Google sur Coursera : gestion de projet, IA, cybersécurité, data, UX, support IT.">
+<title>CertifPro — Coupon 9 certifications Google</title>
+<meta name="description" content="CertifPro propose un coupon unique pour accéder aux 9 certifications Google Career Certificates sur Coursera. Paiement sécurisé K-PAY.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --ink:#12183B;
-    --ink-soft:#3B4270;
-    --paper:#FBF8F1;
-    --paper-dim:#F2ECDD;
-    --gold:#C9972B;
-    --gold-deep:#9C7317;
-    --coral:#E2472E;
-    --coral-deep:#B93521;
-    --forest:#1E6F4C;
-    --line:#DED2AE;
-    --radius:18px;
-    --shadow: 0 18px 40px -22px rgba(18,24,59,.45);
+  :root {
+    --bg: #F5F7FB;
+    --surface: #ffffff;
+    --surface-soft: #f8fafc;
+    --text: #0f1f3d;
+    --muted: #5c6a85;
+    --primary: #0a254f;
+    --accent: #f57b24;
+    --accent-soft: #fff2e8;
+    --border: #d7dae2;
+    --radius: 28px;
+    --shadow: 0 30px 90px -50px rgba(10,37,79,.18);
   }
-  *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{
-    margin:0;
-    background:var(--paper);
-    color:var(--ink);
-    font-family:'Manrope', sans-serif;
-    -webkit-font-smoothing:antialiased;
-  }
-  h1,h2,h3,.display{
-    font-family:'Fraunces', serif;
-    letter-spacing:-0.01em;
-    line-height:1.05;
-    margin:0;
-  }
-  .mono{font-family:'IBM Plex Mono', monospace; letter-spacing:.02em;}
-  a{color:inherit}
-  img,svg{display:block; max-width:100%}
-  .wrap{max-width:1180px; margin:0 auto; padding:0 24px}
-  section{padding:96px 0}
-  @media (max-width:720px){ section{padding:64px 0} }
 
-  /* ---------- Nav ---------- */
-  header.site{
-    position:sticky; top:0; z-index:40;
-    background:rgba(251,248,241,.88);
-    backdrop-filter:blur(8px);
-    border-bottom:1px solid var(--line);
+  * {
+    box-sizing: border-box;
   }
-  .nav{display:flex; align-items:center; justify-content:space-between; padding:18px 24px; max-width:1180px; margin:0 auto;}
-  .logo{display:flex; align-items:center; gap:10px; font-family:'Fraunces',serif; font-weight:600; font-size:20px;}
-  .logo .dot{width:11px; height:11px; border-radius:50%; background:var(--coral); box-shadow:0 0 0 3px rgba(226,71,46,.18);}
-  nav.links{display:flex; gap:32px; font-size:15px; font-weight:500;}
-  nav.links a{text-decoration:none; opacity:.75; transition:opacity .15s}
-  nav.links a:hover{opacity:1}
-  .btn{
-    display:inline-flex; align-items:center; gap:8px;
-    padding:13px 22px; border-radius:999px;
-    font-weight:700; font-size:14.5px; cursor:pointer;
-    border:none; text-decoration:none;
-    transition:transform .15s ease, box-shadow .15s ease;
-  }
-  .btn:hover{transform:translateY(-1px)}
-  .btn:focus-visible{outline:3px solid var(--gold); outline-offset:2px}
-  .btn-coral{background:var(--coral); color:#fff; box-shadow:0 10px 24px -10px rgba(226,71,46,.65)}
-  .btn-coral:hover{background:var(--coral-deep)}
-  .btn-ghost{background:transparent; color:var(--ink); border:1.5px solid var(--ink); }
-  .btn-ghost:hover{background:var(--ink); color:var(--paper)}
-  .btn-small{padding:9px 16px; font-size:13px}
 
-  /* ---------- Hero ---------- */
-  .hero{padding-top:64px; padding-bottom:40px; position:relative; overflow:hidden;}
-  .hero-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:56px; align-items:center;}
-  @media (max-width:900px){ .hero-grid{grid-template-columns:1fr} }
-  .eyebrow{
-    display:inline-flex; align-items:center; gap:8px;
-    font-family:'IBM Plex Mono',monospace; font-size:12.5px; letter-spacing:.12em; text-transform:uppercase;
-    color:var(--gold-deep); background:rgba(201,151,43,.12); border:1px solid rgba(201,151,43,.35);
-    padding:7px 14px; border-radius:999px; margin-bottom:22px;
+  html {
+    scroll-behavior: smooth;
   }
-  .hero h1{font-size:clamp(34px,5vw,58px); font-weight:600;}
-  .hero h1 em{font-style:normal; color:var(--coral);}
-  .hero p.lead{font-size:18px; line-height:1.6; color:var(--ink-soft); max-width:46ch; margin:22px 0 32px;}
-  .hero-cta-row{display:flex; align-items:center; gap:18px; flex-wrap:wrap;}
-  .micro-note{font-size:13px; color:var(--ink-soft)}
 
-  /* ---------- Ticket (signature element) ---------- */
-  .ticket{
-    position:relative;
-    background:var(--ink);
-    color:var(--paper);
-    border-radius:var(--radius);
-    box-shadow:var(--shadow);
-    overflow:visible;
-    isolation:isolate;
+  body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Manrope', sans-serif;
+    color: var(--text);
+    background: linear-gradient(180deg, #f8fbff 0%, #eef3f8 100%);
+    -webkit-font-smoothing: antialiased;
   }
-  .ticket-main{padding:30px 30px 22px;}
-  .ticket-top-row{display:flex; justify-content:space-between; align-items:flex-start; gap:12px;}
-  .ticket-brand{font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.14em; text-transform:uppercase; opacity:.65;}
-  .ticket-badge{
-    font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.08em;
-    background:var(--forest); color:#fff; padding:5px 10px; border-radius:6px;
-  }
-  .ticket h2{font-size:28px; margin-top:14px; font-weight:600; color:#fff;}
-  .ticket .price-row{display:flex; align-items:baseline; gap:10px; margin-top:18px;}
-  .ticket .price{font-family:'Fraunces',serif; font-size:44px; font-weight:600; color:var(--gold)}
-  .ticket .price-unit{font-size:14px; opacity:.7}
-  .ticket .old-price{font-size:15px; text-decoration:line-through; opacity:.5}
-  .ticket-perf{
-    position:relative;
-    height:0;
-    border-top:2px dashed rgba(251,248,241,.28);
-    margin:0 0;
-  }
-  .notch{
-    position:absolute; top:-13px; width:26px; height:26px; border-radius:50%;
-    background:var(--paper); z-index:2;
-  }
-  .notch.left{left:-13px} .notch.right{right:-13px}
-  .ticket-stub{padding:20px 30px 26px; display:flex; justify-content:space-between; align-items:center; gap:14px;}
-  .ticket-stub-item .label{font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; opacity:.55;}
-  .ticket-stub-item .val{font-weight:700; font-size:15px; margin-top:4px;}
-  .ticket-stub .btn-coral{white-space:nowrap;}
 
-  /* small cert-ticket cards in grid */
-  .cert-card{
-    position:relative;
-    background:#fff;
-    border-radius:16px;
-    border:1px solid var(--line);
-    box-shadow:0 12px 30px -22px rgba(18,24,59,.35);
-    display:flex; flex-direction:column;
+  img {
+    display: block;
+    max-width: 100%;
   }
-  .cert-top{padding:22px 22px 16px;}
-  .cert-num{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--gold-deep); letter-spacing:.08em;}
-  .cert-card h3{font-size:19px; margin-top:8px; font-weight:600;}
-  .cert-desc{font-size:14px; color:var(--ink-soft); line-height:1.55; margin-top:10px;}
-  .cert-perf{position:relative; height:0; border-top:2px dashed var(--line); margin:4px 0;}
-  .cert-perf .notch{background:var(--paper);}
-  .cert-bottom{padding:14px 22px 20px; display:flex; justify-content:space-between; align-items:center;}
-  .cert-duration{font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--ink);}
-  .cert-duration .label{display:block; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft); opacity:.7;}
 
-  .certs-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:44px;}
-  @media (max-width:900px){ .certs-grid{grid-template-columns:repeat(2,1fr)} }
-  @media (max-width:600px){ .certs-grid{grid-template-columns:1fr} }
-
-  .section-head{max-width:640px}
-  .section-head .kicker{font-family:'IBM Plex Mono',monospace; font-size:12.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--coral-deep);}
-  .section-head h2{font-size:clamp(26px,3.4vw,38px); margin-top:10px; font-weight:600;}
-  .section-head p{color:var(--ink-soft); font-size:16px; margin-top:14px; line-height:1.6;}
-
-  /* how it works */
-  .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:28px; margin-top:48px;}
-  @media (max-width:820px){ .steps{grid-template-columns:1fr} }
-  .step{position:relative; padding-top:6px;}
-  .step .num{
-    font-family:'Fraunces',serif; font-size:44px; color:var(--gold); font-weight:600;
-    -webkit-text-stroke:1.4px var(--ink); color:transparent;
+  a {
+    color: inherit;
+    text-decoration: none;
   }
-  .step h3{font-size:19px; margin-top:6px; font-weight:600;}
-  .step p{font-size:14.5px; color:var(--ink-soft); margin-top:8px; line-height:1.55;}
 
-  /* stat strip */
-  .stat-strip{
-    background:var(--ink); color:var(--paper);
-    border-radius:20px;
-    display:grid; grid-template-columns:repeat(4,1fr);
-    padding:38px 10px;
+  .wrap {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 24px;
   }
-  @media (max-width:760px){ .stat-strip{grid-template-columns:repeat(2,1fr); gap:28px 0} }
-  .stat{text-align:center; padding:0 12px;}
-  .stat .n{font-family:'Fraunces',serif; font-size:32px; color:var(--gold); font-weight:600;}
-  .stat .l{font-size:12.5px; opacity:.75; margin-top:6px; letter-spacing:.02em;}
 
-  /* pricing / CTA band */
-  .cta-band{
-    background:linear-gradient(135deg, var(--ink), #1c2452);
-    color:#fff; border-radius:24px;
-    padding:56px 48px; position:relative; overflow:hidden;
-    display:grid; grid-template-columns:1.2fr .8fr; gap:40px; align-items:center;
+  h1, h2, h3 {
+    font-family: 'Fraunces', serif;
+    margin: 0;
+    line-height: 1.05;
   }
-  @media (max-width:820px){ .cta-band{grid-template-columns:1fr; padding:40px 26px;} }
-  .cta-band h2{font-size:clamp(24px,3vw,34px); font-weight:600;}
-  .cta-band p{color:rgba(251,248,241,.78); margin-top:14px; font-size:15.5px; line-height:1.6; max-width:46ch;}
-  .cta-panel{background:rgba(251,248,241,.06); border:1px solid rgba(251,248,241,.18); border-radius:16px; padding:26px;}
-  .cta-panel .row{display:flex; justify-content:space-between; font-size:14px; padding:9px 0; border-bottom:1px dashed rgba(251,248,241,.18);}
-  .cta-panel .row:last-of-type{border-bottom:none}
-  .cta-panel .total{font-family:'Fraunces',serif; font-size:26px; color:var(--gold); margin:14px 0 18px;}
 
-  /* FAQ */
-  .faq{margin-top:44px; display:flex; flex-direction:column; gap:2px;}
-  .faq-item{border-bottom:1px solid var(--line);}
-  .faq-q{
-    display:flex; justify-content:space-between; align-items:center; gap:16px;
-    padding:20px 4px; cursor:pointer; font-weight:600; font-size:16px; background:none; border:none; width:100%; text-align:left; color:var(--ink); font-family:inherit;
+  p {
+    margin: 0;
   }
-  .faq-q .plus{font-family:'IBM Plex Mono',monospace; font-size:20px; color:var(--coral); transition:transform .2s}
-  .faq-item[open] .plus{transform:rotate(45deg)}
-  .faq-a{padding:0 4px 20px; color:var(--ink-soft); font-size:15px; line-height:1.6; max-width:70ch;}
 
-  footer{border-top:1px solid var(--line); padding:44px 0 60px; font-size:14px; color:var(--ink-soft);}
-  .foot-row{display:flex; justify-content:space-between; flex-wrap:wrap; gap:18px;}
+  button {
+    font: inherit;
+  }
 
-  /* ---------- Modal / Checkout ---------- */
-  .modal-overlay{
-    position:fixed; inset:0; background:rgba(18,24,59,.55); backdrop-filter:blur(3px);
-    display:none; align-items:center; justify-content:center; z-index:100; padding:20px;
+  header.site {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(14px);
+    background: rgba(255,255,255,.94);
+    border-bottom: 1px solid rgba(13,34,70,.08);
   }
-  .modal-overlay.open{display:flex}
-  .modal{
-    background:var(--paper); border-radius:20px; max-width:460px; width:100%;
-    padding:32px; box-shadow:0 30px 60px -20px rgba(0,0,0,.5); max-height:92vh; overflow:auto;
-    position:relative;
-  }
-  .modal h3{font-size:22px; font-weight:600;}
-  .modal p.sub{color:var(--ink-soft); font-size:14px; margin-top:6px;}
-  .close-x{position:absolute; top:18px; right:18px; background:none; border:none; font-size:20px; cursor:pointer; color:var(--ink-soft);}
-  .field{margin-top:16px;}
-  .field label{display:block; font-size:13px; font-weight:600; margin-bottom:6px;}
-  .field input, .field select{
-    width:100%; padding:12px 14px; border-radius:10px; border:1.5px solid var(--line);
-    font-family:inherit; font-size:14.5px; background:#fff;
-  }
-  .field input:focus, .field select:focus{outline:none; border-color:var(--coral);}
-  .modal .total-line{display:flex; justify-content:space-between; align-items:center; margin:22px 0 4px; font-weight:700; font-size:16px;}
-  .modal .total-line .amt{font-family:'Fraunces',serif; color:var(--coral); font-size:22px;}
-  .pay-btn{width:100%; justify-content:center; margin-top:16px; padding:15px;}
-  .status-msg{margin-top:14px; font-size:13.5px; padding:12px 14px; border-radius:10px; display:none;}
-  .status-msg.show{display:block;}
-  .status-msg.info{background:rgba(201,151,43,.14); color:var(--gold-deep);}
-  .status-msg.error{background:rgba(226,71,46,.12); color:var(--coral-deep);}
-  .status-msg.success{background:rgba(30,111,76,.12); color:var(--forest);}
-  .kpay-note{font-size:11.5px; color:var(--ink-soft); margin-top:10px; line-height:1.5;}
 
-  ::selection{background:var(--gold); color:var(--ink);}
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 20px 24px;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .brand-logo {
+    width: 44px;
+    height: auto;
+  }
+
+  .brand-title {
+    font-weight: 800;
+    font-size: 18px;
+    letter-spacing: .02em;
+  }
+
+  .brand-sub {
+    font-size: 12px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: .18em;
+  }
+
+  nav.links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    font-size: 15px;
+  }
+
+  nav.links a {
+    color: var(--muted);
+    transition: color .2s ease;
+  }
+
+  nav.links a:hover {
+    color: var(--text);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: transform .16s ease, box-shadow .16s ease, background .16s ease;
+  }
+
+  .btn:hover {
+    transform: translateY(-1px);
+  }
+
+  .btn:focus-visible {
+    outline: 3px solid rgba(245,123,36,.35);
+    outline-offset: 3px;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #F57B24, #FF9E3C);
+    color: #fff;
+    padding: 14px 24px;
+    box-shadow: 0 20px 40px -20px rgba(245,123,36,.55);
+  }
+
+  .btn-secondary {
+    background: rgba(13,34,70,.08);
+    color: var(--text);
+    padding: 14px 24px;
+  }
+
+  .hero {
+    padding: 100px 0 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before,
+  .hero::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    opacity: .35;
+  }
+
+  .hero::before {
+    width: 420px;
+    height: 420px;
+    top: -120px;
+    left: -120px;
+    background: rgba(245,123,36,.16);
+  }
+
+  .hero::after {
+    width: 380px;
+    height: 380px;
+    right: -100px;
+    bottom: -100px;
+    background: rgba(10,37,79,.1);
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.05fr .95fr;
+    gap: 44px;
+    align-items: center;
+    position: relative;
+  }
+
+  @media (max-width: 980px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .hero h1 {
+    font-size: clamp(44px, 5vw, 64px);
+    max-width: 12ch;
+  }
+
+  .hero h1 span {
+    color: var(--accent);
+  }
+
+  .hero p.lead {
+    margin-top: 24px;
+    font-size: 18px;
+    line-height: 1.8;
+    max-width: 48ch;
+    color: var(--muted);
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 34px;
+  }
+
+  .hero-badges {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 36px;
+  }
+
+  .badge {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 18px;
+    border-radius: 18px;
+    background: var(--surface);
+    border: 1px solid rgba(13,34,70,.08);
+    box-shadow: 0 18px 44px -32px rgba(10,37,79,.18);
+  }
+
+  .badge-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .badge strong {
+    font-size: 15px;
+    color: var(--text);
+  }
+
+  .hero-panel {
+    padding: 38px;
+    border-radius: 32px;
+    background: var(--surface);
+    border: 1px solid rgba(13,34,70,.08);
+    box-shadow: var(--shadow);
+  }
+
+  .hero-panel-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .label-pill {
+    font-size: 12px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .hero-panel h2 {
+    font-size: 28px;
+    margin-top: 18px;
+  }
+
+  .hero-panel p {
+    margin-top: 18px;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 28px;
+  }
+
+  .hero-stat {
+    padding: 18px 20px;
+    border-radius: 22px;
+    background: var(--surface-soft);
+    border: 1px solid rgba(13,34,70,.08);
+  }
+
+  .hero-stat .value {
+    font-size: 28px;
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    color: var(--primary);
+  }
+
+  .hero-stat .label {
+    margin-top: 8px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .hero-note {
+    margin-top: 28px;
+    padding: 22px 22px;
+    border-radius: 20px;
+    background: var(--accent-soft);
+    color: var(--primary);
+    font-size: 14px;
+    line-height: 1.75;
+  }
+
+  .section-head {
+    max-width: 680px;
+    margin-bottom: 36px;
+  }
+
+  .section-head .kicker {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .section-head h2 {
+    font-size: clamp(30px, 3.4vw, 40px);
+    margin-top: 14px;
+  }
+
+  .section-head p {
+    margin-top: 18px;
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.8;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  @media (max-width: 980px) {
+    .grid-3 {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .feature-card {
+    padding: 32px 28px;
+    border-radius: 28px;
+    background: var(--surface);
+    border: 1px solid rgba(13,34,70,.08);
+    box-shadow: 0 24px 70px -44px rgba(10,37,79,.16);
+  }
+
+  .feature-card h3 {
+    font-size: 20px;
+    margin-bottom: 14px;
+  }
+
+  .feature-card p {
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  .feature-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 18px;
+    color: var(--primary);
+    font-weight: 700;
+  }
+
+  .feature-pill span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+  }
+
+  @media (max-width: 980px) {
+    .product-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 700px) {
+    .product-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .product-card {
+    background: var(--surface);
+    border-radius: 26px;
+    border: 1px solid rgba(13,34,70,.08);
+    box-shadow: 0 22px 60px -36px rgba(10,37,79,.14);
+    overflow: hidden;
+  }
+
+  .card-head {
+    padding: 26px;
+  }
+
+  .number {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .product-card h3 {
+    margin-top: 16px;
+    font-size: 20px;
+  }
+
+  .product-card p {
+    margin-top: 14px;
+    color: var(--muted);
+    line-height: 1.75;
+    font-size: 15px;
+  }
+
+  .card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 22px 24px 24px;
+    border-top: 1px solid rgba(13,34,70,.06);
+  }
+
+  .label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: var(--muted);
+  }
+
+  .value {
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  @media (max-width: 980px) {
+    .steps {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .step-card {
+    padding: 32px 28px;
+    border-radius: 28px;
+    background: var(--surface);
+    border: 1px solid rgba(13,34,70,.08);
+    box-shadow: 0 24px 70px -44px rgba(10,37,79,.16);
+  }
+
+  .step-num {
+    font-family: 'Fraunces', serif;
+    font-size: 40px;
+    color: var(--accent);
+  }
+
+  .step-card h3 {
+    margin: 18px 0 0;
+    font-size: 20px;
+  }
+
+  .step-card p {
+    margin-top: 12px;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  .stats-strip {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  @media (max-width: 860px) {
+    .stats-strip {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 620px) {
+    .stats-strip {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .stats-card {
+    padding: 32px 28px;
+    border-radius: 28px;
+    background: linear-gradient(135deg, #0A254F, #173067);
+    color: #fff;
+    box-shadow: 0 28px 80px -40px rgba(10,37,79,.28);
+  }
+
+  .stats-card .value {
+    font-family: 'Fraunces', serif;
+    font-size: 36px;
+    line-height: 1.05;
+  }
+
+  .stats-card .label {
+    margin-top: 10px;
+    font-size: 14px;
+    color: rgba(255,255,255,.82);
+  }
+
+  .cta-band {
+    display: grid;
+    grid-template-columns: 1.3fr .7fr;
+    gap: 28px;
+    align-items: center;
+    background: linear-gradient(135deg, #0A254F, #173067);
+    color: #fff;
+    border-radius: 32px;
+    padding: 52px 46px;
+  }
+
+  @media (max-width: 960px) {
+    .cta-band {
+      grid-template-columns: 1fr;
+      padding: 40px 26px;
+    }
+  }
+
+  .cta-band h2 {
+    font-size: clamp(32px, 3.8vw, 44px);
+  }
+
+  .cta-band p {
+    margin-top: 20px;
+    color: rgba(255,255,255,.84);
+    line-height: 1.75;
+  }
+
+  .cta-panel {
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.16);
+    border-radius: 26px;
+    padding: 28px;
+  }
+
+  .cta-panel .row {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 15px;
+    color: rgba(255,255,255,.92);
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,.12);
+  }
+
+  .cta-panel .row:last-child {
+    border-bottom: none;
+  }
+
+  .cta-panel .total {
+    font-family: 'Fraunces', serif;
+    font-size: 34px;
+    margin-top: 18px;
+    color: #FFB86C;
+  }
+
+  .faq {
+    display: grid;
+    gap: 14px;
+  }
+
+  .faq-item {
+    border-radius: 24px;
+    overflow: hidden;
+    background: var(--surface);
+    border: 1px solid rgba(13,34,70,.08);
+  }
+
+  .faq-q {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 18px;
+    padding: 22px 24px;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+  }
+
+  .faq-q .plus {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 20px;
+    color: var(--accent);
+    transition: transform .2s ease;
+  }
+
+  details[open] .faq-q .plus {
+    transform: rotate(45deg);
+  }
+
+  .faq-a {
+    padding: 0 24px 22px;
+    color: var(--muted);
+    line-height: 1.75;
+    font-size: 15px;
+  }
+
+  footer {
+    border-top: 1px solid rgba(13,34,70,.08);
+    padding: 38px 0 54px;
+    color: var(--muted);
+  }
+
+  .footer-row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 18px;
+    align-items: center;
+  }
+
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .footer-brand img {
+    width: 34px;
+  }
+
+  .footer-brand span {
+    font-weight: 700;
+  }
+
+  .footer-note {
+    max-width: 720px;
+  }
+
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+    background: rgba(10,37,79,.72);
+    backdrop-filter: blur(6px);
+    z-index: 100;
+  }
+
+  .modal-overlay.open {
+    display: flex;
+  }
+
+  .modal {
+    width: 100%;
+    max-width: 520px;
+    background: var(--surface);
+    border-radius: 32px;
+    padding: 34px 28px;
+    box-shadow: 0 30px 80px -30px rgba(10,37,79,.55);
+    max-height: 92vh;
+    overflow: auto;
+    position: relative;
+  }
+
+  .close-x {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(10,37,79,.06);
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 20px;
+  }
+
+  .modal h3 {
+    font-size: 28px;
+  }
+
+  .modal p.sub {
+    margin-top: 8px;
+    color: var(--muted);
+  }
+
+  .field {
+    margin-top: 20px;
+  }
+
+  .field label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .field input,
+  .field select {
+    width: 100%;
+    padding: 16px 18px;
+    border-radius: 16px;
+    border: 1.5px solid rgba(10,37,79,.16);
+    font-size: 15px;
+    background: #fff;
+  }
+
+  .field input:focus,
+  .field select:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(245,123,36,.12);
+  }
+
+  .total-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 28px 0 8px;
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  .amt {
+    font-family: 'Fraunces', serif;
+    color: var(--accent);
+    font-size: 24px;
+  }
+
+  .pay-btn {
+    width: 100%;
+    padding: 16px;
+  }
+
+  .status-msg {
+    margin-top: 14px;
+    font-size: 14px;
+    padding: 14px 16px;
+    border-radius: 16px;
+    display: none;
+  }
+
+  .status-msg.show {
+    display: block;
+  }
+
+  .status-msg.info {
+    background: rgba(245,123,36,.12);
+    color: #A94711;
+  }
+
+  .status-msg.success {
+    background: rgba(30,111,76,.12);
+    color: #164D36;
+  }
+
+  .status-msg.error {
+    background: rgba(226,71,46,.12);
+    color: #8D241F;
+  }
+
+  .kpay-note {
+    margin-top: 16px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.75;
+  }
+
+  @media (max-width: 720px) {
+    .nav {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    nav.links {
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .hero {
+      padding: 72px 0 48px;
+    }
+
+    .hero-panel {
+      padding: 28px;
+    }
+
+    .hero-stats {
+      grid-template-columns: 1fr;
+    }
+
+    .grid-3,
+    .steps {
+      grid-template-columns: 1fr;
+    }
+
+    .product-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cta-band {
+      padding: 32px 24px;
+    }
+
+    .hero h1 {
+      font-size: 38px;
+    }
+  }
 </style>
 </head>
 <body>
-
 <header class="site">
-  <div class="nav">
-    <div class="logo"><img src="../images/certifpro.png" alt="CertifPro"></div>
+  <div class="wrap nav">
+    <a class="brand" href="#top">
+      <img class="brand-logo" src="images/certifpro.png" alt="CertifPro logo">
+      <div>
+        <div class="brand-title">CertifPro</div>
+        <div class="brand-sub">Plateforme d'e-learning</div>
+      </div>
+    </a>
     <nav class="links">
-      <a href="#certifications Google">Certifications</a>
-      <a href="#comment">Comment ça marche</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#how">Fonctionnement</a>
       <a href="#faq">FAQ</a>
     </nav>
-    <button class="btn btn-coral btn-small" onclick="openCheckout()">Obtenir mon coupon</button>
+    <div class="nav-actions">
+      <button class="btn btn-primary btn-small" onclick="openCheckout()">Réserver</button>
+    </div>
   </div>
 </header>
-
-<!-- ============ HERO ============ -->
-<section class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <span class="eyebrow">● Étudiants &amp; diplômés</span>
-      <h1>Un seul coupon.<br><em>Neuf</em> certifications de carrière.</h1>
-      <p class="lead">Gestion de projet, cybersécurité, analyse de données, UX, IA, support informatique — les parcours professionnels Google, disponibles sur Coursera. Un coupon CertifPass vous donne accès à l'ensemble des 9, sans en choisir une seule.</p>
-      <div class="hero-cta-row">
-        <button class="btn btn-coral" onclick="openCheckout()">Obtenir mon coupon — 50 000 FCFA</button>
-        <a href="#certifications" class="btn btn-ghost">Voir les 9 certifications</a>
+<main>
+  <section class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="hero-eyebrow">Offre premium pour professionnels</p>
+        <h1>Accédez aux 9 certificats Google <span>en un seul pack.</span></h1>
+        <p class="lead">CertifPro vous permet d’acquérir l’ensemble des Google Career Certificates avec un paiement unique et une gestion complète jusqu’à la livraison de votre code.</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" onclick="openCheckout()">Commencer maintenant</button>
+          <a class="btn btn-secondary" href="#certifications">Voir le catalogue</a>
+        </div>
+        <div class="hero-badges">
+          <div class="badge"><span class="badge-dot"></span><strong>Livraison e-mail & SMS</strong></div>
+          <div class="badge"><span class="badge-dot"></span><strong>Paiement sécurisé</strong></div>
+          <div class="badge"><span class="badge-dot"></span><strong>Accès immédiat</strong></div>
+          <div class="badge"><span class="badge-dot"></span><strong>Validité 12 mois</strong></div>
+        </div>
       </div>
-      <p class="micro-note" style="margin-top:18px">Paiement sécurisé Mobile Money &amp; carte, via K-PAY.</p>
-    </div>
-
-    <div class="ticket">
-      <div class="ticket-main">
-        <div class="ticket-top-row">
+      <aside class="hero-panel">
+        <div class="hero-panel-top">
           <div>
-            <div class="ticket-brand">Coupon d'accès · CertifPass</div>
-            <h2>Pass 9 Certifications</h2>
+            <div class="label-pill">Proposition de valeur</div>
+            <h2>Une offre unique, professionnelle et transparente.</h2>
           </div>
-          <span class="ticket-badge">VALABLE 12 MOIS</span>
+          <div class="label-pill">Prix fixe</div>
         </div>
-        <div class="price-row">
-          <span class="old-price mono">150$ - 500$</span>
-          <span class="price">50 000</span>
-          <span class="price-unit">FCFA / coupon</span>
+        <p>CertifPro centralise l’accès aux certificats Google, sans abonnement ni frais cachés. Vous payez une fois et recevez vos codes par e-mail et SMS.</p>
+        <div class="hero-stats">
+          <div class="hero-stat"><div class="value">9</div><div class="label">Certificats inclus</div></div>
+          <div class="hero-stat"><div class="value">12 mois</div><div class="label">Validité du coupon</div></div>
+          <div class="hero-stat"><div class="value">50 000</div><div class="label">FCFA</div></div>
+          <div class="hero-stat"><div class="value">100%</div><div class="label">Processus digital</div></div>
         </div>
+        <div class="hero-note">Tous les paiements sont traités par K-PAY et validés côté serveur pour garantir une expérience fiable.</div>
+      </aside>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap section-head">
+      <div class="kicker">Pourquoi CertifPro</div>
+      <h2>Un parcours simple, sécurisé et adapté aux professionnels.</h2>
+      <p>Notre service est conçu pour vous aider à acquérir des compétences reconnues sans perte de temps ni complexité administrative.</p>
+    </div>
+    <div class="grid-3">
+      <div class="feature-card">
+        <h3>Clarté totale</h3>
+        <p>Chaque offre est présentée avec un prix unique, une couverture claire et un engagement transparent.</p>
+        <div class="feature-pill"><span></span>Paiement sécurisé K-PAY</div>
       </div>
-      <div class="ticket-perf"><span class="notch left"></span><span class="notch right"></span></div>
-      <div class="ticket-stub">
-        <div class="ticket-stub-item">
-          <div class="label">Contenu</div>
-          <div class="val">9 / 9 certificats Google</div>
-        </div>
-        <button class="btn btn-coral btn-small" onclick="openCheckout()">Réserver</button>
+      <div class="feature-card">
+        <h3>Livraison rapide</h3>
+        <p>Réception instantanée du code après validation, pour démarrer vos certifications sans délai.</p>
+        <div class="feature-pill"><span></span>Support d'assistance inclus</div>
+      </div>
+      <div class="feature-card">
+        <h3>Accompagnement professionnel</h3>
+        <p>Nous veillons à ce que chaque commande soit traitée avec rigueur et suivi client dédié.</p>
+        <div class="feature-pill"><span></span>Service client à l’écoute</div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ============ STAT STRIP ============ -->
-<section style="padding-top:0">
-  <div class="wrap">
-    <div class="stat-strip">
-      <div class="stat"><div class="n">9</div><div class="l">Certifications Google incluses</div></div>
-      <div class="stat"><div class="n">16,9M+</div><div class="l">Apprenants sur ces parcours</div></div>
-      <div class="stat"><div class="n">100%</div><div class="l">En ligne, à votre rythme</div></div>
-      <div class="stat"><div class="n">1</div><div class="l">Coupon pour tout débloquer</div></div>
+  <section id="certifications">
+    <div class="wrap section-head">
+      <div class="kicker">Catalogue</div>
+      <h2>Les 9 certifications incluses dans votre coupon.</h2>
+      <p>Un pack complet pour monter en compétences sur l’IA, le digital, la cybersécurité, l’UX et le support informatique.</p>
     </div>
-  </div>
-</section>
+    <div class="product-grid">
+      <article class="product-card"><div class="card-head"><span class="number">N°1</span><h3>IA Fondamentale</h3><p>Bases de l’intelligence artificielle et usages professionnels.</p></div><div class="card-footer"><span class="label">Durée</span><span class="value">~8 h</span></div></article>
+      <article class="product-card"><div class="card-head"><span class="number">N°2</span><h3>IA Professionnelle</h3><p>Approfondissement pour maîtriser l’IA en entreprise.</p></div><div class="card-footer"><span class="label">Durée</span><span class="value">~11 h</span></div></article>
+      <article class="product-card"><div class="card-head"><span class="number">N°3</span><h3>Prompting Avancé</h3><p>Construction de prompts efficaces pour des résultats concrets.</p></div><div class="card-footer"><span class="label">Durée</span><span class="value">~6 h</span></div></article>
+      <article class="product-card"><div class="card-head"><span class="number">N°4</span><h3>Gestion de projet</h3><p>Méthodes agiles et pilotage de projets tech.</p></div><div class="card-footer"><span class="label">Durée</span><span class="value">~141 h</span></div></article>
+      <article class="product-card"><div class="card-head"><span class="number">N°5</span><h3>Recherche d’emploi</h3><p>Optimisation de candidatures et préparation aux entretiens.</p></div><div class="card-footer"><span class="label">Durée</span><span class="value">~6 h</span></div></article>
+      <article class="product-card"><div class="card-head"><span class="number">N°6</span><h3>Cybersécurité</h3><p>Protection des actifs numériques et bonnes pratiques IT.</p></div><div class="card-footer"><span class="label">Durée</span><span class="value">~123 h</span></div></article>
+      <article class="product-card"><div class="card-head"><span class="number">N°7</span><h3>Analyse de données</h3><p>Collecte, traitement et visualisation pour décisions stratégiques.</p></div><div class="card-footer"><span class="label">Durée</span><span class="value">~146 h</span></div></article>
+      <article class="product-card"><div class="card-head"><span class="number">N°8</span><h3>Conception UX</h3><p>Design d'interfaces centrées utilisateur et prototypes efficaces.</p></div><div class="card-footer"><span class="label">Durée</span><span class="value">~112 h</span></div></article>
+      <article class="product-card"><div class="card-head"><span class="number">N°9</span><h3>Support informatique</h3><p>Administration système, réseaux et assistance utilisateur.</p></div><div class="card-footer"><span class="label">Durée</span><span class="value">~122 h</span></div></article>
+    </div>
+  </section>
 
-<!-- ============ COMMENT CA MARCHE ============ -->
-<section id="comment">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="kicker">Comment ça marche</div>
-      <h2>De l'achat à votre premier cours, en trois étapes.</h2>
-      <p>Aucune carte requise pour naviguer le catalogue. Le paiement n'intervient qu'au moment de récupérer votre coupon.</p>
+  <section id="how">
+    <div class="wrap section-head">
+      <div class="kicker">Fonctionnement</div>
+      <h2>Trois étapes simples pour finaliser votre commande.</h2>
+      <p>Une procédure optimisée pour acheter, payer et recevoir votre coupon en toute confiance.</p>
     </div>
     <div class="steps">
-      <div class="step">
-        <div class="num">01</div>
-        <h3>Achetez votre coupon</h3>
-        <p>Réglez 50 000 FCFA en Mobile Money ou carte bancaire via K-PAY. Une seule transaction, pas d'abonnement.</p>
-      </div>
-      <div class="step">
-        <div class="num">02</div>
-        <h3>Recevez votre code d'accès</h3>
-        <p>Votre code et la marche à suivre arrivent par e-mail et SMS dans les minutes qui suivent le paiement.</p>
-      </div>
-      <div class="step">
-        <div class="num">03</div>
-        <h3>Démarrez sur Coursera</h3>
-        <p>Activez l'accès aux 9 parcours Google Career Certificates et avancez à votre rythme, certificat après certificat.</p>
-      </div>
+      <div class="step-card"><div class="step-num">01</div><h3>Remplissez vos informations</h3><p>Nom, e-mail, téléphone et quantité de coupons.</p></div>
+      <div class="step-card"><div class="step-num">02</div><h3>Paiement sécurisé</h3><p>K-PAY gère votre transaction en sécurité, Mobile Money ou carte.</p></div>
+      <div class="step-card"><div class="step-num">03</div><h3>Recevez votre coupon</h3><p>Votre code est envoyé par e-mail et SMS dès confirmation.</p></div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ============ CERTIFICATIONS GRID ============ -->
-<section id="certifications">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="kicker">Le catalogue</div>
-      <h2>Les 9 certifications incluses dans votre coupon</h2>
-      <p>Chacune est un parcours Google Career Certificates complet, structuré en plusieurs cours progressifs.</p>
+  <section>
+    <div class="wrap section-head">
+      <div class="kicker">Engagement</div>
+      <h2>Des garanties pour une expérience professionnelle.</h2>
+      <p>Un service clair, un suivi transparent et un support disponible pour chaque commande.</p>
     </div>
-
-    <div class="certs-grid">
-
-      <div class="cert-card">
-        <div class="cert-top">
-          <div class="cert-num">N°1</div>
-          <h3>Google IA Fondamentale</h3>
-          <p class="cert-desc">Les bases de l'intelligence artificielle et son usage au quotidien pour gagner en productivité.</p>
-        </div>
-        <div class="cert-perf"><span class="notch left"></span><span class="notch right"></span></div>
-        <div class="cert-bottom">
-          <div class="cert-duration"><span class="label">Durée</span>~8 h</div>
-          <div class="cert-duration"><span class="label">Cours</span>5</div>
-        </div>
-      </div>
-
-      <div class="cert-card">
-        <div class="cert-top">
-          <div class="cert-num">N°2</div>
-          <h3>Google IA — Professional Certificate</h3>
-          <p class="cert-desc">Utiliser l'IA pour la recherche, la rédaction, l'analyse de données et la création d'applications.</p>
-        </div>
-        <div class="cert-perf"><span class="notch left"></span><span class="notch right"></span></div>
-        <div class="cert-bottom">
-          <div class="cert-duration"><span class="label">Durée</span>~11 h</div>
-          <div class="cert-duration"><span class="label">Cours</span>7</div>
-        </div>
-      </div>
-
-      <div class="cert-card">
-        <div class="cert-top">
-          <div class="cert-num">N°3</div>
-          <h3>Google Prompting certificate</h3>
-          <p class="cert-desc">Concevoir des prompts efficaces pour tirer le meilleur des outils d'intelligence artificielle.</p>
-        </div>
-        <div class="cert-perf"><span class="notch left"></span><span class="notch right"></span></div>
-        <div class="cert-bottom">
-          <div class="cert-duration"><span class="label">Durée</span>~6 h</div>
-          <div class="cert-duration"><span class="label">Cours</span>4</div>
-        </div>
-      </div>
-
-      <div class="cert-card">
-        <div class="cert-top">
-          <div class="cert-num">N°4</div>
-          <h3>GoogleGestion de projet Professional Certificate</h3>
-          <p class="cert-desc">Fondements, agilité et cas concrets pour devenir chef de projet, du démarrage à la clôture.</p>
-        </div>
-        <div class="cert-perf"><span class="notch left"></span><span class="notch right"></span></div>
-        <div class="cert-bottom">
-          <div class="cert-duration"><span class="label">Durée</span>~141 h</div>
-          <div class="cert-duration"><span class="label">Cours</span>7</div>
-        </div>
-      </div>
-
-      <div class="cert-card">
-        <div class="cert-top">
-          <div class="cert-num">N°5</div>
-          <h3>Recherche d'emploi avec l'IA</h3>
-          <p class="cert-desc">Identifier ses compétences transférables, planifier sa recherche et réussir ses entretiens.</p>
-        </div>
-        <div class="cert-perf"><span class="notch left"></span><span class="notch right"></span></div>
-        <div class="cert-bottom">
-          <div class="cert-duration"><span class="label">Durée</span>~6 h</div>
-          <div class="cert-duration"><span class="label">Cours</span>4</div>
-        </div>
-      </div>
-
-      <div class="cert-card">
-        <div class="cert-top">
-          <div class="cert-num">N°6</div>
-          <h3> Google Cybersécurité professional certificate</h3>
-          <p class="cert-desc">Gestion des risques, réseaux, outils Linux/SQL, détection des menaces et automatisation Python.</p>
-        </div>
-        <div class="cert-perf"><span class="notch left"></span><span class="notch right"></span></div>
-        <div class="cert-bottom">
-          <div class="cert-duration"><span class="label">Durée</span>~123 h</div>
-          <div class="cert-duration"><span class="label">Cours</span>9</div>
-        </div>
-      </div>
-
-      <div class="cert-card">
-        <div class="cert-top">
-          <div class="cert-num">N°7</div>
-          <h3>Google Analyse de données professional certificate</h3>
-          <p class="cert-desc">Collecter, nettoyer, analyser et visualiser des données, avec une introduction à Python.</p>
-        </div>
-        <div class="cert-perf"><span class="notch left"></span><span class="notch right"></span></div>
-        <div class="cert-bottom">
-          <div class="cert-duration"><span class="label">Durée</span>~146 h</div>
-          <div class="cert-duration"><span class="label">Cours</span>9</div>
-        </div>
-      </div>
-
-      <div class="cert-card">
-        <div class="cert-top">
-          <div class="cert-num">N°8</div>
-          <h3>Google Conception UX Professional Certificate</h3>
-          <p class="cert-desc">Recherche utilisateur, wireframes, prototypage haute-fidélité avec Figma et interfaces dynamiques.</p>
-        </div>
-        <div class="cert-perf"><span class="notch left"></span><span class="notch right"></span></div>
-        <div class="cert-bottom">
-          <div class="cert-duration"><span class="label">Durée</span>~112 h</div>
-          <div class="cert-duration"><span class="label">Cours</span>8</div>
-        </div>
-      </div>
-
-      <div class="cert-card">
-        <div class="cert-top">
-          <div class="cert-num">N°9</div>
-          <h3>Google Support informatique professional certificate</h3>
-          <p class="cert-desc">Réseaux, systèmes d'exploitation, administration système et sécurité — bases du métier IT.</p>
-        </div>
-        <div class="cert-perf"><span class="notch left"></span><span class="notch right"></span></div>
-        <div class="cert-bottom">
-          <div class="cert-duration"><span class="label">Durée</span>~122 h</div>
-          <div class="cert-duration"><span class="label">Cours</span>6</div>
-        </div>
-      </div>
-
+    <div class="stats-strip">
+      <div class="stats-card"><div class="value">9</div><div class="label">Certificats inclus</div></div>
+      <div class="stats-card"><div class="value">12</div><div class="label">Mois de validité</div></div>
+      <div class="stats-card"><div class="value">1</div><div class="label">Paiement unique</div></div>
+      <div class="stats-card"><div class="value">100%</div><div class="label">Livraison digitale</div></div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ============ CTA / PRICING BAND ============ -->
-<section>
-  <div class="wrap">
-    <div class="cta-band">
+  <section>
+    <div class="wrap cta-band">
       <div>
-        <h2>Un coupon, un tarif, tout inclus.</h2>
-        <p>Pas d'abonnement, pas de frais cachés. Votre coupon reste valable 12 mois et donne accès à l'ensemble des 9 certifications, dans l'ordre de votre choix.</p>
+        <h2>Prêt à démarrer votre transformation digitale ?</h2>
+        <p>Commandez votre coupon professionnel et accédez immédiatement à l’ensemble des certifications Google proposées.</p>
       </div>
       <div class="cta-panel">
-        <div class="row"><span>Coupon — 9 certifications</span><span>50 000 FCFA</span></div>
-        <div class="row"><span>Validité</span><span>12 mois</span></div>
+        <div class="row"><span>Prix unique</span><span>50 000 FCFA</span></div>
         <div class="row"><span>Livraison</span><span>Email + SMS</span></div>
-        <div class="total mono">50 000 FCFA</div>
-        <button class="btn btn-coral" style="width:100%; justify-content:center" onclick="openCheckout()">Obtenir mon coupon</button>
+        <div class="row"><span>Validité</span><span>12 mois</span></div>
+        <div class="total">50 000 FCFA</div>
+        <button class="btn btn-primary" onclick="openCheckout()">Obtenir mon coupon</button>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ============ FAQ ============ -->
-<section id="faq">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="kicker">Questions fréquentes</div>
-      <h2>Tout ce qu'il faut savoir avant d'acheter</h2>
+  <section id="faq">
+    <div class="wrap section-head">
+      <div class="kicker">FAQ</div>
+      <h2>Questions fréquentes sur l’offre.</h2>
     </div>
     <div class="faq">
-      <details class="faq-item">
-        <summary class="faq-q">Le coupon donne-t-il accès aux 9 certifications en même temps ? <span class="plus">+</span></summary>
-        <div class="faq-a">Oui. Un seul coupon débloque les 9 parcours Google Career Certificates listés sur cette page. Vous choisissez vous-même l'ordre dans lequel vous les suivez.</div>
-      </details>
-      <details class="faq-item">
-        <summary class="faq-q">Comment reçois-je mon coupon après le paiement ? <span class="plus">+</span></summary>
-        <div class="faq-a">Dès que le paiement K-PAY est confirmé, votre code d'accès et la procédure d'activation sur Coursera sont envoyés par e-mail et par SMS, généralement en quelques minutes.</div>
-      </details>
-      <details class="faq-item">
-        <summary class="faq-q">Quels moyens de paiement sont acceptés ? <span class="plus">+</span></summary>
-        <div class="faq-a">Mobile Money (MTN, Orange, Airtel) et cartes Visa/Mastercard, via l'agrégateur K-PAY.</div>
-      </details>
-      <details class="faq-item">
-        <summary class="faq-q">Le coupon expire-t-il ? <span class="plus">+</span></summary>
-        <div class="faq-a">Il reste valable 12 mois après l'achat, largement de quoi compléter les 9 parcours à votre rythme.</div>
-      </details>
-      <details class="faq-item">
-        <summary class="faq-q">Puis-je acheter plusieurs coupons pour une équipe ou un groupe ? <span class="plus">+</span></summary>
-        <div class="faq-a">Oui, indiquez la quantité souhaitée au moment du paiement ; chaque coupon reçoit son propre code d'activation individuel.</div>
-      </details>
+      <details class="faq-item"><summary class="faq-q">Ce coupon donne-t-il accès aux 9 certifications ? <span class="plus">+</span></summary><div class="faq-a">Oui, un abonnement unique donne accès aux neuf parcours Google Career Certificates mentionnés sur cette page.</div></details>
+      <details class="faq-item"><summary class="faq-q">Comment reçois-je mon code après le paiement ? <span class="plus">+</span></summary><div class="faq-a">Le code est envoyé par e-mail et SMS dès que la transaction est confirmée côté serveur.</div></details>
+      <details class="faq-item"><summary class="faq-q">Quels moyens de paiement sont acceptés ? <span class="plus">+</span></summary><div class="faq-a">Mobile Money et carte bancaire via K-PAY, selon votre configuration K-PAY.</div></details>
+      <details class="faq-item"><summary class="faq-q">Puis-je commander plusieurs coupons ? <span class="plus">+</span></summary><div class="faq-a">Oui, vous pouvez choisir plusieurs coupons dans le formulaire de paiement.</div></details>
+      <details class="faq-item"><summary class="faq-q">Le coupon expire-t-il ? <span class="plus">+</span></summary><div class="faq-a">Oui, le coupon reste valide 12 mois après la date d’achat.</div></details>
     </div>
-  </div>
-</section>
-
+  </section>
+</main>
 <footer>
-  <div class="wrap foot-row">
-   <div class="logo"><img src="../images/certifpro.png" alt="CertifPro"></div>
-    <div>© 2026 CertifPRO. Les certifications Google Career Certificates sont dispensées sur Coursera.org. Paiements traités par K-PAY.</div>
+  <div class="wrap footer-row">
+    <div class="footer-brand"><img src="images/certifpro.png" alt="CertifPro logo"><span>CertifPro</span></div>
+    <div class="footer-note">© 2026 CertifPro. Certifications Google Career Certificates sur Coursera. Paiement sécurisé par K-PAY.</div>
   </div>
 </footer>
-
-<!-- ============ CHECKOUT MODAL ============ -->
 <div class="modal-overlay" id="checkoutOverlay">
   <div class="modal">
     <button class="close-x" onclick="closeCheckout()" aria-label="Fermer">✕</button>
     <h3>Réserver votre coupon</h3>
-    <p class="sub">9 certifications Google, un seul paiement.</p>
-
+    <p class="sub">9 certifications Google, un seul paiement sécurisé.</p>
     <form id="checkoutForm">
-      <div class="field">
-        <label for="fullname">Nom complet</label>
-        <input type="text" id="fullname" required placeholder="Ex. Aïcha Ngono">
-      </div>
-      <div class="field">
-        <label for="email">Adresse e-mail</label>
-        <input type="email" id="email" required placeholder="vous@exemple.com">
-      </div>
-      <div class="field">
-        <label for="phone">Numéro Mobile Money</label>
-        <input type="tel" id="phone" required placeholder="+237 6 XX XX XX XX">
-      </div>
-      <div class="field">
-        <label for="qty">Nombre de coupons</label>
-        <select id="qty">
-          <option value="1">1 coupon — 50 000 FCFA</option>
-          <option value="2">2 coupons — 100 000 FCFA</option>
-          <option value="3">3 coupons — 150 000 FCFA</option>
-          <option value="5">5 coupons — 250 000 FCFA</option>
-        </select>
-      </div>
-
-      <div class="total-line">
-        <span>Total à payer</span>
-        <span class="amt mono" id="totalAmt">50 000 FCFA</span>
-      </div>
-
-      <button type="submit" class="btn btn-coral pay-btn" id="payBtn">Payer avec K-PAY</button>
+      <div class="field"><label for="fullname">Nom complet</label><input type="text" id="fullname" required placeholder="Ex. Aïcha Ngono"></div>
+      <div class="field"><label for="email">Adresse e-mail</label><input type="email" id="email" required placeholder="vous@exemple.com"></div>
+      <div class="field"><label for="phone">Numéro Mobile Money</label><input type="tel" id="phone" required placeholder="+237 6 XX XX XX XX"></div>
+      <div class="field"><label for="qty">Nombre de coupons</label><select id="qty"><option value="1">1 coupon — 50 000 FCFA</option><option value="2">2 coupons — 100 000 FCFA</option><option value="3">3 coupons — 150 000 FCFA</option><option value="5">5 coupons — 250 000 FCFA</option></select></div>
+      <div class="total-line"><span>Total à payer</span><span class="amt" id="totalAmt">50 000 FCFA</span></div>
+      <button type="submit" class="btn btn-primary pay-btn" id="payBtn">Payer avec K-PAY</button>
       <div class="status-msg" id="statusMsg"></div>
-      <p class="kpay-note">Paiement sécurisé traité par K-PAY (Mobile Money &amp; carte bancaire). Votre code de coupon est généré côté serveur après confirmation du paiement — voir <code>server-exemple.js</code> pour brancher votre compte K-PAY.</p>
+      <p class="kpay-note">Le paiement est traité par votre backend. Le code de coupon est généré après confirmation.</p>
     </form>
   </div>
 </div>
-
 <script>
   const UNIT_PRICE = 50000;
   const qtySelect = document.getElementById('qty');
   const totalAmt = document.getElementById('totalAmt');
+  const statusMsg = document.getElementById('statusMsg');
+  const payBtn = document.getElementById('payBtn');
 
-  function formatFCFA(n){
-    return n.toLocaleString('fr-FR') + ' FCFA';
+  function formatFCFA(value) {
+    return value.toLocaleString('fr-FR') + ' FCFA';
   }
+
   qtySelect.addEventListener('change', () => {
-    totalAmt.textContent = formatFCFA(UNIT_PRICE * parseInt(qtySelect.value, 10));
+    totalAmt.textContent = formatFCFA(UNIT_PRICE * Number(qtySelect.value));
   });
 
-  function openCheckout(){
+  function openCheckout() {
     document.getElementById('checkoutOverlay').classList.add('open');
     document.body.style.overflow = 'hidden';
   }
-  function closeCheckout(){
+
+  function closeCheckout() {
     document.getElementById('checkoutOverlay').classList.remove('open');
     document.body.style.overflow = '';
+    statusMsg.className = 'status-msg';
+    statusMsg.textContent = '';
   }
-  document.getElementById('checkoutOverlay').addEventListener('click', (e) => {
-    if (e.target.id === 'checkoutOverlay') closeCheckout();
+
+  document.getElementById('checkoutOverlay').addEventListener('click', (event) => {
+    if (event.target.id === 'checkoutOverlay') closeCheckout();
   });
 
-  document.getElementById('checkoutForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const statusMsg = document.getElementById('statusMsg');
-    const payBtn = document.getElementById('payBtn');
-    const qty = parseInt(qtySelect.value, 10);
-    const amount = UNIT_PRICE * qty;
-
+  document.getElementById('checkoutForm').addEventListener('submit', async (event) => {
+    event.preventDefault();
     const payload = {
-      fullname: document.getElementById('fullname').value,
-      email: document.getElementById('email').value,
-      phone: document.getElementById('phone').value,
-      quantity: qty,
-      amount: amount,
-      currency: 'XAF'
+      fullname: document.getElementById('fullname').value.trim(),
+      email: document.getElementById('email').value.trim(),
+      phone: document.getElementById('phone').value.trim(),
+      quantity: Number(qtySelect.value)
     };
 
     payBtn.disabled = true;
     payBtn.textContent = 'Connexion à K-PAY…';
     statusMsg.className = 'status-msg show info';
-    statusMsg.textContent = "Initialisation du paiement…";
+    statusMsg.textContent = 'Initialisation du paiement…';
 
     try {
-      // This calls YOUR backend (see server-exemple.js), which in turn calls
-      // https://api.k-pay.app/v1/payments with your secret K-PAY key.
-      // The K-PAY secret key must never be placed in this front-end file.
-      const res = await fetch('/api/create-payment', {
+      const response = await fetch('/api/create-payment', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       });
 
-      if (!res.ok) throw new Error('backend-unreachable');
-      const data = await res.json();
+      if (!response.ok) {
+        throw new Error('backend-unreachable');
+      }
 
+      const data = await response.json();
       if (data.checkout_url) {
         window.location.href = data.checkout_url;
-      } else {
-        statusMsg.className = 'status-msg show success';
-        statusMsg.textContent = 'Paiement initié (id: ' + (data.id || 'n/a') + '). Suivez les instructions envoyées sur votre téléphone.';
+        return;
       }
-    } catch (err) {
+
+      statusMsg.className = 'status-msg show success';
+      statusMsg.textContent = 'Paiement initié avec succès. Suivez les instructions envoyées sur votre mobile.';
+    } catch (error) {
       statusMsg.className = 'status-msg show error';
-      statusMsg.textContent = "Le service de paiement n'est pas encore connecté sur ce site (endpoint /api/create-payment introuvable). Déployez server-exemple.js pour activer les paiements K-PAY.";
+      statusMsg.textContent = 'Le service de paiement n’est pas connecté. Vérifiez que le backend est déployé et accessible.';
     } finally {
       payBtn.disabled = false;
       payBtn.textContent = 'Payer avec K-PAY';
     }
   });
 </script>
-
 </body>
 </html>

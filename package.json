@@ -4,7 +4,9 @@
   "description": "Backend CertifPass : intégration K-PAY, livraison de coupons et notifications admin (e-mail + WhatsApp).",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "echo \"No tests configured yet\"",
+    "lint": "echo \"No linter configured yet\""
   },
   "engines": {
     "node": ">=18"

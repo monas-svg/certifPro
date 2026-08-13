@@ -282,8 +282,6 @@ app.post('/api/create-payment', paymentRateLimiter, async (req, res) => {
 function handleSebpayWebhook(req, res) {
   const signatureHeader = req.headers[SEBPAY_WEBHOOK_HEADER] || req.headers['x-sebpay-signature'] || req.headers['signature'];
 
-  
-
   if (!SEBPAY_SECRET_KEY || !signatureHeader) {
     console.warn('Webhook SebPay rejeté : signature absente ou secret non configuré');
     return res.status(401).send('signature required');

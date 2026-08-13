@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CertifPro — Coupon 9 certifications Google</title>
-<meta name="description" content="CertifPro propose un coupon unique pour accéder aux 9 certifications Google Career Certificates sur Coursera. Paiement sécurisé K-PAY.">
+<meta name="description" content="CertifPro propose un coupon unique pour accéder aux 9 certifications Google Career Certificates sur Coursera. Paiement sécurisé via SebPay.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -925,7 +925,7 @@
           <div class="hero-stat"><div class="value">50 000</div><div class="label">FCFA</div></div>
           <div class="hero-stat"><div class="value">100%</div><div class="label">Processus digital</div></div>
         </div>
-        <div class="hero-note">Tous les paiements sont traités par K-PAY et validés côté serveur pour garantir une expérience fiable.</div>
+        <div class="hero-note">Tous les paiements sont traités par SebPay et validés côté serveur pour garantir une expérience fiable.</div>
       </aside>
     </div>
   </section>
@@ -940,7 +940,7 @@
       <div class="feature-card">
         <h3>Clarté totale</h3>
         <p>Chaque offre est présentée avec un prix unique, une couverture claire et un engagement transparent.</p>
-        <div class="feature-pill"><span></span>Paiement sécurisé K-PAY</div>
+        <div class="feature-pill"><span></span>Paiement sécurisé SebPay</div>
       </div>
       <div class="feature-card">
         <h3>Livraison rapide</h3>
@@ -982,7 +982,7 @@
     </div>
     <div class="steps">
       <div class="step-card"><div class="step-num">01</div><h3>Remplissez vos informations</h3><p>Nom, e-mail, téléphone et quantité de coupons.</p></div>
-      <div class="step-card"><div class="step-num">02</div><h3>Paiement sécurisé</h3><p>K-PAY gère votre transaction en sécurité, Mobile Money ou carte.</p></div>
+      <div class="step-card"><div class="step-num">02</div><h3>Paiement sécurisé</h3><p>SebPay gère votre transaction en sécurité, Mobile Money ou carte.</p></div>
       <div class="step-card"><div class="step-num">03</div><h3>Recevez votre coupon</h3><p>Votre code est envoyé par e-mail et SMS dès confirmation.</p></div>
     </div>
   </section>
@@ -1025,7 +1025,7 @@
     <div class="faq">
       <details class="faq-item"><summary class="faq-q">Ce coupon donne-t-il accès aux 9 certifications ? <span class="plus">+</span></summary><div class="faq-a">Oui, un abonnement unique donne accès aux neuf parcours Google Career Certificates mentionnés sur cette page.</div></details>
       <details class="faq-item"><summary class="faq-q">Comment reçois-je mon code après le paiement ? <span class="plus">+</span></summary><div class="faq-a">Le code est envoyé par e-mail et SMS dès que la transaction est confirmée côté serveur.</div></details>
-      <details class="faq-item"><summary class="faq-q">Quels moyens de paiement sont acceptés ? <span class="plus">+</span></summary><div class="faq-a">Mobile Money et carte bancaire via K-PAY, selon votre configuration K-PAY.</div></details>
+      <details class="faq-item"><summary class="faq-q">Quels moyens de paiement sont acceptés ? <span class="plus">+</span></summary><div class="faq-a">Mobile Money et carte bancaire via SebPay, selon votre configuration opérateur et pays.</div></details>
       <details class="faq-item"><summary class="faq-q">Puis-je commander plusieurs coupons ? <span class="plus">+</span></summary><div class="faq-a">Oui, vous pouvez choisir plusieurs coupons dans le formulaire de paiement.</div></details>
       <details class="faq-item"><summary class="faq-q">Le coupon expire-t-il ? <span class="plus">+</span></summary><div class="faq-a">Oui, le coupon reste valide 12 mois après la date d’achat.</div></details>
     </div>
@@ -1034,7 +1034,7 @@
 <footer>
   <div class="wrap footer-row">
     <div class="footer-brand"><img src="images/certifpro.png" alt="CertifPro logo"><span>CertifPro</span></div>
-    <div class="footer-note">© 2026 CertifPro. Certifications Google Career Certificates sur Coursera. Paiement sécurisé par K-PAY.</div>
+    <div class="footer-note">© 2026 CertifPro. Certifications Google Career Certificates sur Coursera. Paiement sécurisé par SebPay.</div>
   </div>
 </footer>
 <div class="modal-overlay" id="checkoutOverlay">
@@ -1048,9 +1048,9 @@
       <div class="field"><label for="phone">Numéro Mobile Money</label><input type="tel" id="phone" required placeholder="+237 6 XX XX XX XX"></div>
       <div class="field"><label for="qty">Nombre de coupons</label><select id="qty"><option value="1">1 coupon — 50 000 FCFA</option><option value="2">2 coupons — 100 000 FCFA</option><option value="3">3 coupons — 150 000 FCFA</option><option value="5">5 coupons — 250 000 FCFA</option></select></div>
       <div class="total-line"><span>Total à payer</span><span class="amt" id="totalAmt">50 000 FCFA</span></div>
-      <button type="submit" class="btn btn-primary pay-btn" id="payBtn">Payer avec K-PAY</button>
+      <button type="submit" class="btn btn-primary pay-btn" id="payBtn">Payer avec SebPay</button>
       <div class="status-msg" id="statusMsg"></div>
-      <p class="kpay-note">Le paiement est traité par votre backend. Le code de coupon est généré après confirmation.</p>
+      <p class="kpay-note">Le paiement est traité par votre backend via SebPay. Le code de coupon est généré après confirmation.</p>
     </form>
   </div>
 </div>
@@ -1095,7 +1095,7 @@
     };
 
     payBtn.disabled = true;
-    payBtn.textContent = 'Connexion à K-PAY…';
+    payBtn.textContent = 'Connexion à SebPay…';
     statusMsg.className = 'status-msg show info';
     statusMsg.textContent = 'Initialisation du paiement…';
 
@@ -1123,7 +1123,7 @@
       statusMsg.textContent = 'Le service de paiement n’est pas connecté. Vérifiez que le backend est déployé et accessible.';
     } finally {
       payBtn.disabled = false;
-      payBtn.textContent = 'Payer avec K-PAY';
+      payBtn.textContent = 'Payer avec SebPay';
     }
   });
 </script>

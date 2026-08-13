@@ -85,16 +85,17 @@ app.use(express.json());
 // conteneur héberge donc à la fois le site et l'API.
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Make K-PAY host configurable via .env for maximum compatibility and security
-const KPAY_API_URL = process.env.KPAY_API_URL || 'https://api.k-pay.site/v1/payments';
-const KPAY_SECRET_KEY = process.env.KPAY_SECRET_KEY;
-const KPAY_WEBHOOK_SECRET = process.env.KPAY_WEBHOOK_SECRET;
-// Allow webhook header name and HMAC algorithm to be configured (safer)
-const KPAY_WEBHOOK_HEADER = process.env.KPAY_WEBHOOK_HEADER || 'x-kpay-signature';
-const KPAY_WEBHOOK_ALGO = process.env.KPAY_WEBHOOK_ALGO || 'sha256';
-const KPAY_FETCH_TIMEOUT_MS = Number(process.env.KPAY_FETCH_TIMEOUT_MS || 15000);
-// Mode mock : si vrai, on ne contacte pas K-PAY et on simule un paiement réussi
-const KPAY_MOCK = (String(process.env.KPAY_MOCK || '').toLowerCase() === 'true') || KPAY_API_URL === 'mock';
+// SebPay configuration using the official documentation contract.
+const SEBPAY_API_URL = process.env.SEBPAY_API_URL || 'https://newapi.sebpay.bj/api/v1/collections';
+const SEBPAY_PUBLIC_KEY = process.env.SEBPAY_PUBLIC_KEY;
+const SEBPAY_SECRET_KEY = process.env.SEBPAY_SECRET_KEY;
+const SEBPAY_CALLBACK_URL = process.env.SEBPAY_CALLBACK_URL || 'http://localhost:3000/webhooks/sebpay';
+const SEBPAY_OPERATOR = process.env.SEBPAY_OPERATOR || 'mtn';
+const SEBPAY_COUNTRY = process.env.SEBPAY_COUNTRY || 'BJ';
+const SEBPAY_WEBHOOK_HEADER = process.env.SEBPAY_WEBHOOK_HEADER || 'x-sebpay-signature';
+const SEBPAY_WEBHOOK_ALGO = process.env.SEBPAY_WEBHOOK_ALGO || 'sha256';
+const SEBPAY_FETCH_TIMEOUT_MS = Number(process.env.SEBPAY_FETCH_TIMEOUT_MS || 15000);
+const SEBPAY_MOCK = String(process.env.SEBPAY_MOCK || '').toLowerCase() === 'true' || String(process.env.SEBPAY_API_URL || '').toLowerCase() === 'mock';
 
 // --- Notification immédiate à VOUS (l'administrateur), pas au client ---
 const GMAIL_USER = process.env.GMAIL_USER;
@@ -110,12 +111,12 @@ const mailTransporter = (GMAIL_USER && GMAIL_APP_PASSWORD)
     })
   : null;
 
-// Warn early if critical K-PAY config is missing
-if (!KPAY_SECRET_KEY) {
-  console.warn('ATTENTION: KPAY_SECRET_KEY non configurée — paiements impossibles');
+// Warn early if critical SebPay config is missing.
+if (!SEBPAY_PUBLIC_KEY) {
+  console.warn('ATTENTION: SEBPAY_PUBLIC_KEY non configurée — paiements impossibles');
 }
-if (!KPAY_WEBHOOK_SECRET) {
-  console.warn('ATTENTION: KPAY_WEBHOOK_SECRET non configurée — webhooks non vérifiables');
+if (!SEBPAY_SECRET_KEY) {
+  console.warn('ATTENTION: SEBPAY_SECRET_KEY non configurée — paiements et webhooks non sécurisés');
 }
 
 // Très simple "base" en mémoire pour la démo — remplacez par une vraie base
@@ -127,7 +128,7 @@ const orders = new Map();
 // à calculer le montant réellement envoyé à K-PAY. Ne jamais faire confiance
 // au champ "amount" envoyé par le navigateur.
 const UNIT_PRICE_FCFA = 50000;
-const CURRENCY = 'XAF';
+const CURRENCY = 'XOF';
 const MAX_QUANTITY = 20; // garde-fou anti-abus
 
 // --- Limiteur de débit minimal, sans dépendance externe ---
@@ -172,39 +173,40 @@ app.post('/api/create-payment', paymentRateLimiter, async (req, res) => {
     return res.status(400).json({ error: 'invalid_email' });
   }
 
-  const amount = UNIT_PRICE_FCFA * qty; // <-- seule source de vérité pour le prix
+  const amount = UNIT_PRICE_FCFA * qty;
   const currency = CURRENCY;
-
   const orderId = 'order_' + crypto.randomBytes(6).toString('hex');
+  const normalizedPhone = String(phone).replace(/\D/g, '');
 
   try {
-    // helper: fetch with timeout to avoid hanging the server
-    const kpayFetch = async (url, opts = {}) => {
+    const sebpayFetch = async (url, opts = {}) => {
       const controller = new AbortController();
-      const id = setTimeout(() => controller.abort(), KPAY_FETCH_TIMEOUT_MS);
+      const id = setTimeout(() => controller.abort(), SEBPAY_FETCH_TIMEOUT_MS);
       try {
-        const r = await fetch(url, { signal: controller.signal, ...opts });
-        return r;
+        return await fetch(url, { signal: controller.signal, ...opts });
       } finally {
         clearTimeout(id);
       }
     };
 
-    // If mock mode is enabled, don't call external K-PAY API — simulate response
-    if (KPAY_MOCK) {
-      const payment = { id: 'mock_' + crypto.randomBytes(6).toString('hex'), status: 'succeeded', checkout_url: null };
+    if (SEBPAY_MOCK) {
+      const payment = {
+        id: 'mock_' + crypto.randomBytes(6).toString('hex'),
+        status: 'approved',
+        data: { transaction_id: 'mock_' + crypto.randomBytes(6).toString('hex') },
+        provider_link: null
+      };
 
       orders.set(orderId, {
-        status: 'succeeded',
+        status: 'approved',
         fullname,
         email,
-        phone,
+        phone: normalizedPhone,
         quantity: qty,
         amount,
-        kpay_payment_id: payment.id
+        sebpay_payment_id: payment.id
       });
 
-      // Immediately deliver coupons and notify admin to exercise full flow
       try {
         const order = orders.get(orderId);
         deliverCoupon(order);
@@ -213,48 +215,57 @@ app.post('/api/create-payment', paymentRateLimiter, async (req, res) => {
         console.error('Erreur lors du mock delivery/notify:', err && err.message ? err.message : err);
       }
 
-      return res.json({ id: payment.id, status: payment.status, checkout_url: payment.checkout_url, order_id: orderId, mock: true });
+      return res.json({ id: payment.id, status: payment.status, checkout_url: payment.provider_link || null, order_id: orderId, mock: true });
     }
 
-    const kpayRes = await kpayFetch(KPAY_API_URL, {
+    if (!SEBPAY_PUBLIC_KEY || !SEBPAY_SECRET_KEY) {
+      return res.status(500).json({ error: 'sebpay_not_configured' });
+    }
+
+    const sebpayRes = await sebpayFetch(SEBPAY_API_URL, {
       method: 'POST',
       headers: {
-        Authorization: `Bearer ${KPAY_SECRET_KEY}`,
+        'X-Public-Key': SEBPAY_PUBLIC_KEY,
+        'X-Secret-Key': SEBPAY_SECRET_KEY,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         amount,
         currency,
-        customer: phone,
-        // "provider" dépend des moyens supportés dans votre pays — ex: orange_cmr,
-        // mtn_cmr, card, etc. Consultez votre documentation K-PAY pour la liste
-        // exacte des valeurs disponibles pour le Cameroun.
-        metadata: { order_id: orderId, fullname, email, quantity: qty }
+        phone: normalizedPhone,
+        operator: SEBPAY_OPERATOR,
+        country: SEBPAY_COUNTRY,
+        external_reference: orderId,
+        callback_url: SEBPAY_CALLBACK_URL,
+        metadata: { fullname, email, quantity: qty }
       })
     });
 
-    if (!kpayRes.ok) {
-      const errBody = await kpayRes.text();
-      console.error('K-PAY error', kpayRes.status, errBody);
-      return res.status(502).json({ error: 'kpay_error' });
+    if (!sebpayRes.ok) {
+      const errBody = await sebpayRes.text();
+      console.error('SEBPAY error', sebpayRes.status, errBody);
+      return res.status(502).json({ error: 'sebpay_error' });
     }
 
-    const payment = await kpayRes.json(); // ex: { id: "pay_8x2k", status: "pending", checkout_url: "..." }
+    const payment = await sebpayRes.json();
+    const paymentId = payment?.data?.transaction_id || payment?.transaction_id || payment?.id || orderId;
+    const paymentStatus = payment?.data?.status || payment?.status || 'pending';
+    const checkoutUrl = payment?.data?.provider_link || payment?.provider_link || payment?.checkout_url || payment?.payment_url || null;
 
     orders.set(orderId, {
-      status: 'pending',
+      status: paymentStatus,
       fullname,
       email,
-      phone,
+      phone: normalizedPhone,
       quantity: qty,
       amount,
-      kpay_payment_id: payment.id
+      sebpay_payment_id: paymentId
     });
 
     return res.json({
-      id: payment.id,
-      status: payment.status,
-      checkout_url: payment.checkout_url || null,
+      id: paymentId,
+      status: paymentStatus,
+      checkout_url: checkoutUrl,
       order_id: orderId
     });
   } catch (err) {
@@ -268,73 +279,83 @@ app.post('/api/create-payment', paymentRateLimiter, async (req, res) => {
  *    Configurez cette URL publique (ex: https://votre-domaine.com/webhooks/kpay)
  *    dans votre tableau de bord K-PAY.
  */
-app.post(
-  '/webhooks/kpay',
-  webhookRateLimiter,
-  express.raw({ type: '*/*' }), // on garde le corps brut pour vérifier la signature
-  (req, res) => {
-    const signatureHeader = req.headers[KPAY_WEBHOOK_HEADER] || req.headers['signature'];
+function handleSebpayWebhook(req, res) {
+  const signatureHeader = req.headers[SEBPAY_WEBHOOK_HEADER] || req.headers['x-sebpay-signature'] || req.headers['signature'];
 
-      // Vérification de signature façon HMAC — header et algorithme configurables
-      // (définissez KPAY_WEBHOOK_HEADER et KPAY_WEBHOOK_ALGO dans .env si nécessaire)
-    //
-    // IMPORTANT : la signature est désormais OBLIGATOIRE. Une requête sans
-    // en-tête de signature (ou si KPAY_WEBHOOK_SECRET n'est pas configuré)
-    // est rejetée — sinon n'importe qui pourrait appeler cette URL et
-    // simuler un paiement réussi pour obtenir des coupons gratuits.
-    if (!KPAY_WEBHOOK_SECRET || !signatureHeader) {
-      console.warn('Webhook rejeté : signature absente ou secret non configuré');
-      return res.status(401).send('signature required');
-    }
+  
 
+  if (!SEBPAY_SECRET_KEY || !signatureHeader) {
+    console.warn('Webhook SebPay rejeté : signature absente ou secret non configuré');
+    return res.status(401).send('signature required');
+  }
+
+  const normalizedHeader = String(signatureHeader).replace(/^sha256=/i, '').trim();
+    const rawBodyStr = typeof req.body === 'string' ? req.body : JSON.stringify(req.body);
     const expected = crypto
-      .createHmac(KPAY_WEBHOOK_ALGO, KPAY_WEBHOOK_SECRET)
-      .update(req.body)
+      .createHmac(SEBPAY_WEBHOOK_ALGO, SEBPAY_SECRET_KEY)
+      .update(rawBodyStr, 'utf8')
       .digest('hex');
 
-    const expectedBuf = Buffer.from(expected, 'utf8');
-    const receivedBuf = Buffer.from(String(signatureHeader), 'utf8');
+  const expectedBuf = Buffer.from(expected, 'utf8');
+  const receivedBuf = Buffer.from(normalizedHeader, 'utf8');
 
-    // Comparaison en temps constant (évite les attaques par mesure de temps).
-    // Les deux buffers doivent avoir la même longueur avant timingSafeEqual.
-    const signatureValid =
-      expectedBuf.length === receivedBuf.length &&
-      crypto.timingSafeEqual(expectedBuf, receivedBuf);
+  const signatureValid =
+    expectedBuf.length === receivedBuf.length &&
+    crypto.timingSafeEqual(expectedBuf, receivedBuf);
 
-    if (!signatureValid) {
-      console.warn('Signature de webhook invalide');
-      return res.status(401).send('invalid signature');
-    }
-
-    let event;
-    try {
-      event = JSON.parse(req.body.toString('utf8'));
-    } catch {
-      return res.status(400).send('invalid payload');
-    }
-
-    const orderId = event?.data?.metadata?.order_id;
-    const status = event?.data?.status; // "success" | "failed" | "pending" ...
-
-    if (orderId && orders.has(orderId)) {
-      const order = orders.get(orderId);
-      const alreadyProcessed = order.status === 'success' || order.status === 'succeeded';
-
-      order.status = status;
-      orders.set(orderId, order);
-
-      // Anti-rejeu : si cette commande a déjà été marquée réussie, on ne
-      // délivre pas de nouveaux coupons ni de nouvelle notification, même
-      // si K-PAY (ou un attaquant) renvoie le même événement plusieurs fois.
-      if ((status === 'success' || status === 'succeeded') && !alreadyProcessed) {
-        deliverCoupon(order);
-        notifyAdmin(order); // vous envoie le formulaire d'inscription par e-mail + WhatsApp
-      }
-    }
-
-    res.status(200).send('ok');
+  if (!signatureValid) {
+    console.warn('Signature de webhook SebPay invalide');
+    return res.status(401).send('invalid signature');
   }
+
+  let event;
+  try {
+    if (Buffer.isBuffer(req.body)) {
+      event = JSON.parse(req.body.toString('utf8'));
+    } else if (typeof req.body === 'object') {
+      event = req.body;
+    } else {
+      event = JSON.parse(String(req.body));
+    }
+  } catch (e) {
+    console.warn('Webhook parse error:', e && e.message);
+    return res.status(400).send('invalid payload');
+  }
+
+  const status = event?.status || event?.data?.status || event?.transaction?.status || '';
+  const orderId = String(
+    event?.external_reference ||
+    event?.data?.external_reference ||
+    event?.transaction?.external_reference ||
+    event?.metadata?.order_id ||
+    ''
+  ).trim();
+
+  if (orderId && orders.has(orderId)) {
+    const order = orders.get(orderId);
+    const normalizedStatus = status === 'approved' ? 'approved' : status === 'rejected' ? 'rejected' : 'pending';
+    const alreadyProcessed = order.status === 'approved' || order.status === 'success' || order.status === 'succeeded';
+
+    order.status = normalizedStatus;
+    orders.set(orderId, order);
+
+    if ((normalizedStatus === 'approved' || normalizedStatus === 'success' || normalizedStatus === 'succeeded') && !alreadyProcessed) {
+      deliverCoupon(order);
+      notifyAdmin(order);
+    }
+  }
+
+  return res.status(200).send('ok');
+}
+
+app.post(
+  '/webhooks/sebpay',
+  webhookRateLimiter,
+  express.raw({ type: '*/*' }),
+  handleSebpayWebhook
 );
+
+app.post('/webhooks/kpay', webhookRateLimiter, express.raw({ type: '*/*' }), handleSebpayWebhook);
 
 /**
  * 3) Une fois le paiement confirmé, on génère et on envoie le(s) code(s) de
@@ -367,7 +388,7 @@ async function notifyAdmin(order) {
     `Téléphone : ${order.phone}\n` +
     `Coupons : ${order.quantity}\n` +
     `Montant : ${order.amount} FCFA\n` +
-    `Référence K-PAY : ${order.kpay_payment_id}`;
+    `Référence SEBPAY : ${order.sebpay_payment_id || order.kpay_payment_id || 'non disponible'}`;
 
   // --- E-mail (Gmail SMTP) ---
   if (mailTransporter && ADMIN_NOTIFY_EMAIL) {

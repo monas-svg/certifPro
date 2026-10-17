@@ -1,0 +1,36 @@
+{% extends "base.html" %}{% block title %}Renvoyer mes liens{% endblock %}
+{% block content %}
+<div class="mx-auto max-w-2xl py-10">
+    <div class="soft-panel overflow-hidden">
+        <div class="bg-[#0B2547] px-6 py-5 text-white">
+            <div class="flex items-center gap-3">
+                <span class="material-symbols-outlined text-3xl text-[#1BA7E5]">refresh</span>
+                <div>
+                    <div class="text-xs font-semibold uppercase tracking-[0.12em] text-[#DCEFFB]">Support</div>
+                    <h1 class="mt-1 text-2xl font-extrabold">Renvoyer mes liens</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-6">
+            <form method="post" class="space-y-4">
+                {% csrf_token %}
+                <div>
+                    <label for="email" class="mb-2 block text-sm font-semibold text-text-muted">E-mail utilisé lors de l'achat</label>
+                    <input id="email" name="email" type="email" required class="h-12 w-full rounded-xl border border-slate-200 bg-[#f5f8fb] px-3 text-text-primary outline-none transition focus:border-[#1BA7E5] focus:ring-2 focus:ring-[#1BA7E5]/15" placeholder="votre-adresse@domaine.com" />
+                </div>
+                <button type="submit" class="btn-primary h-[52px] w-full text-base">
+                    <span class="material-symbols-outlined text-xl">mail</span>
+                    <span>Renvoyer mes liens</span>
+                </button>
+            </form>
+
+            {% if message %}
+                <div class="mt-5 rounded-xl bg-[#eaf9f2] p-4 text-sm font-medium text-[#0C6B5B]">
+                    {{ message }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

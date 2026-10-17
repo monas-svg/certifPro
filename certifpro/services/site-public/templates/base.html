@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+    <title>{% block title %}Certifpro{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0B2547',
+                        'primary-deep': '#0B2547',
+                        secondary: '#0C6BAA',
+                        'secondary-container': '#1BA7E5',
+                        'secondary-fixed': '#DCEFFB',
+                        'tertiary-fixed': '#DAF3EA',
+                        'cyan-hover': '#1196D4',
+                        'surface-slate': '#F5F7F9',
+                        'surface-container': '#E9F4FB',
+                        'surface-container-low': '#F1F8FD',
+                        'surface-container-high': '#D9EEF9',
+                        'surface-pure': '#FFFFFF',
+                        'text-primary': '#11263F',
+                        'text-muted': '#637387',
+                        'on-primary': '#ffffff',
+                        'on-primary-container': '#DCEAF7',
+                        'on-surface': '#0E2138',
+                        'on-secondary-container': '#0B3D63',
+                        'on-tertiary-container': '#0C6B5B',
+                        'momo-mtn': '#F8C52C',
+                        'om-orange': '#FF7A1A',
+                        'wave-blue': '#2FB6F6',
+                        'solar-amber': '#F4B740',
+                        'solar-amber-light': '#FFF3D7',
+                        'emerald-surface': '#EAF9F2',
+                        'surface-bright': '#ffffff',
+                        'border-subtle': '#E5E9EE',
+                        'border-strong': '#D4DBE5',
+                    },
+                    boxShadow: {
+                        soft: '0 12px 28px rgba(11, 37, 71, 0.08)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --bg: #f4f5f1;
+            --card: #ffffff;
+            --primary: #0B2547;
+            --primary-soft: #eaf3fb;
+            --muted: #637387;
+            --accent: #1BA7E5;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--bg);
+            color: var(--primary);
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .page-shell {
+            max-width: 1230px;
+            margin: 0 auto;
+            padding: 24px 16px 64px;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            border-radius: 12px;
+            background: var(--primary);
+            color: white;
+            font-weight: 700;
+            padding: 0.85rem 1.35rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 10px 20px rgba(11, 37, 71, 0.12);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+        }
+
+        .pack-card {
+            background: white;
+            border: 1px solid rgba(11, 37, 71, 0.08);
+            border-radius: 20px;
+            box-shadow: 0 12px 28px rgba(11, 37, 71, 0.05);
+        }
+
+        .soft-panel {
+            background: #ffffff;
+            border-radius: 20px;
+            border: 1px solid rgba(11, 37, 71, 0.08);
+            box-shadow: 0 12px 28px rgba(11, 37, 71, 0.05);
+        }
+
+        .brand-mark {
+            letter-spacing: -0.08em;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .brand-accent {
+            color: var(--accent);
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-[#f4f5f1] text-text-primary">
+    <header class="border-b border-[#dfe5eb] bg-white/90 backdrop-blur-sm">
+        <div class="page-shell flex items-center justify-between gap-4 py-4">
+            <a href="/" class="flex items-center gap-2 text-xl font-extrabold tracking-tight no-underline md:text-2xl">
+                <span class="brand-mark">Certif</span><span class="brand-accent">pro</span>
+            </a>
+            <nav class="hidden items-center gap-6 text-sm font-semibold md:flex">
+                <a href="/" class="text-text-primary no-underline hover:text-secondary">Accueil</a>
+                <a href="/renvoyer/" class="text-text-primary no-underline hover:text-secondary">Renvoyer mes liens</a>
+            </nav>
+            <a href="/renvoyer/" class="inline-flex items-center gap-2 rounded-full border border-[#d7e2ec] bg-[#f3f8fd] px-3 py-2 text-sm font-semibold text-primary no-underline hover:border-secondary hover:text-secondary md:px-4">
+                <span class="material-symbols-outlined text-base">refresh</span>
+                Renvoyer mes liens
+            </a>
+        </div>
+    </header>
+
+    <main class="page-shell">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="border-t border-slate-200 bg-white/80 py-8">
+        <div class="page-shell flex flex-col items-center justify-between gap-4 text-center md:flex-row md:text-left">
+            <div class="text-sm font-medium text-text-muted">Formations métiers • Certifications • Évolution</div>
+            <div class="flex flex-wrap items-center justify-center gap-3 text-sm text-text-muted md:justify-end">
+                <a href="/" class="text-text-muted no-underline hover:text-primary-deep">Accueil</a>
+                <span>•</span>
+                <a href="/renvoyer/" class="text-text-muted no-underline hover:text-primary-deep">Support</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+

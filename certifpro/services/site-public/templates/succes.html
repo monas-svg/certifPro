@@ -1,0 +1,55 @@
+{% extends "base.html" %}{% block title %}Paiement confirmé{% endblock %}
+{% block content %}
+<div class="mx-auto max-w-4xl py-8">
+    <div class="soft-panel overflow-hidden">
+        <div class="bg-[#F3F9FF] px-6 py-8 text-center">
+            <div class="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-white shadow-sm">
+                <span class="material-symbols-outlined text-5xl text-[#0C6B5B]">check_circle</span>
+            </div>
+            <span class="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1.5 text-xs font-bold uppercase tracking-[0.12em] text-[#0C6B5B]">
+                <span class="material-symbols-outlined text-base">verified</span>
+                Transaction Certifiée CEMAC
+            </span>
+            <h1 class="mt-4 text-3xl font-extrabold text-primary md:text-4xl">Paiement confirmé avec succès !</h1>
+            <p class="mt-3 text-base text-text-muted">Vos liens d'accès et ressources pédagogiques ont bien été générés.</p>
+        </div>
+
+        <div class="space-y-6 p-6">
+            <div class="rounded-xl border border-[#dfeaf4] bg-[#f5f8fb] p-4">
+                <div class="flex items-center justify-between gap-3">
+                    <span class="text-sm font-semibold uppercase tracking-[0.08em] text-text-muted">Référence Commande</span>
+                    <span class="rounded bg-[#edf7ff] px-2 py-1 font-bold text-primary">#{{ reference|default:'CP-2026-89412' }}</span>
+                </div>
+                <div class="mt-3 flex items-center justify-between gap-3">
+                    <span class="text-sm text-text-muted">Paiement Mobile Money</span>
+                    <span class="text-xl font-extrabold text-primary">29 000 FCFA</span>
+                </div>
+            </div>
+
+            <div class="rounded-[24px] bg-[#0B2547] p-5 text-white">
+                <div class="flex items-start gap-3">
+                    <span class="material-symbols-outlined text-2xl text-[#1BA7E5]">mark_email_read</span>
+                    <div>
+                        <div class="text-xs font-semibold uppercase tracking-[0.12em] text-[#a8d9f7]">Protocole de délivrance sécurisée</div>
+                        <h2 class="mt-2 text-2xl font-extrabold">Vos liens ont été expédiés à votre adresse e-mail</h2>
+                    </div>
+                </div>
+                <div class="mt-4 rounded-xl bg-white/10 p-4 text-sm text-white/90">
+                    Les liens directs, accès vidéos et supports de préparation sont envoyés par email après validation du paiement.
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-3 sm:flex-row">
+                <a href="/renvoyer/" class="btn-primary h-[52px] flex-1 text-base">
+                    <span class="material-symbols-outlined text-xl">refresh</span>
+                    <span>Renvoyer mes liens</span>
+                </a>
+                <a href="/" class="inline-flex h-[52px] flex-1 items-center justify-center gap-2 rounded-xl bg-[#edf7ff] text-base font-bold text-primary no-underline">
+                    <span class="material-symbols-outlined text-xl">grid_view</span>
+                    <span>Consulter d'autres packs</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

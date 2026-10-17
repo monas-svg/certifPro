@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+
+<html lang="fr"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"tertiary-fixed":"#85f8c4","on-background":"#0b1c30","on-tertiary":"#ffffff","primary-fixed-dim":"#b9c7e4","inverse-primary":"#b9c7e4","on-error-container":"#93000a","solar-amber":"#F59E0B","momo-mtn":"#FFCC00","surface-container-low":"#eff4ff","surface-container-high":"#dce9ff","surface-slate":"#F8FAFC","tertiary-container":"#002114","surface-bright":"#f8f9ff","tertiary-fixed-dim":"#68dba9","border-strong":"#CBD5E1","on-primary-container":"#76849f","on-secondary":"#ffffff","inverse-on-surface":"#eaf1ff","surface-dim":"#cbdbf5","secondary-fixed-dim":"#98cbff","primary-container":"#0d1c32","on-surface":"#0b1c30","primary-fixed":"#d6e3ff","outline":"#75777e","on-secondary-fixed-variant":"#004a77","on-secondary-fixed":"#001d33","emerald-surface":"#ECFDF5","on-surface-variant":"#44474d","text-primary":"#0A192F","wave-blue":"#1DC3F4","background":"#f8f9ff","primary":"#000000","text-muted":"#64748B","secondary-container":"#00a2fd","surface":"#f8f9ff","error-container":"#ffdad6","surface-pure":"#FFFFFF","on-primary":"#ffffff","on-primary-fixed-variant":"#39475f","tertiary":"#000000","secondary":"#00629d","inverse-surface":"#213145","on-tertiary-container":"#069669","error":"#ba1a1a","surface-variant":"#d3e4fe","cyan-hover":"#0088E8","om-orange":"#FF7900","surface-container-lowest":"#ffffff","secondary-fixed":"#cfe5ff","surface-tint":"#515f78","surface-container-highest":"#d3e4fe","on-tertiary-fixed-variant":"#005137","on-error":"#ffffff","border-subtle":"#E2E8F0","surface-container":"#e5eeff","on-primary-fixed":"#0d1c32","primary-deep":"#0D2240","on-secondary-container":"#003558","outline-variant":"#c5c6cd","on-tertiary-fixed":"#002114","solar-amber-light":"#FEF3C7"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"margin-md":"2rem","margin-lg":"3.5rem","space-xs":"0.25rem","space-xl":"2.5rem","space-md":"1rem","space-sm":"0.5rem","gutter":"1rem","gutter-md":"1.5rem","gutter-lg":"2rem","margin":"1rem","space-lg":"1.5rem"},"fontFamily":{"body-md":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"],"label-sm":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"],"title-md":["Plus Jakarta Sans"],"headline-xl-mobile":["Plus Jakarta Sans"],"headline-lg-mobile":["Plus Jakarta Sans"],"label-lg":["Plus Jakarta Sans"],"body-sm":["Plus Jakarta Sans"],"title-lg":["Plus Jakarta Sans"],"headline-xl":["Plus Jakarta Sans"],"headline-sm":["Plus Jakarta Sans"]},"fontSize":{"body-md":["15px",{"lineHeight":"24px","fontWeight":"400"}],"headline-lg":["36px",{"lineHeight":"44px","fontWeight":"700"}],"label-sm":["11px",{"lineHeight":"14px","fontWeight":"700"}],"headline-md":["24px",{"lineHeight":"32px","fontWeight":"700"}],"label-md":["12px",{"lineHeight":"16px","fontWeight":"600"}],"body-lg":["18px",{"lineHeight":"28px","fontWeight":"400"}],"title-md":["16px",{"lineHeight":"24px","fontWeight":"600"}],"headline-xl-mobile":["32px",{"lineHeight":"40px","fontWeight":"800"}],"headline-lg-mobile":["26px",{"lineHeight":"34px","fontWeight":"700"}],"label-lg":["14px",{"lineHeight":"20px","fontWeight":"600"}],"body-sm":["13px",{"lineHeight":"20px","fontWeight":"400"}],"title-lg":["18px",{"lineHeight":"26px","fontWeight":"600"}],"headline-xl":["48px",{"lineHeight":"56px","fontWeight":"800"}],"headline-sm":["20px",{"lineHeight":"28px","fontWeight":"600"}]}}}}</script></head><body class="bg-surface-slate font-body-md text-on-surface min-h-screen antialiased"><aside class="fixed left-0 top-0 h-full w-72 bg-primary-deep text-on-primary z-50 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col"><div class="px-6 py-5 flex items-center justify-between"><div class="flex items-center gap-2"><div class="w-8 h-8 rounded-lg bg-secondary-container flex items-center justify-center font-title-lg text-title-lg text-on-primary font-bold tracking-tight">C</div><span class="font-headline-sm text-headline-sm text-on-primary font-bold tracking-tight">Certif<span class="text-secondary-container">pro</span></span></div><span class="px-2 py-0.5 rounded bg-emerald-surface text-on-tertiary-container font-label-sm text-label-sm uppercase font-bold tracking-wider">2FA</span></div><div class="px-6 pb-4"><div class="px-3 py-2 rounded-lg bg-primary-container text-on-primary-container flex items-center gap-2 font-label-md text-label-md"><span class="w-2 h-2 rounded-full bg-secondary-container animate-pulse"></span><span>Back-Office SaaS v2.4</span></div></div><div class="px-3"><nav class="flex flex-col gap-1" data-active-classes="bg-secondary text-on-secondary font-bold shadow-sm"><a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-primary-fixed-dim hover:bg-primary-container hover:text-on-primary transition-colors font-label-lg text-label-lg" data-path="vue-densemble" href="#"><span class="material-symbols-outlined text-[20px]">grid_view</span><span>Vue d'ensemble</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-primary-fixed-dim hover:bg-primary-container hover:text-on-primary transition-colors font-label-lg text-label-lg" data-path="catalogue-des-metiers" href="#"><span class="material-symbols-outlined text-[20px]">work</span><span>Catalogue des Métiers</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-primary-fixed-dim hover:bg-primary-container hover:text-on-primary transition-colors font-label-lg text-label-lg" data-path="gestion-des-competences-et-packs" href="#"><span class="material-symbols-outlined text-[20px]">inventory_2</span><span>Compétences &amp; Packs</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-primary-fixed-dim hover:bg-primary-container hover:text-on-primary transition-colors font-label-lg text-label-lg" data-path="commandes-et-transactions" href="#"><span class="material-symbols-outlined text-[20px]">receipt_long</span><span>Commandes &amp; Transactions</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-primary-fixed-dim hover:bg-primary-container hover:text-on-primary transition-colors font-label-lg text-label-lg" data-path="livraisons-email-et-renvois" href="#"><span class="material-symbols-outlined text-[20px]">outgoing_mail</span><span>Livraisons &amp; Renvois</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-primary-fixed-dim hover:bg-primary-container hover:text-on-primary transition-colors font-label-lg text-label-lg" data-path="journal-daudit" href="#"><span class="material-symbols-outlined text-[20px]">history</span><span>Journal d'audit</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-primary-fixed-dim hover:bg-primary-container hover:text-on-primary transition-colors font-label-lg text-label-lg" data-path="parametres-api-et-webhooks" href="#"><span class="material-symbols-outlined text-[20px]">hub</span><span>Paramètres API &amp; Webhooks</span></a></nav></div></div><div class="p-4 mx-3 mb-4 rounded-xl bg-primary-container flex flex-col gap-3"><div class="flex items-center gap-3"><div class="relative flex items-center justify-center"><div class="w-9 h-9 rounded-full bg-secondary text-on-secondary font-label-lg text-label-lg flex items-center justify-center font-bold">JN</div><span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-tertiary-fixed-dim ring-2 ring-primary-deep"></span></div><div class="flex flex-col min-w-0"><span class="font-label-lg text-label-lg text-on-primary font-bold truncate">J. Ndongo</span><span class="font-label-sm text-label-sm text-primary-fixed-dim flex items-center gap-1"><span class="material-symbols-outlined text-[13px] text-tertiary-fixed-dim">verified_user</span>Super Admin (2FA)</span></div></div><div class="flex items-center justify-between pt-2"><span class="font-label-sm text-label-sm text-primary-fixed-dim">Session CEMAC</span><a class="text-error-container hover:text-on-error font-label-sm text-label-sm font-semibold flex items-center gap-1 transition-colors" data-path="deconnexion" href="#"><span class="material-symbols-outlined text-[16px]">logout</span>Déconnexion</a></div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-16 bg-surface-pure/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-8"><div class="flex items-center gap-6"><div class="flex items-center gap-2 font-label-md text-label-md text-on-surface-variant"><span class="material-symbols-outlined text-[18px]">home</span><span>/</span><span>Catalogue</span><span>/</span><span class="text-on-surface font-semibold">Gestion des Métiers</span></div><div class="relative hidden xl:flex items-center w-80"><span class="material-symbols-outlined absolute left-3 text-on-surface-variant text-[18px]">search</span><input class="w-full h-9 pl-9 pr-4 rounded-lg bg-surface-container-low text-on-surface placeholder:text-outline font-body-sm text-body-sm focus:outline-none focus:bg-surface-pure transition-all" placeholder="Rechercher un pack, rôle, slug..." type="search"/></div></div><div class="flex items-center gap-4"><div class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-surface text-on-tertiary-container font-label-sm text-label-sm"><span class="w-2 h-2 rounded-full bg-on-tertiary-container"></span><span class="font-bold">Agrégateurs MoMo/Wave : 99.9%</span></div><div class="relative flex items-center justify-center"><button class="w-9 h-9 rounded-lg bg-surface-container-low text-on-surface-variant hover:text-on-surface hover:bg-surface-container flex items-center justify-center transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span></button><span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-error"></span></div><div class="flex items-center gap-3 pl-2"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1X4t6KI-LXEUmYEZAArarBcBpTURYv7JwPXB8ByRW_rVp6stiuScVCHkcwiqv09IkO98Mjct033GndrCay8CwkzEzKAxiIpau20u1GQ-zmAEuEGGI8b54HNx4fnvz2BhlgSJAcrGtR7f6XVM1lYeYO9dhorvHpInUfQKpl_ihLOVvSZl57nsbeG8YvH8tDqoxLQ5ZD_NxFdZFslbMgNPG4P3ZmI1-d2x_VZKy2BdFkauzLnJJBWzz1K6MzcN4ftSJM1B5tMFGMJ-Z4"/><div class="hidden md:flex flex-col text-left"><span class="font-label-md text-label-md text-on-surface font-bold">J. Ndongo</span><span class="font-label-sm text-label-sm text-on-surface-variant">Niveau 1 Root</span></div></div></div></header><main class="relative w-full pt-16 bg-surface-slate min-h-screen"><div class="flex flex-col w-full">
+<div class="px-8 py-8 flex flex-col gap-6">
+<!-- Top Breadcrumb & Status Ribbon -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="flex flex-col">
+<div class="flex items-center gap-3">
+<span class="font-headline-lg text-headline-lg text-text-primary tracking-tight">Catalogue des Métiers &amp; Ressources</span>
+<span class="px-2.5 py-1 rounded-full bg-emerald-surface text-on-tertiary-container font-label-sm text-label-sm font-bold flex items-center gap-1 shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container animate-ping"></span>
+            Sync REST catalog-service active
+          </span>
+</div>
+<p class="font-body-md text-body-md text-text-muted mt-1">
+          12 métiers configurés • 86 formations et certifications répertoriées • Gestionnaire AES-256 des liens confidentiels
+        </p>
+</div>
+<!-- Action Cluster -->
+<div class="flex items-center flex-wrap gap-2.5">
+<button class="h-10 px-4 rounded-lg bg-surface-pure hover:bg-surface-container text-text-primary font-label-md text-label-md shadow-sm transition-all flex items-center gap-2" id="btn-health-check">
+<span class="material-symbols-outlined text-[18px] text-secondary">health_and_safety</span>
+<span>Vérifier l'intégrité URLs</span>
+<span class="w-2 h-2 rounded-full bg-on-tertiary-container"></span>
+</button>
+<button class="h-10 px-4 rounded-lg bg-surface-pure hover:bg-surface-container text-text-primary font-label-md text-label-md shadow-sm transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">file_download</span>
+<span>Exporter (.JSON/.CSV)</span>
+</button>
+<button class="h-10 px-5 rounded-lg bg-secondary-container hover:bg-cyan-hover text-on-primary font-label-md text-label-md shadow-md transition-all flex items-center gap-2 font-bold" id="btn-add-career">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+<span>+ Ajouter un métier</span>
+</button>
+</div>
+</div>
+<!-- KPI Metric Cards Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- KPI 1 -->
+<div class="p-5 rounded-xl bg-surface-pure shadow-sm flex flex-col justify-between relative overflow-hidden group hover:shadow-md transition-shadow">
+<div class="absolute -right-4 -bottom-4 w-20 h-20 bg-surface-container rounded-full opacity-60 group-hover:scale-110 transition-transform"></div>
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-text-muted uppercase tracking-wider font-bold">Métiers Actifs</span>
+<span class="font-headline-lg text-headline-lg text-text-primary font-extrabold mt-1">12 / 12</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-container-low text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">domain_verification</span>
+</div>
+</div>
+<div class="flex items-center gap-2 mt-4 pt-2">
+<span class="px-2 py-0.5 rounded bg-emerald-surface text-on-tertiary-container font-label-sm text-label-sm font-bold">100% En ligne</span>
+<span class="font-body-sm text-body-sm text-text-muted">15k à 32k FCFA</span>
+</div>
+</div>
+<!-- KPI 2 -->
+<div class="p-5 rounded-xl bg-surface-pure shadow-sm flex flex-col justify-between relative overflow-hidden group hover:shadow-md transition-shadow">
+<div class="absolute -right-4 -bottom-4 w-20 h-20 bg-secondary-container/10 rounded-full opacity-60 group-hover:scale-110 transition-transform"></div>
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-text-muted uppercase tracking-wider font-bold">Ressources Chiffrées</span>
+<span class="font-headline-lg text-headline-lg text-text-primary font-extrabold mt-1">86</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-container-low text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">lock</span>
+</div>
+</div>
+<div class="flex items-center gap-2 mt-4 pt-2">
+<span class="px-2 py-0.5 rounded bg-surface-container text-secondary font-label-sm text-label-sm font-semibold">34 certifications</span>
+<span class="font-body-sm text-body-sm text-text-muted">52 parcours cours</span>
+</div>
+</div>
+<!-- KPI 3 -->
+<div class="p-5 rounded-xl bg-surface-pure shadow-sm flex flex-col justify-between relative overflow-hidden group hover:shadow-md transition-shadow">
+<div class="absolute -right-4 -bottom-4 w-20 h-20 bg-tertiary-fixed-dim/20 rounded-full opacity-60 group-hover:scale-110 transition-transform"></div>
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-text-muted uppercase tracking-wider font-bold">Disponibilité Liens (URLs)</span>
+<span class="font-headline-lg text-headline-lg text-on-tertiary-container font-extrabold mt-1">98.8%</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-emerald-surface text-on-tertiary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">link</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5 mt-4 pt-2">
+<span class="w-2 h-2 rounded-full bg-on-tertiary-container"></span>
+<span class="font-label-sm text-label-sm text-on-tertiary-container font-bold">Contrôle cron 04:00 CEMAC</span>
+</div>
+</div>
+<!-- KPI 4 -->
+<div class="p-5 rounded-xl bg-primary-deep text-on-primary shadow-sm flex flex-col justify-between relative overflow-hidden group hover:shadow-md transition-shadow">
+<div class="absolute right-0 top-0 w-24 h-24 bg-secondary-container/10 rounded-bl-full pointer-events-none"></div>
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-primary-fixed-dim uppercase tracking-wider font-bold">Panier Moyen Pack</span>
+<span class="font-headline-lg text-headline-lg text-on-primary font-extrabold mt-1">24 850 <span class="text-secondary-container font-headline-sm text-headline-sm">FCFA</span></span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-primary-container text-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">payments</span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-4 pt-2">
+<span class="font-body-sm text-body-sm text-primary-fixed-dim truncate">Top : Ingénieur DevOps</span>
+<span class="font-label-sm text-label-sm text-tertiary-fixed-dim font-bold">+18% ce mois</span>
+</div>
+</div>
+</div>
+<!-- Master Filter Toolbar -->
+<div class="p-4 rounded-xl bg-surface-pure shadow-sm flex flex-col lg:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-3 w-full lg:w-auto flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span>
+<input class="w-full h-11 pl-10 pr-4 rounded-lg bg-surface-container-low text-on-surface placeholder:text-outline font-body-sm text-body-sm focus:outline-none focus:bg-surface-pure focus:ring-2 focus:ring-secondary-container transition-all" id="catalog-search" placeholder="Filtrer par intitulé, mot-clé, compétence..." type="text"/>
+</div>
+<div class="hidden sm:flex items-center gap-1.5 p-1 bg-surface-container-low rounded-lg">
+<button class="category-pill active px-3 py-1.5 rounded-md bg-surface-pure text-text-primary font-label-sm text-label-sm font-bold shadow-sm transition-all" data-cat="all">Tous (12)</button>
+<button class="category-pill px-3 py-1.5 rounded-md text-text-muted hover:text-text-primary font-label-sm text-label-sm font-semibold transition-all" data-cat="cloud">Cloud &amp; DevOps</button>
+<button class="category-pill px-3 py-1.5 rounded-md text-text-muted hover:text-text-primary font-label-sm text-label-sm font-semibold transition-all" data-cat="security">Cybersécurité</button>
+<button class="category-pill px-3 py-1.5 rounded-md text-text-muted hover:text-text-primary font-label-sm text-label-sm font-semibold transition-all" data-cat="dev">Développement</button>
+<button class="category-pill px-3 py-1.5 rounded-md text-text-muted hover:text-text-primary font-label-sm text-label-sm font-semibold transition-all" data-cat="data">Data &amp; IA</button>
+</div>
+</div>
+<div class="flex items-center gap-3 w-full lg:w-auto justify-end">
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm text-text-muted hidden sm:inline">Statut:</span>
+<select class="h-10 px-3 rounded-lg bg-surface-container-low text-text-primary font-label-sm text-label-sm font-semibold focus:outline-none focus:ring-2 focus:ring-secondary-container">
+<option>Tous statuts</option>
+<option>Actifs (12)</option>
+<option>Brouillons (0)</option>
+<option>En révision (0)</option>
+</select>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm text-text-muted hidden sm:inline">Trier par:</span>
+<select class="h-10 px-3 rounded-lg bg-surface-container-low text-text-primary font-label-sm text-label-sm font-semibold focus:outline-none focus:ring-2 focus:ring-secondary-container">
+<option>Popularité (Ventes)</option>
+<option>Prix décroissant</option>
+<option>Prix croissant</option>
+<option>Dernière mise à jour</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Main Content Split Workspace: Table & Drawer Side-by-Side Canvas -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-6 items-start">
+<!-- Catalog Master Table Container (8 Cols on XL) -->
+<div class="xl:col-span-7 flex flex-col gap-4 transition-all duration-300" id="table-container">
+<div class="bg-surface-pure rounded-xl shadow-sm overflow-hidden flex flex-col">
+<div class="px-6 py-4 bg-surface-pure flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="font-title-md text-title-md text-text-primary font-bold">Packs &amp; Rôles Professionnels</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm font-bold">6 affichés</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-text-muted font-body-sm text-body-sm">Paiements validés :</span>
+<span class="px-2 py-0.5 rounded bg-momo-mtn/20 text-on-surface font-label-sm text-label-sm font-bold">MTN</span>
+<span class="px-2 py-0.5 rounded bg-om-orange/20 text-on-surface font-label-sm text-label-sm font-bold">Orange</span>
+<span class="px-2 py-0.5 rounded bg-wave-blue/20 text-on-surface font-label-sm text-label-sm font-bold">Wave</span>
+</div>
+</div>
+<!-- Interactive Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-container-low text-text-muted font-label-sm text-label-sm uppercase tracking-wider">
+<th class="py-3 px-5">Métier &amp; Spécialité</th>
+<th class="py-3 px-4">Prix Public</th>
+<th class="py-3 px-4">Contenu Pack</th>
+<th class="py-3 px-4">Ventes</th>
+<th class="py-3 px-4">Statut</th>
+<th class="py-3 px-4 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container font-body-sm text-body-sm text-on-surface">
+<!-- Row 1: DevOps (Active selection) -->
+<tr class="table-row-item bg-surface-container-low/60 hover:bg-surface-container-low cursor-pointer transition-colors" data-id="MET-002" data-name="Ingénieur DevOps">
+<td class="py-4 px-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-primary-deep text-secondary-container flex items-center justify-center font-bold shadow-sm">
+<span class="material-symbols-outlined text-[20px]">terminal</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-text-primary font-bold">Ingénieur DevOps</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">Cloud &amp; Automation • MET-002</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-text-primary font-bold">29 000 <span class="font-label-sm text-label-sm text-text-muted">FCFA</span></span>
+<span class="font-label-sm text-label-sm text-text-muted">Single-charge</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-1.5">
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-text-primary font-label-sm text-label-sm font-bold">6 compétences</span>
+</div>
+<span class="font-label-sm text-label-sm text-text-muted">7 formations + 3 certifs (CKA, AWS)</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-on-tertiary-container">trending_up</span>
+<span class="font-label-md text-label-md text-text-primary font-bold">342</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-surface-container peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-surface-pure after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-surface-pure after:border-surface-container after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-on-tertiary-container"></div>
+</label>
+</td>
+<td class="py-4 px-4 text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded-lg text-secondary hover:bg-surface-container transition-colors" title="Inspecter &amp; Configurer">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+</button>
+<button class="p-1.5 rounded-lg text-text-muted hover:text-text-primary hover:bg-surface-container transition-colors" title="Aperçu tunnel client">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Cybersécurité -->
+<tr class="table-row-item hover:bg-surface-container-low cursor-pointer transition-colors" data-id="MET-001" data-name="Cybersécurité">
+<td class="py-4 px-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-primary-container text-on-secondary-container flex items-center justify-center font-bold shadow-sm">
+<span class="material-symbols-outlined text-[20px]">shield</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-text-primary font-bold">Cybersécurité</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-semibold">Sécurité &amp; Réseaux • MET-001</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-text-primary font-bold">25 000 <span class="font-label-sm text-label-sm text-text-muted">FCFA</span></span>
+<span class="font-label-sm text-label-sm text-text-muted">Single-charge</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-1.5">
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-text-primary font-label-sm text-label-sm font-bold">5 compétences</span>
+</div>
+<span class="font-label-sm text-label-sm text-text-muted">8 formations + 3 certifs (CEH, Sec+)</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-text-muted">trending_up</span>
+<span class="font-label-md text-label-md text-text-primary font-bold">289</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-surface-container peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-surface-pure after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-surface-pure after:border-surface-container after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-on-tertiary-container"></div>
+</label>
+</td>
+<td class="py-4 px-4 text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded-lg text-text-muted hover:text-secondary hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+</button>
+<button class="p-1.5 rounded-lg text-text-muted hover:text-text-primary hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3: Full Stack -->
+<tr class="table-row-item hover:bg-surface-container-low cursor-pointer transition-colors" data-id="MET-006" data-name="Développeur Full Stack">
+<td class="py-4 px-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container text-secondary flex items-center justify-center font-bold shadow-sm">
+<span class="material-symbols-outlined text-[20px]">layers</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-text-primary font-bold">Développeur Full Stack</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-semibold">Ingénierie Web • MET-006</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-text-primary font-bold">20 000 <span class="font-label-sm text-label-sm text-text-muted">FCFA</span></span>
+<span class="font-label-sm text-label-sm text-text-muted">Single-charge</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-1.5">
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-text-primary font-label-sm text-label-sm font-bold">6 compétences</span>
+</div>
+<span class="font-label-sm text-label-sm text-text-muted">9 formations + 2 certifs (React, Node)</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-on-tertiary-container">trending_up</span>
+<span class="font-label-md text-label-md text-text-primary font-bold">415</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-surface-container peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-surface-pure after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-surface-pure after:border-surface-container after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-on-tertiary-container"></div>
+</label>
+</td>
+<td class="py-4 px-4 text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded-lg text-text-muted hover:text-secondary hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+</button>
+<button class="p-1.5 rounded-lg text-text-muted hover:text-text-primary hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4: Data Analyste -->
+<tr class="table-row-item hover:bg-surface-container-low cursor-pointer transition-colors" data-id="MET-007" data-name="Data Analyste">
+<td class="py-4 px-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container text-on-surface flex items-center justify-center font-bold shadow-sm">
+<span class="material-symbols-outlined text-[20px]">analytics</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-text-primary font-bold">Data Analyste</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-semibold">Données &amp; BI • MET-007</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-text-primary font-bold">18 000 <span class="font-label-sm text-label-sm text-text-muted">FCFA</span></span>
+<span class="font-label-sm text-label-sm text-text-muted">Single-charge</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-1.5">
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-text-primary font-label-sm text-label-sm font-bold">5 compétences</span>
+</div>
+<span class="font-label-sm text-label-sm text-text-muted">6 formations + Projets PowerBI/SQL</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-text-muted">trending_flat</span>
+<span class="font-label-md text-label-md text-text-primary font-bold">194</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-surface-container peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-surface-pure after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-surface-pure after:border-surface-container after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-on-tertiary-container"></div>
+</label>
+</td>
+<td class="py-4 px-4 text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded-lg text-text-muted hover:text-secondary hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+</button>
+<button class="p-1.5 rounded-lg text-text-muted hover:text-text-primary hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5: Développeur IA -->
+<tr class="table-row-item hover:bg-surface-container-low cursor-pointer transition-colors" data-id="MET-009" data-name="Développeur IA">
+<td class="py-4 px-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container text-secondary flex items-center justify-center font-bold shadow-sm">
+<span class="material-symbols-outlined text-[20px]">psychology</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-text-primary font-bold">Développeur IA</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-semibold">Intelligence Artificielle • MET-009</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-text-primary font-bold">32 000 <span class="font-label-sm text-label-sm text-text-muted">FCFA</span></span>
+<span class="font-label-sm text-label-sm text-text-muted">Single-charge</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-1.5">
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-text-primary font-label-sm text-label-sm font-bold">5 compétences</span>
+</div>
+<span class="font-label-sm text-label-sm text-text-muted">8 formations + RAG &amp; Fine-tuning</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-on-tertiary-container">trending_up</span>
+<span class="font-label-md text-label-md text-text-primary font-bold">167</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-surface-container peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-surface-pure after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-surface-pure after:border-surface-container after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-on-tertiary-container"></div>
+</label>
+</td>
+<td class="py-4 px-4 text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded-lg text-text-muted hover:text-secondary hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+</button>
+<button class="p-1.5 rounded-lg text-text-muted hover:text-text-primary hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 6: Marketing Digital -->
+<tr class="table-row-item hover:bg-surface-container-low cursor-pointer transition-colors" data-id="MET-010" data-name="Marketing Digital &amp; Ads">
+<td class="py-4 px-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container text-on-surface flex items-center justify-center font-bold shadow-sm">
+<span class="material-symbols-outlined text-[20px]">campaign</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-text-primary font-bold">Marketing Digital &amp; Ads</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-semibold">Acquisition &amp; Performance • MET-010</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-text-primary font-bold">15 000 <span class="font-label-sm text-label-sm text-text-muted">FCFA</span></span>
+<span class="font-label-sm text-label-sm text-text-muted">Single-charge</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-1.5">
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-text-primary font-label-sm text-label-sm font-bold">4 compétences</span>
+</div>
+<span class="font-label-sm text-label-sm text-text-muted">5 formations + Certifications Google Ads</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-text-muted">trending_up</span>
+<span class="font-label-md text-label-md text-text-primary font-bold">210</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-surface-container peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-surface-pure after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-surface-pure after:border-surface-container after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-on-tertiary-container"></div>
+</label>
+</td>
+<td class="py-4 px-4 text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded-lg text-text-muted hover:text-secondary hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+</button>
+<button class="p-1.5 rounded-lg text-text-muted hover:text-text-primary hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer Pagination -->
+<div class="p-4 bg-surface-pure flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-text-muted">Affichage de 1 à 6 sur 12 métiers configurés</span>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-low text-text-muted font-label-sm text-label-sm cursor-not-allowed">Précédent</button>
+<button class="px-3 py-1.5 rounded-lg bg-secondary-container text-on-primary font-label-sm text-label-sm font-bold">1</button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-text-primary font-label-sm text-label-sm font-bold">2</button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-text-primary font-label-sm text-label-sm">Suivant</button>
+</div>
+</div>
+</div>
+<!-- System Architecture Notice (Section 6 & 11 CDC Compliance) -->
+<div class="p-5 rounded-xl bg-primary-deep text-on-primary shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+<div class="flex items-start gap-3.5">
+<div class="w-10 h-10 rounded-lg bg-primary-container text-tertiary-fixed-dim flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[22px]">shield_with_heart</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md font-bold text-on-primary">Chiffrement de bout-en-bout &amp; Zero-Exposure</span>
+<p class="font-body-sm text-body-sm text-primary-fixed-dim mt-0.5">
+                Les URLs réelles ne transitent jamais dans le code HTML public. Seul le microservice <code>delivery-service</code> déchiffre les payloads une fois le webhook de paiement (MTN/Orange/Wave) validé.
+              </p>
+</div>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<span class="px-3 py-1 rounded bg-surface-container-lowest/10 text-tertiary-fixed font-label-sm text-label-sm font-bold tracking-wider uppercase">AES-256 GCM</span>
+</div>
+</div>
+</div>
+<!-- Drawer / Detail Inspector Canvas (5 Cols on XL) -->
+<div class="xl:col-span-5 flex flex-col gap-4" id="inspector-drawer">
+<div class="bg-surface-pure rounded-xl shadow-md overflow-hidden flex flex-col">
+<!-- Drawer Header -->
+<div class="p-6 bg-surface-pure flex flex-col gap-3">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-xl bg-primary-deep text-secondary-container flex items-center justify-center font-bold shadow-sm">
+<span class="material-symbols-outlined text-[24px]">terminal</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-text-primary font-bold">Ingénieur DevOps</span>
+<span class="px-2 py-0.5 rounded bg-emerald-surface text-on-tertiary-container font-label-sm text-label-sm font-bold">Actif</span>
+</div>
+<span class="font-label-sm text-label-sm text-text-muted">Slug: /metiers/ingenieur-devops • ID: MET-002</span>
+</div>
+</div>
+<button class="p-1 rounded-lg text-text-muted hover:text-text-primary hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+<!-- Tab Navigation Strip -->
+<div class="flex items-center gap-1 p-1 bg-surface-container-low rounded-lg mt-2">
+<button class="tab-btn active flex-1 py-1.5 px-3 rounded-md bg-surface-pure text-text-primary font-label-sm text-label-sm font-bold shadow-sm transition-all" data-tab="content-tab">Compétences &amp; URLs</button>
+<button class="tab-btn flex-1 py-1.5 px-3 rounded-md text-text-muted hover:text-text-primary font-label-sm text-label-sm font-semibold transition-all" data-tab="pricing-tab">Tarification XAF</button>
+<button class="tab-btn flex-1 py-1.5 px-3 rounded-md text-text-muted hover:text-text-primary font-label-sm text-label-sm font-semibold transition-all" data-tab="audit-tab">Audit (Log)</button>
+</div>
+</div>
+<!-- Drawer Body Scrollable Content -->
+<div class="p-6 flex flex-col gap-6 max-h-[760px] overflow-y-auto">
+<!-- Section 1: Compétences Clés (Section 2.2 & 6.1 CDC) -->
+<div class="flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">psychology</span>
+<span class="font-title-md text-title-md text-text-primary font-bold">Compétences délivrées (6)</span>
+</div>
+<button class="font-label-sm text-label-sm text-secondary hover:underline font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">add</span>
+                  Ajouter compétence
+                </button>
+</div>
+<div class="flex flex-col gap-2">
+<div class="p-3 rounded-lg bg-surface-container-low hover:bg-surface-container flex items-center justify-between group transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-text-muted cursor-grab text-[18px]">drag_indicator</span>
+<span class="w-6 h-6 rounded-full bg-surface-pure text-text-primary font-label-sm text-label-sm font-bold flex items-center justify-center">1</span>
+<span class="font-body-sm text-body-sm font-semibold text-text-primary">Conteneurisation avancée &amp; Docker Multi-stage</span>
+</div>
+<div class="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1 hover:text-secondary"><span class="material-symbols-outlined text-[16px]">edit</span></button>
+<button class="p-1 hover:text-error"><span class="material-symbols-outlined text-[16px]">delete</span></button>
+</div>
+</div>
+<div class="p-3 rounded-lg bg-surface-container-low hover:bg-surface-container flex items-center justify-between group transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-text-muted cursor-grab text-[18px]">drag_indicator</span>
+<span class="w-6 h-6 rounded-full bg-surface-pure text-text-primary font-label-sm text-label-sm font-bold flex items-center justify-center">2</span>
+<span class="font-body-sm text-body-sm font-semibold text-text-primary">Orchestration Kubernetes en production (CKA)</span>
+</div>
+<div class="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1 hover:text-secondary"><span class="material-symbols-outlined text-[16px]">edit</span></button>
+<button class="p-1 hover:text-error"><span class="material-symbols-outlined text-[16px]">delete</span></button>
+</div>
+</div>
+<div class="p-3 rounded-lg bg-surface-container-low hover:bg-surface-container flex items-center justify-between group transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-text-muted cursor-grab text-[18px]">drag_indicator</span>
+<span class="w-6 h-6 rounded-full bg-surface-pure text-text-primary font-label-sm text-label-sm font-bold flex items-center justify-center">3</span>
+<span class="font-body-sm text-body-sm font-semibold text-text-primary">Infrastructure as Code (IaC) avec Terraform &amp; AWS</span>
+</div>
+<div class="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1 hover:text-secondary"><span class="material-symbols-outlined text-[16px]">edit</span></button>
+<button class="p-1 hover:text-error"><span class="material-symbols-outlined text-[16px]">delete</span></button>
+</div>
+</div>
+<div class="p-3 rounded-lg bg-surface-container-low hover:bg-surface-container flex items-center justify-between group transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-text-muted cursor-grab text-[18px]">drag_indicator</span>
+<span class="w-6 h-6 rounded-full bg-surface-pure text-text-primary font-label-sm text-label-sm font-bold flex items-center justify-center">4</span>
+<span class="font-body-sm text-body-sm font-semibold text-text-primary">Pipelines CI/CD (GitLab CI, GitHub Actions)</span>
+</div>
+<div class="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1 hover:text-secondary"><span class="material-symbols-outlined text-[16px]">edit</span></button>
+<button class="p-1 hover:text-error"><span class="material-symbols-outlined text-[16px]">delete</span></button>
+</div>
+</div>
+<div class="p-3 rounded-lg bg-surface-container-low hover:bg-surface-container flex items-center justify-between group transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-text-muted cursor-grab text-[18px]">drag_indicator</span>
+<span class="w-6 h-6 rounded-full bg-surface-pure text-text-primary font-label-sm text-label-sm font-bold flex items-center justify-center">5</span>
+<span class="font-body-sm text-body-sm font-semibold text-text-primary">Observabilité &amp; Monitoring (Prometheus &amp; Grafana)</span>
+</div>
+<div class="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1 hover:text-secondary"><span class="material-symbols-outlined text-[16px]">edit</span></button>
+<button class="p-1 hover:text-error"><span class="material-symbols-outlined text-[16px]">delete</span></button>
+</div>
+</div>
+<div class="p-3 rounded-lg bg-surface-container-low hover:bg-surface-container flex items-center justify-between group transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-text-muted cursor-grab text-[18px]">drag_indicator</span>
+<span class="w-6 h-6 rounded-full bg-surface-pure text-text-primary font-label-sm text-label-sm font-bold flex items-center justify-center">6</span>
+<span class="font-body-sm text-body-sm font-semibold text-text-primary">DevSecOps &amp; Sécurisation des clusters Kubernetes</span>
+</div>
+<div class="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1 hover:text-secondary"><span class="material-symbols-outlined text-[16px]">edit</span></button>
+<button class="p-1 hover:text-error"><span class="material-symbols-outlined text-[16px]">delete</span></button>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 2: Vault des Ressources & Liens Secrets (Section 2.3 & 11) -->
+<div class="flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">encrypted</span>
+<span class="font-title-md text-title-md text-text-primary font-bold">Ressources &amp; Liens Secrets (10)</span>
+</div>
+<button class="font-label-sm text-label-sm text-secondary hover:underline font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">add_link</span>
+                  + Ajouter ressource
+                </button>
+</div>
+<!-- Vault Security Warning Badge -->
+<div class="p-3.5 rounded-lg bg-surface-container-low text-text-primary flex items-start gap-2.5">
+<span class="material-symbols-outlined text-secondary text-[18px] shrink-0 mt-0.5">lock</span>
+<p class="font-body-sm text-body-sm text-on-surface leading-snug">
+<strong>Politique de masquage absolu :</strong> Ces adresses ne sont transmises qu'au client par l'agrégateur d'e-mails sécurisé après réception du webhook de paiement vérifié.
+                </p>
+</div>
+<!-- Resource Items Stack -->
+<div class="flex flex-col gap-3">
+<!-- Secret Item 1 -->
+<div class="p-4 rounded-xl bg-surface-pure shadow-sm flex flex-col gap-2.5 hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded bg-surface-container text-secondary font-label-sm text-label-sm font-bold">Certification Officielle</span>
+<span class="px-2 py-0.5 rounded bg-emerald-surface text-on-tertiary-container font-label-sm text-label-sm font-bold">Lien sain (200 OK)</span>
+</div>
+<span class="font-label-sm text-label-sm text-text-muted">Rang #1</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-text-primary font-bold">CKA (Certified Kubernetes Administrator)</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Organisme : The Linux Foundation</span>
+</div>
+<!-- Masked Encrypted URL Input Box -->
+<div class="p-2.5 rounded-lg bg-surface-container-low flex items-center justify-between gap-2">
+<div class="flex items-center gap-2 min-w-0">
+<span class="material-symbols-outlined text-text-muted text-[16px]">vpn_key</span>
+<span class="font-label-sm text-label-sm text-text-primary font-mono truncate">https://training.linuxfoundation.org/portal/v3/exam-certifpro-vault-ref-849...</span>
+</div>
+<div class="flex items-center gap-1.5 shrink-0">
+<button class="px-2 py-1 rounded bg-surface-pure hover:bg-surface-container text-secondary font-label-sm text-label-sm font-bold flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[14px]">send</span> Tester
+                      </button>
+<button class="p-1 rounded hover:bg-surface-container text-text-muted hover:text-text-primary">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Secret Item 2 -->
+<div class="p-4 rounded-xl bg-surface-pure shadow-sm flex flex-col gap-2.5 hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-on-surface font-label-sm text-label-sm font-bold">Formation Maître</span>
+<span class="px-2 py-0.5 rounded bg-emerald-surface text-on-tertiary-container font-label-sm text-label-sm font-bold">Lien sain (200 OK)</span>
+</div>
+<span class="font-label-sm text-label-sm text-text-muted">Rang #2</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-text-primary font-bold">Docker &amp; Kubernetes de Zéro à la Production</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Organisme : Udemy for Business / Pro</span>
+</div>
+<!-- Masked Encrypted URL Input Box -->
+<div class="p-2.5 rounded-lg bg-surface-container-low flex items-center justify-between gap-2">
+<div class="flex items-center gap-2 min-w-0">
+<span class="material-symbols-outlined text-text-muted text-[16px]">vpn_key</span>
+<span class="font-label-sm text-label-sm text-text-primary font-mono truncate">https://udemy.com/course/certif-k8s-master-bundle-access-token-938...</span>
+</div>
+<div class="flex items-center gap-1.5 shrink-0">
+<button class="px-2 py-1 rounded bg-surface-pure hover:bg-surface-container text-secondary font-label-sm text-label-sm font-bold flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[14px]">send</span> Tester
+                      </button>
+<button class="p-1 rounded hover:bg-surface-container text-text-muted hover:text-text-primary">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Secret Item 3 -->
+<div class="p-4 rounded-xl bg-surface-pure shadow-sm flex flex-col gap-2.5 hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded bg-surface-container text-secondary font-label-sm text-label-sm font-bold">Certification Officielle</span>
+<span class="px-2 py-0.5 rounded bg-emerald-surface text-on-tertiary-container font-label-sm text-label-sm font-bold">Lien sain (200 OK)</span>
+</div>
+<span class="font-label-sm text-label-sm text-text-muted">Rang #3</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-text-primary font-bold">AWS Certified DevOps Engineer Professional</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Organisme : AWS Skill Builder Training</span>
+</div>
+<!-- Masked Encrypted URL Input Box -->
+<div class="p-2.5 rounded-lg bg-surface-container-low flex items-center justify-between gap-2">
+<div class="flex items-center gap-2 min-w-0">
+<span class="material-symbols-outlined text-text-muted text-[16px]">vpn_key</span>
+<span class="font-label-sm text-label-sm text-text-primary font-mono truncate">https://explore.skillbuilder.aws/learn/course/external/view/elearning/aws-devops...</span>
+</div>
+<div class="flex items-center gap-1.5 shrink-0">
+<button class="px-2 py-1 rounded bg-surface-pure hover:bg-surface-container text-secondary font-label-sm text-label-sm font-bold flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[14px]">send</span> Tester
+                      </button>
+<button class="p-1 rounded hover:bg-surface-container text-text-muted hover:text-text-primary">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 3: Configuration Tarifaire Mobile Money (CDC 3.1 & 3.4) -->
+<div class="flex flex-col gap-3">
+<span class="font-title-md text-title-md text-text-primary font-bold">Tarification Net XAF (FCFA)</span>
+<div class="p-4 rounded-xl bg-surface-container-low flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-text-primary">Prix Facturé au Client :</span>
+<div class="flex items-center gap-2">
+<input class="w-32 h-10 px-3 rounded-lg bg-surface-pure text-text-primary font-title-md text-title-md font-bold focus:outline-none focus:ring-2 focus:ring-secondary-container" type="number" value="29000"/>
+<span class="font-label-md text-label-md text-text-muted font-bold">FCFA</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-2">
+<span class="font-body-sm text-body-sm text-text-muted">Frais agrégateur estimés (1.8%) :</span>
+<span class="font-label-md text-label-md text-text-primary font-semibold">522 FCFA</span>
+</div>
+<div class="flex items-center justify-between pt-1">
+<span class="font-body-sm text-body-sm text-text-primary font-bold">Revenu net par pack délivré :</span>
+<span class="font-title-md text-title-md text-on-tertiary-container font-extrabold">28 478 FCFA</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Drawer Action Bottom Footer -->
+<div class="p-5 bg-surface-pure shadow-[0_-4px_12px_rgba(0,0,0,0.03)] flex flex-col sm:flex-row items-center justify-between gap-3">
+<button class="w-full sm:w-auto px-4 py-2.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-text-primary font-label-md text-label-md font-bold flex items-center justify-center gap-2 transition-colors" id="btn-test-email">
+<span class="material-symbols-outlined text-[18px] text-secondary">mark_email_read</span>
+<span>Test délivrabilité email</span>
+</button>
+<div class="flex items-center gap-2 w-full sm:w-auto">
+<button class="w-full sm:w-auto px-4 py-2.5 rounded-lg bg-surface-pure hover:bg-surface-container-low text-text-muted font-label-md text-label-md font-semibold transition-colors">
+                Annuler
+              </button>
+<button class="w-full sm:w-auto px-5 py-2.5 rounded-lg bg-secondary-container hover:bg-cyan-hover text-on-primary font-label-md text-label-md font-bold shadow-md transition-all flex items-center justify-center gap-2" id="btn-save-pack">
+<span class="material-symbols-outlined text-[18px]">save</span>
+<span>Enregistrer le pack</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Notification Toast Modal (Simulated micro-action) -->
+<div class="fixed bottom-6 right-6 z-50 transform translate-y-32 transition-transform duration-300 pointer-events-none" id="toast-notification">
+<div class="px-5 py-4 rounded-xl bg-primary-deep text-on-primary shadow-2xl flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary-fixed text-[24px]">verified</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-primary font-bold" id="toast-title">Opération réussie</span>
+<span class="font-body-sm text-body-sm text-primary-fixed-dim" id="toast-desc">Modifications synchronisées avec catalog-service.</span>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Simple administrative UI micro-interactions
+  (function() {
+    const toast = document.getElementById('toast-notification');
+    const toastTitle = document.getElementById('toast-title');
+    const toastDesc = document.getElementById('toast-desc');
+
+    function showToast(title, desc) {
+      if (!toast) return;
+      toastTitle.textContent = title;
+      toastDesc.textContent = desc;
+      toast.classList.remove('translate-y-32');
+      setTimeout(() => {
+        toast.classList.add('translate-y-32');
+      }, 3500);
+    }
+
+    // Health Check Trigger
+    const btnHealth = document.getElementById('btn-health-check');
+    if (btnHealth) {
+      btnHealth.addEventListener('click', () => {
+        btnHealth.classList.add('animate-pulse');
+        setTimeout(() => {
+          btnHealth.classList.remove('animate-pulse');
+          showToast('Audit URLs Terminé', '86/86 URLs vérifiées : 100% accessibles, code HTTP 200.');
+        }, 1200);
+      });
+    }
+
+    // Save pack trigger
+    const btnSave = document.getElementById('btn-save-pack');
+    if (btnSave) {
+      btnSave.addEventListener('click', () => {
+        showToast('Pack MET-002 Enregistré', 'Les 6 compétences et 10 URLs chiffrées ont été publiées sur le catalogue.');
+      });
+    }
+
+    // Test email deliverability trigger
+    const btnEmail = document.getElementById('btn-test-email');
+    if (btnEmail) {
+      btnEmail.addEventListener('click', () => {
+        showToast('Dépêche Test Envoyée', 'Email de simulation expédié à j.ndongo@certifpro.cm via delivery-service.');
+      });
+    }
+
+    // Interactive category pills
+    const pills = document.querySelectorAll('.category-pill');
+    pills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        pills.forEach(p => {
+          p.classList.remove('bg-surface-pure', 'shadow-sm', 'text-text-primary');
+          p.classList.add('text-text-muted');
+        });
+        pill.classList.remove('text-text-muted');
+        pill.classList.add('bg-surface-pure', 'shadow-sm', 'text-text-primary');
+      });
+    });
+
+    // Row selection switching
+    const tableRows = document.querySelectorAll('.table-row-item');
+    tableRows.forEach(row => {
+      row.addEventListener('click', () => {
+        tableRows.forEach(r => r.classList.remove('bg-surface-container-low/60'));
+        row.classList.add('bg-surface-container-low/60');
+      });
+    });
+  })();
+</script></main></div></body></html>

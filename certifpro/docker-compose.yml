@@ -1,0 +1,145 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ${DB_USER:-certifpro}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-certifpro}
+      POSTGRES_DB: ${POSTGRES_DB:-certifpro}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./scripts/init-db.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    ports: ["5432:5432"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U certifpro"]
+      interval: 5s
+      retries: 10
+
+  rabbitmq:
+    image: rabbitmq:3.13-management-alpine
+    ports: ["5672:5672", "15672:15672"]
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 5s
+      retries: 10
+
+  catalog-service:
+    build: ./services/catalog-service
+    ports: ["8021:8001"]
+    environment:
+      DEBUG: ${DEBUG:-True}
+      SECRET_KEY: ${SECRET_KEY:-change-me-in-production}
+      ALLOWED_HOSTS: ${ALLOWED_HOSTS:-localhost,127.0.0.1,catalog-service,order-service,payment-service,delivery-service,site-public}
+      DB_NAME: ${CATALOG_DB_NAME:-catalog_db}
+      DB_USER: ${DB_USER:-certifpro}
+      DB_PASSWORD: ${DB_PASSWORD:-certifpro}
+      DB_HOST: ${DB_HOST:-postgres}
+      DB_PORT: ${DB_PORT:-5432}
+      RABBITMQ_URL: amqp://guest:guest@rabbitmq:5672/%2F
+      SERVICE_TOKEN: ${SERVICE_TOKEN:-dev-service-token}
+      DJANGO_SUPERUSER_USERNAME: ${DJANGO_SUPERUSER_USERNAME:-admin}
+      DJANGO_SUPERUSER_PASSWORD: ${DJANGO_SUPERUSER_PASSWORD:-admin12345}
+      DJANGO_SUPERUSER_EMAIL: ${DJANGO_SUPERUSER_EMAIL:-admin@certifpro.local}
+    depends_on:
+      postgres: { condition: service_healthy }
+      rabbitmq: { condition: service_healthy }
+
+  order-service:
+    build: ./services/order-service
+    ports: ["8022:8002"]
+    environment:
+      DEBUG: ${DEBUG:-True}
+      SECRET_KEY: ${SECRET_KEY:-change-me-in-production}
+      ALLOWED_HOSTS: ${ALLOWED_HOSTS:-localhost,127.0.0.1,order-service,catalog-service,payment-service,delivery-service,site-public}
+      DB_NAME: ${ORDER_DB_NAME:-order_db}
+      DB_USER: ${DB_USER:-certifpro}
+      DB_PASSWORD: ${DB_PASSWORD:-certifpro}
+      DB_HOST: ${DB_HOST:-postgres}
+      DB_PORT: ${DB_PORT:-5432}
+      RABBITMQ_URL: amqp://guest:guest@rabbitmq:5672/%2F
+      SERVICE_TOKEN: ${SERVICE_TOKEN:-dev-service-token}
+      CATALOG_URL: ${CATALOG_URL:-http://catalog-service:8001}
+    depends_on:
+      postgres: { condition: service_healthy }
+      rabbitmq: { condition: service_healthy }
+      catalog-service: { condition: service_started }
+
+  payment-service:
+    build: ./services/payment-service
+    ports: ["8023:8003"]
+    environment:
+      DEBUG: ${DEBUG:-True}
+      SECRET_KEY: ${SECRET_KEY:-change-me-in-production}
+      ALLOWED_HOSTS: ${ALLOWED_HOSTS:-localhost,127.0.0.1,payment-service,site-public}
+      DB_NAME: ${PAYMENT_DB_NAME:-payment_db}
+      DB_USER: ${DB_USER:-certifpro}
+      DB_PASSWORD: ${DB_PASSWORD:-certifpro}
+      DB_HOST: ${DB_HOST:-postgres}
+      DB_PORT: ${DB_PORT:-5432}
+      RABBITMQ_URL: amqp://guest:guest@rabbitmq:5672/%2F
+      SERVICE_TOKEN: ${SERVICE_TOKEN:-dev-service-token}
+      SITE_URL: ${SITE_URL:-http://localhost:8010}
+      CHARIOW_ENABLED: ${CHARIOW_ENABLED:-false}
+      CHARIOW_BASE_URL: ${CHARIOW_BASE_URL:-https://api.chariow.com/v1}
+      CHARIOW_API_KEY: ${CHARIOW_API_KEY:-}
+      CHARIOW_SECRET: ${CHARIOW_SECRET:-}
+      CHARIOW_WEBHOOK_SECRET: ${CHARIOW_WEBHOOK_SECRET:-}
+      CHARIOW_PAYMENT_ENDPOINT: ${CHARIOW_PAYMENT_ENDPOINT:-/payments}
+    depends_on:
+      postgres: { condition: service_healthy }
+      rabbitmq: { condition: service_healthy }
+
+  delivery-service:
+    build: ./services/delivery-service
+    ports: ["8024:8004"]
+    environment:
+      DEBUG: ${DEBUG:-True}
+      SECRET_KEY: ${SECRET_KEY:-change-me-in-production}
+      ALLOWED_HOSTS: ${ALLOWED_HOSTS:-localhost,127.0.0.1,delivery-service,order-service,catalog-service,site-public}
+      DB_NAME: ${DELIVERY_DB_NAME:-delivery_db}
+      DB_USER: ${DB_USER:-certifpro}
+      DB_PASSWORD: ${DB_PASSWORD:-certifpro}
+      DB_HOST: ${DB_HOST:-postgres}
+      DB_PORT: ${DB_PORT:-5432}
+      RABBITMQ_URL: amqp://guest:guest@rabbitmq:5672/%2F
+      SERVICE_TOKEN: ${SERVICE_TOKEN:-dev-service-token}
+      ORDER_URL: ${ORDER_URL:-http://order-service:8002}
+      CATALOG_URL: ${CATALOG_URL:-http://catalog-service:8001}
+      EMAIL_BACKEND: ${EMAIL_BACKEND:-django.core.mail.backends.console.EmailBackend}
+      DEFAULT_FROM_EMAIL: ${DEFAULT_FROM_EMAIL:-no-reply@certifpro.local}
+    depends_on:
+      postgres: { condition: service_healthy }
+      rabbitmq: { condition: service_healthy }
+      order-service: { condition: service_started }
+      catalog-service: { condition: service_started }
+
+  site-public:
+    build: ./services/site-public
+    ports: ["8010:8000"]
+    environment:
+      DEBUG: ${DEBUG:-True}
+      SECRET_KEY: ${SECRET_KEY:-change-me-in-production}
+      ALLOWED_HOSTS: ${ALLOWED_HOSTS:-localhost,127.0.0.1,site-public}
+      DB_NAME: ${SITE_DB_NAME:-certifpro}
+      DB_USER: ${DB_USER:-certifpro}
+      DB_PASSWORD: ${DB_PASSWORD:-certifpro}
+      DB_HOST: ${DB_HOST:-postgres}
+      DB_PORT: ${DB_PORT:-5432}
+      CATALOG_URL: ${CATALOG_URL:-http://catalog-service:8001}
+      ORDER_URL: ${ORDER_URL:-http://order-service:8002}
+      PAYMENT_URL: ${PAYMENT_URL:-http://payment-service:8003}
+    depends_on:
+      postgres: { condition: service_healthy }
+
+  gateway:
+    image: nginx:1.27-alpine
+    volumes:
+      - ./services/gateway/nginx.conf:/etc/nginx/nginx.conf:ro
+    ports: ["8090:80"]
+    depends_on:
+      - site-public
+      - catalog-service
+      - order-service
+      - payment-service
+
+volumes:
+  pgdata:

@@ -1,0 +1,42 @@
+{% extends "base.html" %}{% block title %}Paiement simulé{% endblock %}
+{% block content %}
+<div class="mx-auto max-w-2xl py-10">
+    <div class="soft-panel overflow-hidden">
+        <div class="bg-[#0B2547] px-6 py-5 text-white">
+            <div class="flex items-center gap-3">
+                <span class="material-symbols-outlined text-3xl text-[#1BA7E5]">payments</span>
+                <div>
+                    <div class="text-xs font-semibold uppercase tracking-[0.12em] text-[#DCEFFB]">Paiement simulé</div>
+                    <h1 class="mt-1 text-2xl font-extrabold">Validation de transaction</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="space-y-5 p-6">
+            <div class="rounded-xl border border-[#dfeaf4] bg-[#f5f8fb] p-4 text-sm text-primary">
+                <div class="flex justify-between gap-3">
+                    <span class="text-text-muted">Transaction</span>
+                    <strong>{{ transaction_id }}</strong>
+                </div>
+                <div class="mt-2 flex justify-between gap-3">
+                    <span class="text-text-muted">Commande</span>
+                    <strong>{{ reference }}</strong>
+                </div>
+            </div>
+
+            <p class="text-base text-text-muted">
+                Ceci remplace la page hébergée de l'agrégateur en environnement de développement.
+            </p>
+
+            <form method="post" action="/mock-pay/{{ transaction_id }}/confirm/">
+                {% csrf_token %}
+                <input type="hidden" name="reference" value="{{ reference }}">
+                <button type="submit" class="btn-primary h-[52px] w-full text-base">
+                    <span class="material-symbols-outlined text-xl">check_circle</span>
+                    <span>Simuler le paiement réussi</span>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

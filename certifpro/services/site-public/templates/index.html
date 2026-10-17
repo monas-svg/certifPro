@@ -1,0 +1,162 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Certifpro — Choisissez votre métier{% endblock %}
+{% block content %}
+<div class="space-y-6">
+    <section class="overflow-hidden rounded-[30px] border border-[#dde7f0] bg-[#f7fbff] p-5 shadow-soft md:p-8">
+        <div class="grid items-center gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+            <div class="space-y-5">
+                <div class="space-y-4">
+                    <h1 class="text-4xl font-extrabold leading-[1.02] tracking-[-0.05em] text-primary md:text-6xl">
+                        Des certifications qui ouvrent les portes du <span class="text-[#1BA7E5]">marché tech africain</span>.
+                    </h1>
+                    <p class="max-w-xl text-base leading-relaxed text-text-muted md:text-lg">
+                        Packs pratiques, formations reconnues et accès directs après paiement mobile money. Une voie simple pour évoluer dans les métiers du numérique.
+                    </p>
+                </div>
+
+                <div class="flex flex-wrap gap-3">
+                    <a href="#catalogue" class="btn-primary h-[48px] px-5 text-sm md:text-base">Découvrir les packs</a>
+                    <a href="/renvoyer/" class="inline-flex h-[48px] items-center justify-center rounded-xl border border-[#d5e1eb] bg-white px-5 text-sm font-bold text-primary no-underline hover:border-[#1BA7E5] hover:text-[#1BA7E5]">Renvoyer mes liens</a>
+                </div>
+
+                <div class="grid gap-3 md:grid-cols-3">
+                    <div class="rounded-2xl border border-[#dfeaf4] bg-white p-3">
+                        <div class="flex items-center gap-2 text-sm font-bold text-primary">
+                            <span class="material-symbols-outlined text-xl text-[#1BA7E5]">mark_email_read</span>
+                            Livraison email
+                        </div>
+                    </div>
+                    <div class="rounded-2xl border border-[#dfeaf4] bg-white p-3">
+                        <div class="flex items-center gap-2 text-sm font-bold text-primary">
+                            <span class="material-symbols-outlined text-xl text-[#1BA7E5]">lock</span>
+                            Paiement simple
+                        </div>
+                    </div>
+                    <div class="rounded-2xl border border-[#dfeaf4] bg-white p-3">
+                        <div class="flex items-center gap-2 text-sm font-bold text-primary">
+                            <span class="material-symbols-outlined text-xl text-[#1BA7E5]">timeline</span>
+                            Accès immédiat
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative overflow-hidden rounded-[28px] border border-[#dfeaf4] bg-white p-3">
+                <img
+                    src="{% static 'istockphoto-511652302-612x612.jpg' %}"
+                    alt="Étudiants africains en formation"
+                    class="h-[370px] w-full rounded-[22px] object-cover"
+                />
+                <div class="absolute inset-x-6 bottom-6 rounded-2xl border border-white/80 bg-white/85 p-3 shadow-soft backdrop-blur-sm">
+                    <div class="flex items-center justify-between gap-3">
+                        <div>
+                            <div class="text-[10px] font-bold uppercase tracking-[0.1em] text-text-muted">Opérateurs</div>
+                            <div class="mt-1 flex items-center gap-2 text-sm font-bold text-primary">
+                                <span class="rounded-md bg-[#F8C52C] px-2 py-1 text-[10px] text-primary">MTN</span>
+                                <span class="rounded-md bg-[#FF7A1A] px-2 py-1 text-[10px] text-white">Orange</span>
+                                <span class="rounded-md bg-[#2FB6F6] px-2 py-1 text-[10px] text-white">Wave</span>
+                            </div>
+                        </div>
+                        <span class="material-symbols-outlined text-3xl text-[#1BA7E5]">verified</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="space-y-4" id="catalogue">
+        <div class="relative">
+            <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-text-muted text-xl">search</span>
+            <input
+                type="search"
+                placeholder="Rechercher un métier, outil, certification..."
+                class="h-[52px] w-full rounded-xl border border-[#dfe7ef] bg-white pl-12 pr-4 text-base text-text-primary outline-none shadow-sm transition focus:border-[#1BA7E5] focus:ring-2 focus:ring-[#1BA7E5]/15"
+            />
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2 overflow-x-auto pb-2">
+            <button class="shrink-0 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-white">Tous ({{ metiers|length }})</button>
+            <button class="shrink-0 rounded-full bg-[#edf7ff] px-4 py-2 text-sm font-semibold text-primary">Cloud &amp; DevOps</button>
+            <button class="shrink-0 rounded-full bg-[#edf7ff] px-4 py-2 text-sm font-semibold text-primary">Développement Web</button>
+            <button class="shrink-0 rounded-full bg-[#edf7ff] px-4 py-2 text-sm font-semibold text-primary">Data &amp; IA</button>
+            <button class="shrink-0 rounded-full bg-[#edf7ff] px-4 py-2 text-sm font-semibold text-primary">Marketing &amp; Ads</button>
+        </div>
+    </section>
+
+    <section class="space-y-4">
+        <div class="flex items-center justify-between gap-3">
+            <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-2xl text-[#1BA7E5]">auto_stories</span>
+                <h2 class="text-2xl font-extrabold text-primary">Métiers Phares &amp; Packs Pro</h2>
+            </div>
+            <span class="text-sm font-medium text-text-muted">Accès à vie</span>
+        </div>
+
+        <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            {% for m in metiers %}
+                <article
+                    class="pack-card flex flex-col justify-between gap-5 p-5"
+                    data-category="{% if 'devops' in m.nom|lower or 'cloud' in m.nom|lower %}cloud{% elif 'data' in m.nom|lower or 'ia' in m.nom|lower or 'analytics' in m.nom|lower %}data{% elif 'marketing' in m.nom|lower or 'ads' in m.nom|lower or 'social' in m.nom|lower %}marketing{% else %}dev{% endif %}"
+                >
+                    <div class="space-y-4">
+                        <div class="flex items-start justify-between gap-3">
+                            <div class="flex items-center gap-3">
+                                <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-[#eaf6ff] text-xl text-primary">
+                                    <span class="material-symbols-outlined">terminal</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-extrabold text-primary">{{ m.nom }}</h3>
+                                    <p class="text-xs font-medium text-text-muted">Niveau recommandé : Intermédiaire</p>
+                                </div>
+                            </div>
+                            <span class="rounded-full bg-[#eaf9f2] px-2 py-1 text-[11px] font-bold text-[#0C6B5B]">Forte demande</span>
+                        </div>
+
+                        <div class="flex flex-wrap gap-2">
+                            {% for comp in m.competences|slice:':4' %}
+                                <span class="rounded-lg bg-[#f4f7fa] px-2 py-1 text-[11px] font-semibold text-primary">{{ comp.libelle }}</span>
+                            {% empty %}
+                                <span class="rounded-lg bg-[#f4f7fa] px-2 py-1 text-[11px] font-semibold text-primary">Formation</span>
+                                <span class="rounded-lg bg-[#f4f7fa] px-2 py-1 text-[11px] font-semibold text-primary">Certification</span>
+                            {% endfor %}
+                        </div>
+
+                        <div class="rounded-xl bg-[#f4f9ff] p-3 text-sm text-primary">
+                            <div class="flex items-center justify-between gap-2">
+                                <div class="flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-lg text-[#1BA7E5]">menu_book</span>
+                                    <span class="font-bold">{{ m.ressources|length }} formations</span>
+                                </div>
+                                <span class="text-text-muted">•</span>
+                                <div class="flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-lg text-[#F4B740]">military_tech</span>
+                                    <span class="font-bold">{{ m.ressources|length }} certifs</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-end justify-between gap-3 pt-2">
+                        <div>
+                            <div class="text-xs font-medium uppercase tracking-[0.08em] text-text-muted">Tarif unique CEMAC</div>
+                            <div class="mt-1 text-3xl font-extrabold text-primary">
+                                {{ m.prix_xaf }}
+                                <span class="text-base font-semibold text-text-muted">FCFA</span>
+                            </div>
+                        </div>
+                        <a href="/metier/{{ m.slug }}/" class="btn-primary h-[48px] px-5 text-sm md:text-base">
+                            <span>Découvrir</span>
+                            <span class="material-symbols-outlined text-base">arrow_forward</span>
+                        </a>
+                    </div>
+                </article>
+            {% empty %}
+                <div class="rounded-2xl border border-dashed border-slate-300 bg-white p-10 text-center text-text-muted md:col-span-2 xl:col-span-3">
+                    Aucun métier pour le moment. Ajoutez-en depuis l'administration du catalogue.
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+</div>
+{% endblock %}

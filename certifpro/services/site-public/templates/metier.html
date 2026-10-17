@@ -1,0 +1,173 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{{ metier.nom }} — Certifpro{% endblock %}
+{% block content %}
+<div class="space-y-6">
+    <nav class="flex items-center gap-2 text-sm text-text-muted">
+        <a href="/" class="text-text-muted no-underline hover:text-primary">Accueil</a>
+        <span class="material-symbols-outlined text-xs">chevron_right</span>
+        <a href="/" class="text-text-muted no-underline hover:text-primary">Catalogue</a>
+        <span class="material-symbols-outlined text-xs">chevron_right</span>
+        <span class="font-semibold text-primary">{{ metier.nom }}</span>
+    </nav>
+
+    <section class="overflow-hidden rounded-[30px] border border-[#dde7f0] bg-[#f7fbff] p-5 shadow-soft md:p-8">
+        <div class="space-y-5">
+            <div class="flex flex-wrap items-center gap-2">
+                <span class="inline-flex items-center gap-1 rounded-full bg-[#edf7ff] px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.08em] text-primary">
+                    <span class="material-symbols-outlined text-[13px]">verified</span>
+                    Pack Certifié CEMAC
+                </span>
+                <span class="inline-flex items-center gap-1 rounded-full bg-white px-2.5 py-1 text-[11px] font-medium text-primary">
+                    <span class="material-symbols-outlined text-[13px]">trending_up</span>
+                    Forte demande tech
+                </span>
+            </div>
+
+            <div class="space-y-3">
+                <h1 class="text-3xl font-extrabold tracking-[-0.05em] text-primary md:text-5xl">Pack Métier : {{ metier.nom }}</h1>
+                <p class="max-w-3xl text-base leading-relaxed text-text-muted md:text-lg">
+                    {{ metier.description }}
+                </p>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-3 rounded-2xl border border-[#dfeaf4] bg-white p-3 text-sm text-primary">
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-lg text-[#1BA7E5]">update</span>
+                    <span class="font-semibold">100% à jour</span>
+                </div>
+                <span class="text-[#9aa9ba]">•</span>
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-lg text-[#1BA7E5]">folder_special</span>
+                    <span>{{ metier.ressources|length }} formations</span>
+                </div>
+                <span class="text-[#9aa9ba]">•</span>
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-lg text-[#F4B740]">military_tech</span>
+                    <span>{{ metier.ressources|length }} certifications</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="soft-panel p-5 md:p-6">
+        <div class="mb-4 flex items-center gap-3">
+            <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-[#eaf6ff] text-primary">
+                <span class="material-symbols-outlined text-xl">terminal</span>
+            </div>
+            <div>
+                <h2 class="text-xl font-extrabold text-primary">Le rôle en entreprise africaine &amp; remote</h2>
+                <p class="text-sm text-text-muted">Profil clé recherché à Douala, Abidjan, Dakar et à l'international</p>
+            </div>
+        </div>
+
+        <div class="relative overflow-hidden rounded-2xl border border-[#dfeaf4]">
+            {% if metier.visuel %}
+                <img
+                    src="{{ metier.visuel }}"
+                    alt="{{ metier.nom }}"
+                    class="h-56 w-full object-cover md:h-72"
+                />
+            {% else %}
+                <img
+                    src="{% static 'istockphoto-511652302-612x612.jpg' %}"
+                    alt="{{ metier.nom }}"
+                    class="h-56 w-full object-cover md:h-72"
+                />
+            {% endif %}
+            <div class="absolute inset-0 bg-[#0B2547]/20"></div>
+            <div class="absolute bottom-4 left-4 right-4 rounded-xl border border-white/70 bg-white/80 px-3 py-2 text-sm font-medium text-primary backdrop-blur-sm">
+                Salaire junior estimé : 650 000 - 1 400 000 FCFA / mois
+            </div>
+        </div>
+    </section>
+
+    <section class="soft-panel p-5 md:p-6">
+        <div class="mb-4 flex items-center justify-between gap-3">
+            <div>
+                <h2 class="text-2xl font-extrabold text-primary">Compétences acquises</h2>
+                <p class="text-sm text-text-muted">Pratique concrète validée par des projets réels</p>
+            </div>
+            <span class="flex h-8 w-8 items-center justify-center rounded-full bg-[#eaf9f2] text-sm font-bold text-[#0C6B5B]">
+                {{ metier.competences|length }}
+            </span>
+        </div>
+
+        <div class="space-y-3">
+            {% for c in metier.competences %}
+                <div class="flex items-start gap-3 rounded-xl bg-[#f5f8fb] p-3">
+                    <div class="mt-0.5 flex h-7 w-7 items-center justify-center rounded-md bg-[#eaf9f2] text-[#0C6B5B]">
+                        <span class="material-symbols-outlined text-base">check_circle</span>
+                    </div>
+                    <div>
+                        <div class="font-bold text-primary">{{ c.libelle }}</div>
+                        <div class="text-sm text-text-muted">Compétence essentielle pour ce métier.</div>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="rounded-xl bg-[#f5f8fb] p-3 text-text-muted">Aucune compétence renseignée pour ce métier.</div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section class="soft-panel p-5 md:p-6">
+        <div class="mb-4 flex items-center justify-between gap-3">
+            <div>
+                <h2 class="text-2xl font-extrabold text-primary">Formations &amp; Certifications</h2>
+                <p class="text-sm text-text-muted">Tous les supports et accès inclus dans votre pack</p>
+            </div>
+            <span class="material-symbols-outlined text-2xl text-[#1BA7E5]">verified_user</span>
+        </div>
+
+        <div class="mb-4 rounded-xl border border-[#dfeaf4] bg-[#f3f9ff] p-3 text-sm text-primary">
+            <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-lg">lock</span>
+                <span><strong class="font-bold">Liens d'accès directs chiffrés :</strong> tout est envoyé après validation mobile money.</span>
+            </div>
+        </div>
+
+        <div class="space-y-3">
+            {% for r in metier.ressources %}
+                <div class="rounded-xl bg-[#f5f8fb] p-4">
+                    <div class="mb-2 flex items-center justify-between gap-3">
+                        <div class="flex items-center gap-2">
+                            <span class="rounded bg-primary px-2 py-1 text-[10px] font-bold uppercase tracking-[0.08em] text-white">
+                                {% if r.type == 'certification' %}Certif{% else %}Formation{% endif %}
+                            </span>
+                            <span class="text-xs font-semibold text-[#0C6BAA]">{{ r.organisme }}</span>
+                        </div>
+                        <span class="rounded-full bg-[#eaf9f2] px-2 py-1 text-[10px] font-bold text-[#0C6B5B]">{{ r.type }}</span>
+                    </div>
+                    <h3 class="text-lg font-extrabold text-primary">{{ r.titre }}</h3>
+                    <div class="mt-2 flex items-center justify-between gap-2 rounded-lg bg-white p-2 text-sm text-text-muted">
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-base">lock</span>
+                            <span>Accès direct après paiement</span>
+                        </div>
+                        <span class="font-bold text-[#0C6BAA]">Débloqué</span>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="rounded-xl bg-[#f5f8fb] p-4 text-text-muted">Aucune ressource associée à ce métier pour le moment.</div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <div class="flex flex-col gap-3 rounded-[28px] bg-white p-5 shadow-soft md:p-6">
+        <div class="flex items-center justify-between gap-4">
+            <div>
+                <div class="text-xs font-semibold uppercase tracking-[0.12em] text-text-muted">Prix unique</div>
+                <div class="mt-1 text-4xl font-extrabold text-primary">{{ metier.prix_xaf }} <span class="text-lg font-semibold text-text-muted">FCFA</span></div>
+            </div>
+            <span class="inline-flex items-center gap-2 rounded-full bg-[#eaf9f2] px-3 py-1.5 text-sm font-bold text-[#0C6B5B]">
+                <span class="material-symbols-outlined text-base">verified</span>
+                Accès Garanti
+            </span>
+        </div>
+        <a href="/metier/{{ metier.slug }}/formulaire/" class="btn-primary h-[52px] text-base">
+            <span>Obtenir mon pack</span>
+            <span class="material-symbols-outlined text-base">arrow_forward</span>
+        </a>
+    </div>
+</div>
+{% endblock %}

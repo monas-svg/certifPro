@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+
+<html lang="fr"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "outline-variant": "#c5c6cd", "on-error-container": "#93000a", "surface-slate": "#F8FAFC", "surface-container-low": "#eff4ff", "cyan-hover": "#0088E8", "inverse-primary": "#b9c7e4", "surface-container-high": "#dce9ff", "inverse-on-surface": "#eaf1ff", "on-secondary": "#ffffff", "secondary-fixed": "#cfe5ff", "primary-fixed-dim": "#b9c7e4", "surface-pure": "#FFFFFF", "on-secondary-container": "#003558", "momo-mtn": "#FFCC00", "error-container": "#ffdad6", "surface-bright": "#f8f9ff", "border-strong": "#CBD5E1", "wave-blue": "#1DC3F4", "tertiary-container": "#002114", "text-primary": "#0A192F", "on-background": "#0b1c30", "on-primary-container": "#76849f", "secondary-fixed-dim": "#98cbff", "surface-dim": "#cbdbf5", "primary-deep": "#0D2240", "on-tertiary-fixed-variant": "#005137", "outline": "#75777e", "tertiary": "#000000", "surface": "#f8f9ff", "on-secondary-fixed": "#001d33", "solar-amber": "#F59E0B", "primary": "#000000", "solar-amber-light": "FEF3C7", "text-muted": "#64748B", "on-primary": "#ffffff", "border-subtle": "#E2E8F0", "primary-fixed": "#d6e3ff", "surface-container-highest": "#d3e4fe", "error": "#ba1a1a", "on-primary-fixed-variant": "#39475f", "on-surface": "#0b1c30", "on-tertiary": "#ffffff", "on-tertiary-container": "#069669", "surface-container": "#e5eeff", "surface-variant": "#d3e4fe", "om-orange": "#FF7900", "tertiary-fixed": "#85f8c4", "on-surface-variant": "#44474d", "on-primary-fixed": "#0d1c32", "secondary-container": "#00a2fd", "primary-container": "#0d1c32", "on-error": "#ffffff", "tertiary-fixed-dim": "#68dba9", "surface-container-lowest": "#ffffff", "emerald-surface": "#ECFDF5", "surface-tint": "#515f78", "on-tertiary-fixed": "#002114", "secondary": "#00629d", "on-secondary-fixed-variant": "#004a77", "inverse-surface": "#213145", "background": "#f8f9ff" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "margin-md": "2rem", "space-sm": "0.5rem", "gutter": "1rem", "space-xs": "0.25rem", "margin-lg": "3.5rem", "gutter-lg": "2rem", "space-xl": "2.5rem", "space-lg": "1.5rem", "gutter-md": "1.5rem", "margin": "1rem", "space-md": "1rem" }, "fontFamily": { "title-md": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"], "body-lg": ["Plus Jakarta Sans"], "body-sm": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "body-md": ["Plus Jakarta Sans"], "title-lg": ["Plus Jakarta Sans"], "headline-lg-mobile": ["Plus Jakarta Sans"], "label-sm": ["Plus Jakarta Sans"], "headline-xl-mobile": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "label-lg": ["Plus Jakarta Sans"], "label-md": ["Plus Jakarta Sans"], "headline-xl": ["Plus Jakarta Sans"] }, "fontSize": { "title-md": ["16px", { "lineHeight": "24px", "fontWeight": "600" }], "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }], "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }], "body-sm": ["13px", { "lineHeight": "20px", "fontWeight": "400" }], "headline-lg": ["36px", { "lineHeight": "44px", "fontWeight": "700" }], "body-md": ["15px", { "lineHeight": "24px", "fontWeight": "400" }], "title-lg": ["18px", { "lineHeight": "26px", "fontWeight": "600" }], "headline-lg-mobile": ["26px", { "lineHeight": "34px", "fontWeight": "700" }], "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "700" }], "headline-xl-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "800" }], "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }], "label-lg": ["14px", { "lineHeight": "20px", "fontWeight": "600" }], "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "600" }], "headline-xl": ["48px", { "lineHeight": "56px", "fontWeight": "800" }] } } } };</script><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style></head><body class="bg-surface font-body-md text-on-surface flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="bg-primary-deep text-on-primary py-1 px-margin flex items-center justify-between text-center"><div class="flex items-center gap-1.5 mx-auto"><span class="material-symbols-outlined text-[14px] text-tertiary-fixed">verified_user</span><span class="font-label-sm text-label-sm tracking-wide">Paiement garanti sécurisé • MTN, Orange, Wave</span></div></div><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><div class="w-9 h-9 rounded-lg bg-primary-deep flex items-center justify-center text-secondary-container font-headline-md font-bold"><span class="material-symbols-outlined text-secondary-container">workspace_premium</span></div><div class="flex flex-col"><span class="font-title-md text-title-md font-bold text-text-primary tracking-tight leading-none">Certifpro</span><span class="font-label-sm text-label-sm text-text-muted mt-0.5 leading-none">CEMAC &amp; Afrique Ouest</span></div></div><div class="flex items-center gap-space-sm"><span class="font-title-md text-title-md text-on-surface truncate max-w-[130px] hidden xs:inline">Catalogue Des Métiers</span><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1X4t6KI-LXEUmYEZAArarBcBpTURYv7JwPXB8ByRW_rVp6stiuScVCHkcwiqv09IkO98Mjct033GndrCay8CwkzEzKAxiIpau20u1GQ-zmAEuEGGI8b54HNx4fnvz2BhlgSJAcrGtR7f6XVM1lYeYO9dhorvHpInUfQKpl_ihLOVvSZl57nsbeG8YvH8tDqoxLQ5ZD_NxFdZFslbMgNPG4P3ZmI1-d2x_VZKy2BdFkauzLnJJBWzz1K6MzcN4ftSJM1B5tMFGMJ-Z4"/></div></div></header><main class="flex-1 flex flex-col relative w-full pt-24 pb-28 bg-surface px-margin"><div class="flex flex-col w-full gap-space-lg">
+<!-- HERO VALUE PROPOSITION -->
+<section class="relative w-full rounded-xl bg-primary-deep text-on-primary p-space-md shadow-md overflow-hidden">
+<div class="relative z-10 flex flex-col gap-space-sm">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-highest/15 w-fit">
+<span class="w-2 h-2 rounded-full bg-wave-blue animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-secondary-fixed tracking-wide uppercase">Rentrée Certifiante 2024 • CEMAC</span>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold tracking-tight text-surface-pure leading-tight">
+        Accédez aux meilleures certifications tech mondiales, payez en <span class="text-secondary-container">Mobile Money</span>.
+      </h1>
+<p class="font-body-md text-body-md text-on-primary-container leading-relaxed">
+        Packs complets de cours et certifications reconnues (AWS, Google, Coursera, Linux Foundation) livrés directement par email.
+      </p>
+<!-- Trust Assurance Badges -->
+<div class="grid grid-cols-1 gap-2 pt-space-xs">
+<div class="flex items-center gap-2 text-surface-container-highest">
+<span class="material-symbols-outlined text-[18px] text-tertiary-fixed" style="font-variation-settings: 'FILL' 1;">mark_email_read</span>
+<span class="font-label-md text-label-md">Livraison instantanée par email</span>
+</div>
+<div class="flex items-center gap-2 text-surface-container-highest">
+<span class="material-symbols-outlined text-[18px] text-secondary-container" style="font-variation-settings: 'FILL' 1;">lock_reset</span>
+<span class="font-label-md text-label-md">Sans abonnement récurrent • Achat unique</span>
+</div>
+<div class="flex items-center gap-2 text-surface-container-highest">
+<span class="material-symbols-outlined text-[18px] text-momo-mtn" style="font-variation-settings: 'FILL' 1;">contactless</span>
+<span class="font-label-md text-label-md">Paiement MTN, Orange Money &amp; Wave direct</span>
+</div>
+</div>
+<!-- Provider Micro Indicators -->
+<div class="mt-space-xs pt-space-sm bg-surface-pure/5 rounded-lg p-2.5 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-surface-container-high">Opérateurs compatibles :</span>
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-momo-mtn text-text-primary">MTN MoMo</span>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-om-orange text-surface-pure">Orange</span>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-wave-blue text-surface-pure">Wave</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SEARCH & FILTER SECTION -->
+<section class="flex flex-col gap-space-sm w-full">
+<!-- Quick Search Input -->
+<div class="relative w-full">
+<div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-text-muted">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="w-full h-[52px] pl-11 pr-4 bg-surface-pure rounded-lg text-text-primary font-body-md text-body-md shadow-sm placeholder:text-text-muted focus:outline-none focus:bg-surface-pure" id="search-input" placeholder="Rechercher un métier, outil, certification..." type="search"/>
+</div>
+<!-- Career Filter Pills -->
+<div class="flex items-center gap-2 overflow-x-auto pb-1 -mx-margin px-margin no-scrollbar">
+<button class="filter-pill shrink-0 px-3.5 py-2 rounded-full font-label-md text-label-md bg-primary-deep text-on-primary transition-all" data-filter="all">
+        Tous (12)
+      </button>
+<button class="filter-pill shrink-0 px-3.5 py-2 rounded-full font-label-md text-label-md bg-surface-container-high text-on-surface-variant hover:bg-surface-container transition-all" data-filter="cloud">
+        Cloud &amp; DevOps
+      </button>
+<button class="filter-pill shrink-0 px-3.5 py-2 rounded-full font-label-md text-label-md bg-surface-container-high text-on-surface-variant hover:bg-surface-container transition-all" data-filter="dev">
+        Développement Web
+      </button>
+<button class="filter-pill shrink-0 px-3.5 py-2 rounded-full font-label-md text-label-md bg-surface-container-high text-on-surface-variant hover:bg-surface-container transition-all" data-filter="data">
+        Data &amp; IA
+      </button>
+<button class="filter-pill shrink-0 px-3.5 py-2 rounded-full font-label-md text-label-md bg-surface-container-high text-on-surface-variant hover:bg-surface-container transition-all" data-filter="marketing">
+        Marketing &amp; Ads
+      </button>
+</div>
+</section>
+<!-- CAREER PACKS CATALOG -->
+<section class="flex flex-col gap-space-md w-full">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-container text-[22px]">auto_stories</span>
+<h2 class="font-title-lg text-title-lg font-bold text-text-primary">Métiers Phares &amp; Packs Pro</h2>
+</div>
+<span class="font-label-sm text-label-sm text-text-muted">Accès à vie</span>
+</div>
+<!-- Catalog Grid -->
+<div class="grid grid-cols-1 gap-space-md" id="packs-container">
+<!-- Pack 1: Cybersécurité -->
+<article class="pack-card bg-surface-pure rounded-xl p-space-md shadow-sm flex flex-col justify-between gap-space-md relative overflow-hidden" data-category="cloud">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-2">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-text-primary">
+<span class="material-symbols-outlined text-[24px]">security</span>
+</div>
+<div class="flex flex-col">
+<h3 class="font-title-lg text-title-lg font-bold text-text-primary">Cybersécurité</h3>
+<span class="font-label-sm text-label-sm text-text-muted">Niveau Recommandé: Intermédiaire</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded font-label-sm text-label-sm bg-emerald-surface text-on-tertiary-container font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">verified</span> Forte demande
+            </span>
+</div>
+<!-- Skills tags -->
+<div class="flex flex-wrap gap-1.5 mt-space-xs">
+<span class="px-2 py-1 rounded bg-surface-slate text-text-primary font-label-sm text-label-sm">Pentesting</span>
+<span class="px-2 py-1 rounded bg-surface-slate text-text-primary font-label-sm text-label-sm">SOC</span>
+<span class="px-2 py-1 rounded bg-surface-slate text-text-primary font-label-sm text-label-sm">ISO 27001</span>
+<span class="px-2 py-1 rounded bg-surface-slate text-text-primary font-label-sm text-label-sm">Sécurité Cloud</span>
+</div>
+<!-- Included training metrics -->
+<div class="mt-space-xs p-2.5 rounded-lg bg-surface-container-low flex items-center justify-between text-on-surface">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[18px]">menu_book</span>
+<span class="font-label-md text-label-md font-bold">8 formations</span>
+</div>
+<span class="text-text-muted">•</span>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-solar-amber text-[18px]">military_tech</span>
+<span class="font-label-md text-label-md font-bold">3 certifs mondiales</span>
+</div>
+</div>
+</div>
+<div class="pt-space-xs flex items-center justify-between gap-3">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-text-muted">Tarif unique CEMAC</span>
+<span class="font-headline-sm text-headline-sm font-bold text-text-primary">25 000 <span class="text-label-md font-semibold text-text-muted">FCFA</span></span>
+</div>
+<button class="h-[48px] px-5 rounded-lg bg-secondary-container hover:bg-cyan-hover text-on-primary font-title-md text-title-md font-bold flex items-center justify-center gap-1.5 shadow-sm active:scale-95 transition-all">
+<span>Découvrir</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</article>
+<!-- Pack 2: Ingénieur DevOps -->
+<article class="pack-card bg-surface-pure rounded-xl p-space-md shadow-sm flex flex-col justify-between gap-space-md relative overflow-hidden" data-category="cloud">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-2">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-text-primary">
+<span class="material-symbols-outlined text-[24px]">hub</span>
+</div>
+<div class="flex flex-col">
+<h3 class="font-title-lg text-title-lg font-bold text-text-primary">Ingénieur DevOps</h3>
+<span class="font-label-sm text-label-sm text-text-muted">Linux, Automation &amp; Cloud</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded font-label-sm text-label-sm bg-solar-amber-light text-solar-amber font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">local_fire_department</span> Populaire
+            </span>
+</div>
+<!-- Skills tags -->
+<div class="flex flex-wrap gap-1.5 mt-space-xs">
+<span class="px-2 py-1 rounded bg-surface-slate text-text-primary font-label-sm text-label-sm">Docker</span>
+<span class="px-2 py-1 rounded bg-surface-slate text-text-primary font-label-sm text-label-sm">Kubernetes</span>
+<span class="px-2 py-1 rounded bg-surface-slate text-text-primary font-label-sm text-label-sm">CI/CD</span>
+<span class="px-2 py-1 rounded bg-surface-slate text-text-primary font-label-sm text-label-sm">Terraform</span>
+</div>
+<!-- Included training metrics -->
+<div class="mt-space-xs p-2.5 rounded-lg bg-surface-container-low flex items-center justify-between text-on-surface">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[18px]">menu_book</span>
+<span class="font-label-md text-label-md font-bold">7 formations</span>
+</div>
+<span class="text-text-muted">•</span>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-solar-amber text-[18px]">military_tech</span>
+<span class="font-label-md text-label-md font-bold">2 certifs mondiales</span>
+</div>
+</div>
+</div>
+<div class="pt-space-xs flex items-center justify-between gap-3">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-text-muted">Tarif unique CEMAC</span>
+<span class="font-headline-sm text-headline-sm font-bold text-text-primary">29 000 <span class="text-label-md font-semibold text-text-muted">FCFA</span></span>
+</div>
+<button class="h-[48px] px-5 rounded-lg bg-secondary-container hover:bg-cyan-hover text-on-primary font-title-md text-title-md font-bold flex items-center justify-center gap-1.5 shadow-sm active:scale-95 transition-all">
+<span>Découvrir</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</article>
+<!-- Pack 3: Développeur Full Stack -->
+<article class="pack-card bg-surface-pure rounded-xl p-space-md shadow-sm flex flex-col justify-between gap-space-md relative overflow-hidden" data-category="dev">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-2">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-text-primary">
+<span class="material-symbols-outlined text-[24px]">terminal</span>
+</div>
+<div class="flex flex-col">
+<h3 class="font-title-lg text-title-lg font-bold text-text-primary">Développeur Full Stack</h3>
+<span class="font-label-sm text-label-sm text-text-muted">Web Apps &amp; API REST</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded font-label-sm text-label-sm bg-surface-container-high text-secondary font-bold">
+              Standard Pro
+            </span>
+</div>
+<!-- Skills tags -->
+<div class="flex flex-wrap gap-1.5 mt-space-xs">
+<span class="px-2 py-1 rounded bg-surface-slate text-text-primary font-label-sm text-label-sm">React</span>
+<span class="px-2 py-1 rounded bg-surface-slate text-text-primary font-label-sm text-label-sm">Node.js</span>
+<span class="px-2 py-1 rounded bg-surface-slate text-text-primary font-label-sm text-label-sm">PostgreSQL</span>
+<span class="px-2 py-1 rounded bg-surface-slate text-text-primary font-label-sm text-label-sm">Docker</span>
+</div>
+<!-- Included training metrics -->
+<div class="mt-space-xs p-2.5 rounded-lg bg-surface-container-low flex items-center justify-between text-on-surface">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[18px]">menu_book</span>
+<span class="font-label-md text-label-md font-bold">9 formations</span>
+</div>
+<span class="text-text-muted">•</span>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-solar-amber text-[18px]">military_tech</span>
+<span class="font-label-md text-label-md font-bold">2 certifs mondiales</span>
+</div>
+</div>
+</div>
+<div class="pt-space-xs flex items-center justify-between gap-3">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-text-muted">Tarif unique CEMAC</span>
+<span class="font-headline-sm text-headline-sm font-bold text-text-primary">20 000 <span class="text-label-md font-semibold text-text-muted">FCFA</span></span>
+</div>
+<button class="h-[48px] px-5 rounded-lg bg-secondary-container hover:bg-cyan-hover text-on-primary font-title-md text-title-md font-bold flex items-center justify-center gap-1.5 shadow-sm active:scale-95 transition-all">
+<span>Découvrir</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</article>
+<!-- Pack 4: Data Analyste -->
+<article class="pack-card bg-surface-pure rounded-xl p-space-md shadow-sm flex flex-col justify-between gap-space-md relative overflow-hidden" data-category="data">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-2">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-text-primary">
+<span class="material-symbols-outlined text-[24px]">query_stats</span>
+</div>
+<div class="flex flex-col">
+<h3 class="font-title-lg text-title-lg font-bold text-text-primary">Data Analyste</h3>
+<span class="font-label-sm text-label-sm text-text-muted">Analytics &amp; Décisionnel</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded font-label-sm text-label-sm bg-emerald-surface text-on-tertiary-container font-bold">
+              Accessibilité Métier
+            </span>
+</div>
+<!-- Skills tags -->
+<div class="flex flex-wrap gap-1.5 mt-space-xs">
+<span class="px-2 py-1 rounded bg-surface-slate text-text-primary font-label-sm text-label-sm">SQL</span>
+<span class="px-2 py-1 rounded bg-surface-slate text-text-primary font-label-sm text-label-sm">PowerBI</span>
+<span class="px-2 py-1 rounded bg-surface-slate text-text-primary font-label-sm text-label-sm">Python Data</span>
+<span class="px-2 py-1 rounded bg-surface-slate text-text-primary font-label-sm text-label-sm">Statistiques</span>
+</div>
+<!-- Included training metrics -->
+<div class="mt-space-xs p-2.5 rounded-lg bg-surface-container-low flex items-center justify-between text-on-surface">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[18px]">menu_book</span>
+<span class="font-label-md text-label-md font-bold">6 formations</span>
+</div>
+<span class="text-text-muted">•</span>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-solar-amber text-[18px]">military_tech</span>
+<span class="font-label-md text-label-md font-bold">Projets Guidés</span>
+</div>
+</div>
+</div>
+<div class="pt-space-xs flex items-center justify-between gap-3">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-text-muted">Tarif unique CEMAC</span>
+<span class="font-headline-sm text-headline-sm font-bold text-text-primary">18 000 <span class="text-label-md font-semibold text-text-muted">FCFA</span></span>
+</div>
+<button class="h-[48px] px-5 rounded-lg bg-secondary-container hover:bg-cyan-hover text-on-primary font-title-md text-title-md font-bold flex items-center justify-center gap-1.5 shadow-sm active:scale-95 transition-all">
+<span>Découvrir</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</article>
+<!-- Pack 5: Développeur IA -->
+<article class="pack-card bg-surface-pure rounded-xl p-space-md shadow-sm flex flex-col justify-between gap-space-md relative overflow-hidden" data-category="data">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-2">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-text-primary">
+<span class="material-symbols-outlined text-[24px]">psychology</span>
+</div>
+<div class="flex flex-col">
+<h3 class="font-title-lg text-title-lg font-bold text-text-primary">Développeur IA</h3>
+<span class="font-label-sm text-label-sm text-text-muted">IA Générative &amp; LLMs</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded font-label-sm text-label-sm bg-secondary-container text-on-primary font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">bolt</span> Nouveau
+            </span>
+</div>
+<!-- Skills tags -->
+<div class="flex flex-wrap gap-1.5 mt-space-xs">
+<span class="px-2 py-1 rounded bg-surface-slate text-text-primary font-label-sm text-label-sm">LLMs</span>
+<span class="px-2 py-1 rounded bg-surface-slate text-text-primary font-label-sm text-label-sm">PyTorch</span>
+<span class="px-2 py-1 rounded bg-surface-slate text-text-primary font-label-sm text-label-sm">LangChain</span>
+<span class="px-2 py-1 rounded bg-surface-slate text-text-primary font-label-sm text-label-sm">RAG</span>
+</div>
+<!-- Included training metrics -->
+<div class="mt-space-xs p-2.5 rounded-lg bg-surface-container-low flex items-center justify-between text-on-surface">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[18px]">menu_book</span>
+<span class="font-label-md text-label-md font-bold">8 formations</span>
+</div>
+<span class="text-text-muted">•</span>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-solar-amber text-[18px]">military_tech</span>
+<span class="font-label-md text-label-md font-bold">Accréditations 2024</span>
+</div>
+</div>
+</div>
+<div class="pt-space-xs flex items-center justify-between gap-3">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-text-muted">Tarif unique CEMAC</span>
+<span class="font-headline-sm text-headline-sm font-bold text-text-primary">32 000 <span class="text-label-md font-semibold text-text-muted">FCFA</span></span>
+</div>
+<button class="h-[48px] px-5 rounded-lg bg-secondary-container hover:bg-cyan-hover text-on-primary font-title-md text-title-md font-bold flex items-center justify-center gap-1.5 shadow-sm active:scale-95 transition-all">
+<span>Découvrir</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</article>
+<!-- Pack 6: Marketing digital & Ads -->
+<article class="pack-card bg-surface-pure rounded-xl p-space-md shadow-sm flex flex-col justify-between gap-space-md relative overflow-hidden" data-category="marketing">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-2">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-text-primary">
+<span class="material-symbols-outlined text-[24px]">campaign</span>
+</div>
+<div class="flex flex-col">
+<h3 class="font-title-lg text-title-lg font-bold text-text-primary">Marketing digital &amp; Ads</h3>
+<span class="font-label-sm text-label-sm text-text-muted">Acquisition &amp; Tracking ROI</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded font-label-sm text-label-sm bg-surface-container-high text-on-surface-variant font-bold">
+              Certifié Google
+            </span>
+</div>
+<!-- Skills tags -->
+<div class="flex flex-wrap gap-1.5 mt-space-xs">
+<span class="px-2 py-1 rounded bg-surface-slate text-text-primary font-label-sm text-label-sm">Google Ads</span>
+<span class="px-2 py-1 rounded bg-surface-slate text-text-primary font-label-sm text-label-sm">Meta Ads</span>
+<span class="px-2 py-1 rounded bg-surface-slate text-text-primary font-label-sm text-label-sm">SEO</span>
+<span class="px-2 py-1 rounded bg-surface-slate text-text-primary font-label-sm text-label-sm">Tracking GA4</span>
+</div>
+<!-- Included training metrics -->
+<div class="mt-space-xs p-2.5 rounded-lg bg-surface-container-low flex items-center justify-between text-on-surface">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[18px]">menu_book</span>
+<span class="font-label-md text-label-md font-bold">5 formations</span>
+</div>
+<span class="text-text-muted">•</span>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-solar-amber text-[18px]">military_tech</span>
+<span class="font-label-md text-label-md font-bold">Certifs Officielles</span>
+</div>
+</div>
+</div>
+<div class="pt-space-xs flex items-center justify-between gap-3">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-text-muted">Tarif unique CEMAC</span>
+<span class="font-headline-sm text-headline-sm font-bold text-text-primary">15 000 <span class="text-label-md font-semibold text-text-muted">FCFA</span></span>
+</div>
+<button class="h-[48px] px-5 rounded-lg bg-secondary-container hover:bg-cyan-hover text-on-primary font-title-md text-title-md font-bold flex items-center justify-center gap-1.5 shadow-sm active:scale-95 transition-all">
+<span>Découvrir</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</article>
+</div>
+</section>
+<!-- HOW IT WORKS SECTION (3 STEPS) -->
+<section class="w-full bg-surface-pure rounded-xl p-space-md shadow-sm flex flex-col gap-space-md">
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-label-sm font-bold text-secondary-container uppercase tracking-wider">Processus Simplifié</span>
+<h2 class="font-headline-sm text-headline-sm font-bold text-text-primary">Comment ça marche ?</h2>
+<p class="font-body-sm text-body-sm text-text-muted">Obtenez vos accès officiels en moins de 2 minutes chrono.</p>
+</div>
+<div class="grid grid-cols-1 gap-space-sm relative">
+<!-- Step 1 -->
+<div class="flex items-start gap-3 p-3 rounded-lg bg-surface-slate">
+<div class="w-9 h-9 rounded-full bg-primary-deep text-on-primary font-bold flex items-center justify-center shrink-0">
+          1
+        </div>
+<div class="flex flex-col">
+<h4 class="font-title-md text-title-md font-bold text-text-primary">Choisissez votre métier</h4>
+<p class="font-body-sm text-body-sm text-text-muted mt-0.5">Explorez notre catalogue et sélectionnez le pack tech adapté à votre ambition professionnelle.</p>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="flex items-start gap-3 p-3 rounded-lg bg-surface-slate">
+<div class="w-9 h-9 rounded-full bg-secondary-container text-on-primary font-bold flex items-center justify-center shrink-0">
+          2
+        </div>
+<div class="flex flex-col">
+<h4 class="font-title-md text-title-md font-bold text-text-primary">Payez en 30s par Mobile Money</h4>
+<p class="font-body-sm text-body-sm text-text-muted mt-0.5">Validez en direct sur votre téléphone sans carte bancaire via MTN, Orange ou Wave en FCFA net.</p>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="flex items-start gap-3 p-3 rounded-lg bg-surface-slate">
+<div class="w-9 h-9 rounded-full bg-tertiary-fixed text-tertiary-container font-bold flex items-center justify-center shrink-0">
+          3
+        </div>
+<div class="flex flex-col">
+<h4 class="font-title-md text-title-md font-bold text-text-primary">Recevez tous vos liens par email</h4>
+<p class="font-body-sm text-body-sm text-text-muted mt-0.5">Accès immédiat et illimité à l'ensemble des cours, syllabus et vouchers de certification.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- EXISTING CUSTOMERS RESEND PORTAL -->
+<section class="w-full bg-primary-deep text-on-primary rounded-xl p-space-md shadow-md flex flex-col gap-space-sm">
+<div class="flex items-center gap-2.5">
+<div class="w-9 h-9 rounded-lg bg-surface-pure/10 flex items-center justify-center text-secondary-fixed">
+<span class="material-symbols-outlined text-[20px]">mark_email_unread</span>
+</div>
+<div class="flex flex-col">
+<h3 class="font-title-md text-title-md font-bold text-surface-pure">Déjà client ? Renvoyer mes liens</h3>
+<span class="font-label-sm text-label-sm text-on-primary-container">Renvoi instantané sans frais</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-primary-container">
+      Entrez l'adresse email utilisée lors de votre commande Mobile Money pour recevoir à nouveau vos liens d'accès :
+    </p>
+<form class="flex flex-col gap-2.5 pt-1" id="resend-form">
+<div class="relative w-full">
+<input class="w-full h-[50px] px-3.5 bg-surface-pure text-text-primary rounded-lg font-body-md text-body-md shadow-sm placeholder:text-text-muted focus:outline-none" id="resend-email" placeholder="votre.email@domaine.com" required="" type="email"/>
+</div>
+<button class="w-full h-[50px] bg-secondary-container hover:bg-cyan-hover text-on-primary font-title-md text-title-md font-bold rounded-lg flex items-center justify-center gap-2 active:scale-[0.99] transition-all" type="submit">
+<span class="material-symbols-outlined text-[18px]">send</span>
+<span>Renvoyer mes formations</span>
+</button>
+<div class="hidden p-2.5 rounded-lg bg-surface-container-highest/20 text-tertiary-fixed font-label-md text-label-md text-center" id="resend-feedback">
+        ✓ Liens renvoyés avec succès ! Vérifiez votre boîte de réception.
+      </div>
+</form>
+</section>
+</div>
+<script>
+  // Simple category filtering
+  const filterButtons = document.querySelectorAll('.filter-pill');
+  const cards = document.querySelectorAll('.pack-card');
+
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const filter = button.getAttribute('data-filter');
+
+      // Update button states
+      filterButtons.forEach(btn => {
+        btn.classList.remove('bg-primary-deep', 'text-on-primary');
+        btn.classList.add('bg-surface-container-high', 'text-on-surface-variant');
+      });
+      button.classList.add('bg-primary-deep', 'text-on-primary');
+      button.classList.remove('bg-surface-container-high', 'text-on-surface-variant');
+
+      // Filter cards
+      cards.forEach(card => {
+        const category = card.getAttribute('data-category');
+        if (filter === 'all' || category === filter) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    });
+  });
+
+  // Client search micro-interaction
+  const searchInput = document.getElementById('search-input');
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      const term = e.target.value.toLowerCase().trim();
+      cards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        if (text.includes(term)) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    });
+  }
+
+  // Resend form feedback
+  const resendForm = document.getElementById('resend-form');
+  const resendFeedback = document.getElementById('resend-feedback');
+  if (resendForm && resendFeedback) {
+    resendForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      resendFeedback.classList.remove('hidden');
+      setTimeout(() => {
+        resendFeedback.classList.add('hidden');
+        resendForm.reset();
+      }, 5000);
+    });
+  }
+</script><footer class="mt-space-xl pt-space-lg pb-space-md text-center flex flex-col items-center gap-space-sm"><div class="flex items-center justify-center gap-space-md text-text-muted font-label-md text-label-md"><a class="hover:text-text-primary" data-path="mentions-legales" href="#">Mentions Légales</a><span>•</span><a class="hover:text-text-primary" data-path="conformite" href="#">Conformité CEMAC</a></div><div class="flex items-center justify-center gap-space-sm text-text-muted font-label-sm text-label-sm mt-space-xs"><span class="material-symbols-outlined text-[16px] text-on-tertiary-container">support_agent</span><span>Support direct WhatsApp &amp; Email : 24h/7j</span></div><p class="font-label-sm text-label-sm text-text-muted opacity-80">© 2024 Certifpro Académie. Tous droits réservés.</p></footer></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-1px_12px_rgba(0,0,0,0.05)]" data-active-classes="text-secondary-container font-bold"><div class="flex justify-around items-center h-16 px-space-xs"><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-0.5 text-text-muted hover:text-text-primary transition-colors" data-path="catalogue-des-metiers" href="#"><span class="material-symbols-outlined text-[22px]">school</span><span class="font-label-sm text-label-sm">Métiers</span></a><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-0.5 text-text-muted hover:text-text-primary transition-colors" data-path="renvoyer-mes-liens" href="#"><span class="material-symbols-outlined text-[22px]">mark_email_read</span><span class="font-label-sm text-label-sm">Mes Liens</span></a><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-0.5 text-text-muted hover:text-text-primary transition-colors" data-path="support-et-contact" href="#"><span class="material-symbols-outlined text-[22px]">chat</span><span class="font-label-sm text-label-sm">Support</span></a><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-0.5 text-text-muted hover:text-text-primary transition-colors" data-path="mon-espace" href="#"><span class="material-symbols-outlined text-[22px]">account_circle</span><span class="font-label-sm text-label-sm">Compte</span></a></div></nav></body></html>

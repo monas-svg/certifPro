@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CertifPro — Coupon 9 certifications Google</title>
+<meta name="description" content="CertifPro propose un coupon unique pour accéder aux 9 certifications Google Career Certificates sur Coursera. Paiement sécurisé via SebPay.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F5F7FB;
+    --surface: #ffffff;
+    --surface-soft: #f8fafc;
+    --text: #0f1f3d;
+    --muted: #5c6a85;
+    --primary: #0a254f;
+    --accent: #f57b24;
+    --accent-soft: #fff2e8;
+    --border: #d7dae2;
+    --radius: 28px;
+    --shadow: 0 30px 90px -50px rgba(10,37,79,.18);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Manrope', sans-serif;
+    color: var(--text);
+    background: linear-gradient(180deg, #f8fbff 0%, #eef3f8 100%);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .wrap {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Fraunces', serif;
+    margin: 0;
+    line-height: 1.05;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  button {
+    font: inherit;
+  }
+
+  header.site {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(14px);
+    background: rgba(255,255,255,.94);
+    border-bottom: 1px solid rgba(13,34,70,.08);
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 20px 24px;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .brand-logo {
+    width: 44px;
+    height: auto;
+  }
+
+  .brand-title {
+    font-weight: 800;
+    font-size: 18px;
+    letter-spacing: .02em;
+  }
+
+  .brand-sub {
+    font-size: 12px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: .18em;
+  }
+
+  nav.links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    font-size: 15px;
+  }
+
+  nav.links a {
+    color: var(--muted);
+    transition: color .2s ease;
+  }
+
+  nav.links a:hover {
+    color: var(--text);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: transform .16s ease, box-shadow .16s ease, background .16s ease;
+  }
+
+  .btn:hover {
+    transform: translateY(-1px);
+  }
+
+  .btn:focus-visible {
+    outline: 3px solid rgba(245,123,36,.35);
+    outline-offset: 3px;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #F57B24, #FF9E3C);
+    color: #fff;
+    padding: 14px 24px;
+    box-shadow: 0 20px 40px -20px rgba(245,123,36,.55);
+  }
+
+  .btn-secondary {
+    background: rgba(13,34,70,.08);
+    color: var(--text);
+    padding: 14px 24px;
+  }
+
+  .hero {
+    padding: 100px 0 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before,
+  .hero::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    opacity: .35;
+  }
+
+  .hero::before {
+    width: 420px;
+    height: 420px;
+    top: -120px;
+    left: -120px;
+    background: rgba(245,123,36,.16);
+  }
+
+  .hero::after {
+    width: 380px;
+    height: 380px;
+    right: -100px;
+    bottom: -100px;
+    background: rgba(10,37,79,.1);
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.05fr .95fr;
+    gap: 44px;
+    align-items: center;
+    position: relative;
+  }
+
+  @media (max-width: 980px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .hero h1 {
+    font-size: clamp(44px, 5vw, 64px);
+    max-width: 12ch;
+  }
+
+  .hero h1 span {
+    color: var(--accent);
+  }
+
+  .hero p.lead {
+    margin-top: 24px;
+    font-size: 18px;
+    line-height: 1.8;
+    max-width: 48ch;
+    color: var(--muted);
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 34px;
+  }
+
+  .hero-badges {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 36px;
+  }
+
+  .badge {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 18px;
+    border-radius: 18px;
+    background: var(--surface);
+    border: 1px solid rgba(13,34,70,.08);
+    box-shadow: 0 18px 44px -32px rgba(10,37,79,.18);
+  }
+
+  .badge-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .badge strong {
+    font-size: 15px;
+    color: var(--text);
+  }
+
+  .hero-panel {
+    padding: 38px;
+    border-radius: 32px;
+    background: var(--surface);
+    border: 1px solid rgba(13,34,70,.08);
+    box-shadow: var(--shadow);
+  }
+
+  .hero-panel-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .label-pill {
+    font-size: 12px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .hero-panel h2 {
+    font-size: 28px;
+    margin-top: 18px;
+  }
+
+  .hero-panel p {
+    margin-top: 18px;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 28px;
+  }
+
+  .hero-stat {
+    padding: 18px 20px;
+    border-radius: 22px;
+    background: var(--surface-soft);
+    border: 1px solid rgba(13,34,70,.08);
+  }
+
+  .hero-stat .value {
+    font-size: 28px;
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    color: var(--primary);
+  }
+
+  .hero-stat .label {
+    margin-top: 8px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .hero-note {
+    margin-top: 28px;
+    padding: 22px 22px;
+    border-radius: 20px;
+    background: var(--accent-soft);
+    color: var(--primary);
+    font-size: 14px;
+    line-height: 1.75;
+  }
+
+  .section-head {
+    max-width: 680px;
+    margin-bottom: 36px;
+  }
+
+  .section-head .kicker {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .section-head h2 {
+    font-size: clamp(30px, 3.4vw, 40px);
+    margin-top: 14px;
+  }
+
+  .section-head p {
+    margin-top: 18px;
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.8;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  @media (max-width: 980px) {
+    .grid-3 {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .feature-card {
+    padding: 32px 28px;
+    border-radius: 28px;
+    background: var(--surface);
+    border: 1px solid rgba(13,34,70,.08);
+    box-shadow: 0 24px 70px -44px rgba(10,37,79,.16);
+  }
+
+  .feature-card h3 {
+    font-size: 20px;
+    margin-bottom: 14px;
+  }
+
+  .feature-card p {
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  .feature-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 18px;
+    color: var(--primary);
+    font-weight: 700;
+  }
+
+  .feature-pill span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+  }
+
+  @media (max-width: 980px) {
+    .product-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 700px) {
+    .product-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .product-card {
+    background: var(--surface);
+    border-radius: 26px;
+    border: 1px solid rgba(13,34,70,.08);
+    box-shadow: 0 22px 60px -36px rgba(10,37,79,.14);
+    overflow: hidden;
+  }
+
+  .card-head {
+    padding: 26px;
+  }
+
+  .number {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .product-card h3 {
+    margin-top: 16px;
+    font-size: 20px;
+  }
+
+  .product-card p {
+    margin-top: 14px;
+    color: var(--muted);
+    line-height: 1.75;
+    font-size: 15px;
+  }
+
+  .card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 22px 24px 24px;
+    border-top: 1px solid rgba(13,34,70,.06);
+  }
+
+  .label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: var(--muted);
+  }
+
+  .value {
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  @media (max-width: 980px) {
+    .steps {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .step-card {
+    padding: 32px 28px;
+    border-radius: 28px;
+    background: var(--surface);
+    border: 1px solid rgba(13,34,70,.08);
+    box-shadow: 0 24px 70px -44px rgba(10,37,79,.16);
+  }
+
+  .step-num {
+    font-family: 'Fraunces', serif;
+    font-size: 40px;
+    color: var(--accent);
+  }
+
+  .step-card h3 {
+    margin: 18px 0 0;
+    font-size: 20px;
+  }
+
+  .step-card p {
+    margin-top: 12px;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  .stats-strip {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  @media (max-width: 860px) {
+    .stats-strip {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 620px) {
+    .stats-strip {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .stats-card {
+    padding: 32px 28px;
+    border-radius: 28px;
+    background: linear-gradient(135deg, #0A254F, #173067);
+    color: #fff;
+    box-shadow: 0 28px 80px -40px rgba(10,37,79,.28);
+  }
+
+  .stats-card .value {
+    font-family: 'Fraunces', serif;
+    font-size: 36px;
+    line-height: 1.05;
+  }
+
+  .stats-card .label {
+    margin-top: 10px;
+    font-size: 14px;
+    color: rgba(255,255,255,.82);
+  }
+
+  .cta-band {
+    display: grid;
+    grid-template-columns: 1.3fr .7fr;
+    gap: 28px;
+    align-items: center;
+    background: linear-gradient(135deg, #0A254F, #173067);
+    color: #fff;
+    border-radius: 32px;
+    padding: 52px 46px;
+  }
+
+  @media (max-width: 960px) {
+    .cta-band {
+      grid-template-columns: 1fr;
+      padding: 40px 26px;
+    }
+  }
+
+  .cta-band h2 {
+    font-size: clamp(32px, 3.8vw, 44px);
+  }
+
+  .cta-band p {
+    margin-top: 20px;
+    color: rgba(255,255,255,.84);
+    line-height: 1.75;
+  }
+
+  .cta-panel {
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.16);
+    border-radius: 26px;
+    padding: 28px;
+  }
+
+  .cta-panel .row {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 15px;
+    color: rgba(255,255,255,.92);
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,.12);
+  }
+
+  .cta-panel .row:last-child {
+    border-bottom: none;
+  }
+
+  .cta-panel .total {
+    font-family: 'Fraunces', serif;
+    font-size: 34px;
+    margin-top: 18px;
+    color: #FFB86C;
+  }
+
+  .faq {
+    display: grid;
+    gap: 14px;
+  }
+
+  .faq-item {
+    border-radius: 24px;
+    overflow: hidden;
+    background: var(--surface);
+    border: 1px solid rgba(13,34,70,.08);
+  }
+
+  .faq-q {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 18px;
+    padding: 22px 24px;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+  }
+
+  .faq-q .plus {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 20px;
+    color: var(--accent);
+    transition: transform .2s ease;
+  }
+
+  details[open] .faq-q .plus {
+    transform: rotate(45deg);
+  }
+
+  .faq-a {
+    padding: 0 24px 22px;
+    color: var(--muted);
+    line-height: 1.75;
+    font-size: 15px;
+  }
+
+  footer {
+    border-top: 1px solid rgba(13,34,70,.08);
+    padding: 38px 0 54px;
+    color: var(--muted);
+  }
+
+  .footer-row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 18px;
+    align-items: center;
+  }
+
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .footer-brand img {
+    width: 34px;
+  }
+
+  .footer-brand span {
+    font-weight: 700;
+  }
+
+  .footer-note {
+    max-width: 720px;
+  }
+
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+    background: rgba(10,37,79,.72);
+    backdrop-filter: blur(6px);
+    z-index: 100;
+  }
+
+  .modal-overlay.open {
+    display: flex;
+  }
+
+  .modal {
+    width: 100%;
+    max-width: 520px;
+    background: var(--surface);
+    border-radius: 32px;
+    padding: 34px 28px;
+    box-shadow: 0 30px 80px -30px rgba(10,37,79,.55);
+    max-height: 92vh;
+    overflow: auto;
+    position: relative;
+  }
+
+  .close-x {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(10,37,79,.06);
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 20px;
+  }
+
+  .modal h3 {
+    font-size: 28px;
+  }
+
+  .modal p.sub {
+    margin-top: 8px;
+    color: var(--muted);
+  }
+
+  .field {
+    margin-top: 20px;
+  }
+
+  .field label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .field input,
+  .field select {
+    width: 100%;
+    padding: 16px 18px;
+    border-radius: 16px;
+    border: 1.5px solid rgba(10,37,79,.16);
+    font-size: 15px;
+    background: #fff;
+  }
+
+  .field input:focus,
+  .field select:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(245,123,36,.12);
+  }
+
+  .total-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 28px 0 8px;
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  .amt {
+    font-family: 'Fraunces', serif;
+    color: var(--accent);
+    font-size: 24px;
+  }
+
+  .pay-btn {
+    width: 100%;
+    padding: 16px;
+  }
+
+  .status-msg {
+    margin-top: 14px;
+    font-size: 14px;
+    padding: 14px 16px;
+    border-radius: 16px;
+    display: none;
+  }
+
+  .status-msg.show {
+    display: block;
+  }
+
+  .status-msg.info {
+    background: rgba(245,123,36,.12);
+    color: #A94711;
+  }
+
+  .status-msg.success {
+    background: rgba(30,111,76,.12);
+    color: #164D36;
+  }
+
+  .status-msg.error {
+    background: rgba(226,71,46,.12);
+    color: #8D241F;
+  }
+
+  .kpay-note {
+    margin-top: 16px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.75;
+  }
+
+  @media (max-width: 720px) {
+    .nav {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    nav.links {
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .hero {
+      padding: 72px 0 48px;
+    }
+
+    .hero-panel {
+      padding: 28px;
+    }
+
+    .hero-stats {
+      grid-template-columns: 1fr;
+    }
+
+    .grid-3,
+    .steps {
+      grid-template-columns: 1fr;
+    }
+
+    .product-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cta-band {
+      padding: 32px 24px;
+    }
+
+    .hero h1 {
+      font-size: 38px;
+    }
+  }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap nav">
+    <a class="brand" href="#top">
+      <img class="brand-logo" src="images/certifpro.png" alt="CertifPro logo">
+      <div>
+        <div class="brand-title">CertifPro</div>
+        <div class="brand-sub">Plateforme d'e-learning</div>
+      </div>
+    </a>
+    <nav class="links">
+      <a href="#certifications">Certifications</a>
+      <a href="#how">Fonctionnement</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="btn btn-primary btn-small" onclick="openCheckout()">Réserver</button>
+    </div>
+  </div>
+</header>
+<main>
+  <section class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="hero-eyebrow">Offre premium pour professionnels</p>
+        <h1>Accédez aux 9 certificats Google <span>en un seul pack.</span></h1>
+        <p class="lead">CertifPro vous permet d’acquérir l’ensemble des Google Career Certificates avec un paiement unique et une gestion complète jusqu’à la livraison de votre code.</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" onclick="openCheckout()">Commencer maintenant</button>
+          <a class="btn btn-secondary" href="#certifications">Voir le catalogue</a>
+        </div>
+        <div class="hero-badges">
+          <div class="badge"><span class="badge-dot"></span><strong>Livraison e-mail & SMS</strong></div>
+          <div class="badge"><span class="badge-dot"></span><strong>Paiement sécurisé</strong></div>
+          <div class="badge"><span class="badge-dot"></span><strong>Accès immédiat</strong></div>
+          <div class="badge"><span class="badge-dot"></span><strong>Validité 12 mois</strong></div>
+        </div>
+      </div>
+      <aside class="hero-panel">
+        <div class="hero-panel-top">
+          <div>
+            <div class="label-pill">Proposition de valeur</div>
+            <h2>Une offre unique, professionnelle et transparente.</h2>
+          </div>
+          <div class="label-pill">Prix fixe</div>
+        </div>
+        <p>CertifPro centralise l’accès aux certificats Google, sans abonnement ni frais cachés. Vous payez une fois et recevez vos codes par e-mail et SMS.</p>
+        <div class="hero-stats">
+          <div class="hero-stat"><div class="value">9</div><div class="label">Certificats inclus</div></div>
+          <div class="hero-stat"><div class="value">12 mois</div><div class="label">Validité du coupon</div></div>
+          <div class="hero-stat"><div class="value">50 000</div><div class="label">FCFA</div></div>
+          <div class="hero-stat"><div class="value">100%</div><div class="label">Processus digital</div></div>
+        </div>
+        <div class="hero-note">Tous les paiements sont traités par SebPay et validés côté serveur pour garantir une expérience fiable.</div>
+      </aside>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap section-head">
+      <div class="kicker">Pourquoi CertifPro</div>
+      <h2>Un parcours simple, sécurisé et adapté aux professionnels.</h2>
+      <p>Notre service est conçu pour vous aider à acquérir des compétences reconnues sans perte de temps ni complexité administrative.</p>
+    </div>
+    <div class="grid-3">
+      <div class="feature-card">
+        <h3>Clarté totale</h3>
+        <p>Chaque offre est présentée avec un prix unique, une couverture claire et un engagement transparent.</p>
+        <div class="feature-pill"><span></span>Paiement sécurisé SebPay</div>
+      </div>
+      <div class="feature-card">
+        <h3>Livraison rapide</h3>
+        <p>Réception instantanée du code après validation, pour démarrer vos certifications sans délai.</p>
+        <div class="feature-pill"><span></span>Support d'assistance inclus</div>
+      </div>
+      <div class="feature-card">
+        <h3>Accompagnement professionnel</h3>
+        <p>Nous veillons à ce que chaque commande soit traitée avec rigueur et suivi client dédié.</p>
+        <div class="feature-pill"><span></span>Service client à l’écoute</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="certifications">
+    <div class="wrap section-head">
+      <div class="kicker">Catalogue</div>
+      <h2>Les 9 certifications incluses dans votre coupon.</h2>
+      <p>Un pack complet pour monter en compétences sur l’IA, le digital, la cybersécurité, l’UX et le support informatique.</p>
+    </div>
+    <div class="product-grid">
+      <article class="product-card"><div class="card-head"><span class="number">N°1</span><h3>IA Fondamentale</h3><p>Bases de l’intelligence artificielle et usages professionnels.</p></div><div class="card-footer"><span class="label">Durée</span><span class="value">~8 h</span></div></article>
+      <article class="product-card"><div class="card-head"><span class="number">N°2</span><h3>IA Professionnelle</h3><p>Approfondissement pour maîtriser l’IA en entreprise.</p></div><div class="card-footer"><span class="label">Durée</span><span class="value">~11 h</span></div></article>
+      <article class="product-card"><div class="card-head"><span class="number">N°3</span><h3>Prompting Avancé</h3><p>Construction de prompts efficaces pour des résultats concrets.</p></div><div class="card-footer"><span class="label">Durée</span><span class="value">~6 h</span></div></article>
+      <article class="product-card"><div class="card-head"><span class="number">N°4</span><h3>Gestion de projet</h3><p>Méthodes agiles et pilotage de projets tech.</p></div><div class="card-footer"><span class="label">Durée</span><span class="value">~141 h</span></div></article>
+      <article class="product-card"><div class="card-head"><span class="number">N°5</span><h3>Recherche d’emploi</h3><p>Optimisation de candidatures et préparation aux entretiens.</p></div><div class="card-footer"><span class="label">Durée</span><span class="value">~6 h</span></div></article>
+      <article class="product-card"><div class="card-head"><span class="number">N°6</span><h3>Cybersécurité</h3><p>Protection des actifs numériques et bonnes pratiques IT.</p></div><div class="card-footer"><span class="label">Durée</span><span class="value">~123 h</span></div></article>
+      <article class="product-card"><div class="card-head"><span class="number">N°7</span><h3>Analyse de données</h3><p>Collecte, traitement et visualisation pour décisions stratégiques.</p></div><div class="card-footer"><span class="label">Durée</span><span class="value">~146 h</span></div></article>
+      <article class="product-card"><div class="card-head"><span class="number">N°8</span><h3>Conception UX</h3><p>Design d'interfaces centrées utilisateur et prototypes efficaces.</p></div><div class="card-footer"><span class="label">Durée</span><span class="value">~112 h</span></div></article>
+      <article class="product-card"><div class="card-head"><span class="number">N°9</span><h3>Support informatique</h3><p>Administration système, réseaux et assistance utilisateur.</p></div><div class="card-footer"><span class="label">Durée</span><span class="value">~122 h</span></div></article>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="wrap section-head">
+      <div class="kicker">Fonctionnement</div>
+      <h2>Trois étapes simples pour finaliser votre commande.</h2>
+      <p>Une procédure optimisée pour acheter, payer et recevoir votre coupon en toute confiance.</p>
+    </div>
+    <div class="steps">
+      <div class="step-card"><div class="step-num">01</div><h3>Remplissez vos informations</h3><p>Nom, e-mail, téléphone et quantité de coupons.</p></div>
+      <div class="step-card"><div class="step-num">02</div><h3>Paiement sécurisé</h3><p>SebPay gère votre transaction en sécurité, Mobile Money ou carte.</p></div>
+      <div class="step-card"><div class="step-num">03</div><h3>Recevez votre coupon</h3><p>Votre code est envoyé par e-mail et SMS dès confirmation.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap section-head">
+      <div class="kicker">Engagement</div>
+      <h2>Des garanties pour une expérience professionnelle.</h2>
+      <p>Un service clair, un suivi transparent et un support disponible pour chaque commande.</p>
+    </div>
+    <div class="stats-strip">
+      <div class="stats-card"><div class="value">9</div><div class="label">Certificats inclus</div></div>
+      <div class="stats-card"><div class="value">12</div><div class="label">Mois de validité</div></div>
+      <div class="stats-card"><div class="value">1</div><div class="label">Paiement unique</div></div>
+      <div class="stats-card"><div class="value">100%</div><div class="label">Livraison digitale</div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap cta-band">
+      <div>
+        <h2>Prêt à démarrer votre transformation digitale ?</h2>
+        <p>Commandez votre coupon professionnel et accédez immédiatement à l’ensemble des certifications Google proposées.</p>
+      </div>
+      <div class="cta-panel">
+        <div class="row"><span>Prix unique</span><span>50 000 FCFA</span></div>
+        <div class="row"><span>Livraison</span><span>Email + SMS</span></div>
+        <div class="row"><span>Validité</span><span>12 mois</span></div>
+        <div class="total">50 000 FCFA</div>
+        <button class="btn btn-primary" onclick="openCheckout()">Obtenir mon coupon</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap section-head">
+      <div class="kicker">FAQ</div>
+      <h2>Questions fréquentes sur l’offre.</h2>
+    </div>
+    <div class="faq">
+      <details class="faq-item"><summary class="faq-q">Ce coupon donne-t-il accès aux 9 certifications ? <span class="plus">+</span></summary><div class="faq-a">Oui, un abonnement unique donne accès aux neuf parcours Google Career Certificates mentionnés sur cette page.</div></details>
+      <details class="faq-item"><summary class="faq-q">Comment reçois-je mon code après le paiement ? <span class="plus">+</span></summary><div class="faq-a">Le code est envoyé par e-mail et SMS dès que la transaction est confirmée côté serveur.</div></details>
+      <details class="faq-item"><summary class="faq-q">Quels moyens de paiement sont acceptés ? <span class="plus">+</span></summary><div class="faq-a">Mobile Money et carte bancaire via SebPay, selon votre configuration opérateur et pays.</div></details>
+      <details class="faq-item"><summary class="faq-q">Puis-je commander plusieurs coupons ? <span class="plus">+</span></summary><div class="faq-a">Oui, vous pouvez choisir plusieurs coupons dans le formulaire de paiement.</div></details>
+      <details class="faq-item"><summary class="faq-q">Le coupon expire-t-il ? <span class="plus">+</span></summary><div class="faq-a">Oui, le coupon reste valide 12 mois après la date d’achat.</div></details>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="wrap footer-row">
+    <div class="footer-brand"><img src="images/certifpro.png" alt="CertifPro logo"><span>CertifPro</span></div>
+    <div class="footer-note">© 2026 CertifPro. Certifications Google Career Certificates sur Coursera. Paiement sécurisé par SebPay.</div>
+  </div>
+</footer>
+<div class="modal-overlay" id="checkoutOverlay">
+  <div class="modal">
+    <button class="close-x" onclick="closeCheckout()" aria-label="Fermer">✕</button>
+    <h3>Réserver votre coupon</h3>
+    <p class="sub">9 certifications Google, un seul paiement sécurisé.</p>
+    <form id="checkoutForm">
+      <div class="field"><label for="fullname">Nom complet</label><input type="text" id="fullname" required placeholder="Ex. Aïcha Ngono"></div>
+      <div class="field"><label for="email">Adresse e-mail</label><input type="email" id="email" required placeholder="vous@exemple.com"></div>
+      <div class="field"><label for="phone">Numéro Mobile Money</label><input type="tel" id="phone" required placeholder="+237 6 XX XX XX XX"></div>
+      <div class="field"><label for="qty">Nombre de coupons</label><select id="qty"><option value="1">1 coupon — 50 000 FCFA</option><option value="2">2 coupons — 100 000 FCFA</option><option value="3">3 coupons — 150 000 FCFA</option><option value="5">5 coupons — 250 000 FCFA</option></select></div>
+      <div class="total-line"><span>Total à payer</span><span class="amt" id="totalAmt">50 000 FCFA</span></div>
+      <button type="submit" class="btn btn-primary pay-btn" id="payBtn">Payer avec SebPay</button>
+      <div class="status-msg" id="statusMsg"></div>
+      <p class="kpay-note">Le paiement est traité par votre backend via SebPay. Le code de coupon est généré après confirmation.</p>
+    </form>
+  </div>
+</div>
+<script>
+  const UNIT_PRICE = 50000;
+  const qtySelect = document.getElementById('qty');
+  const totalAmt = document.getElementById('totalAmt');
+  const statusMsg = document.getElementById('statusMsg');
+  const payBtn = document.getElementById('payBtn');
+
+  function formatFCFA(value) {
+    return value.toLocaleString('fr-FR') + ' FCFA';
+  }
+
+  qtySelect.addEventListener('change', () => {
+    totalAmt.textContent = formatFCFA(UNIT_PRICE * Number(qtySelect.value));
+  });
+
+  function openCheckout() {
+    document.getElementById('checkoutOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeCheckout() {
+    document.getElementById('checkoutOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+    statusMsg.className = 'status-msg';
+    statusMsg.textContent = '';
+  }
+
+  document.getElementById('checkoutOverlay').addEventListener('click', (event) => {
+    if (event.target.id === 'checkoutOverlay') closeCheckout();
+  });
+
+  document.getElementById('checkoutForm').addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const payload = {
+      fullname: document.getElementById('fullname').value.trim(),
+      email: document.getElementById('email').value.trim(),
+      phone: document.getElementById('phone').value.trim(),
+      quantity: Number(qtySelect.value)
+    };
+
+    payBtn.disabled = true;
+    payBtn.textContent = 'Connexion à SebPay…';
+    statusMsg.className = 'status-msg show info';
+    statusMsg.textContent = 'Initialisation du paiement…';
+
+    try {
+      const response = await fetch('/api/create-payment', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      if (!response.ok) {
+        throw new Error('backend-unreachable');
+      }
+
+      const data = await response.json();
+      if (data.checkout_url) {
+        window.location.href = data.checkout_url;
+        return;
+      }
+
+      statusMsg.className = 'status-msg show success';
+      statusMsg.textContent = 'Paiement initié avec succès. Suivez les instructions envoyées sur votre mobile.';
+    } catch (error) {
+      statusMsg.className = 'status-msg show error';
+      statusMsg.textContent = 'Le service de paiement n’est pas connecté. Vérifiez que le backend est déployé et accessible.';
+    } finally {
+      payBtn.disabled = false;
+      payBtn.textContent = 'Payer avec SebPay';
+    }
+  });
+</script>
+</body>
+</html>

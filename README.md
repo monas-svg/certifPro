@@ -1,128 +1,146 @@
-# CertifPass — site de vente de coupons (9 certifications Google / Coursera)
+# Certifpro
 
-## Ce que contient ce dossier
+Ce projet est une plateforme de vente et de paiement en architecture microservices, avec une interface publique et plusieurs services Django séparés.
 
-- **public/index.html** — le site public : présentation de l'offre, les 9
-  certifications (contenu tiré de votre catalogue PDF), et un tunnel de paiement.
-- **server.js** — le backend Node/Express qui appelle K-PAY **en toute
-  sécurité**, livre le coupon après paiement, et vous notifie par e-mail +
-  WhatsApp.
-- **Dockerfile / docker-compose.yml / .dockerignore / .env.example** — pour
-  lancer toute l'application en un seul conteneur. Voir **DOCKER.md** pour le
-  détail.
-- **GUIDE_KPAY.md** — guide dédié pour la configuration de l'agrégateur K-PAY.
+Il est pensé pour fonctionner localement avec Docker et PostgreSQL.
 
-## Pourquoi un backend est indispensable
+## Ce que contient le projet
 
-`index.html` est un fichier statique : tout ce qu'il contient est visible par
-n'importe quel visiteur (clic droit → "Afficher le code source"). Une clé API
-K-PAY placée dans ce fichier serait immédiatement récupérable et utilisable
-par n'importe qui pour créer des paiements en votre nom.
+Le dépôt comprend plusieurs services :
 
-C'est pourquoi le bouton "Payer avec K-PAY" appelle une route de **votre**
-serveur (`/api/create-payment`), qui elle seule connaît la clé secrète K-PAY
-(stockée dans une variable d'environnement, jamais dans le code envoyé au
-navigateur).
+- site-public : site vitrine et parcours client
+- catalog-service : gestion du catalogue
+- order-service : gestion des commandes
+- payment-service : gestion des paiements et confirmation webhook
+- delivery-service : gestion de la livraison et envoi des mails
+- postgres : base de données PostgreSQL
+- rabbitmq : broker de messages pour les événements
+- gateway : point d’entrée Nginx
 
-```
-Navigateur (public/index.html)
-      │  POST /api/create-payment  (nom, email, tél., montant)
-      ▼
-Votre serveur (server.js)
-      │  POST https://api.k-pay.app/v1/payments   Authorization: Bearer <clé secrète>
-      ▼
-K-PAY (traite le paiement Mobile Money / carte)
-      │  Webhook → /webhooks/kpay  (statut : succès / échec)
-      ▼
-Votre serveur génère le(s) code(s) de coupon, les envoie au client,
-et vous notifie (admin) par e-mail + WhatsApp
+## Prérequis
+
+Avant de lancer le projet, vérifie que tu as installé :
+
+- Docker
+- Docker Compose
+- Git
+- Python (si tu veux lancer un service directement hors Docker)
+
+## Démarrage rapide
+
+À la racine du projet, exécute :
+
+```bash
+docker compose up --build
 ```
 
-**Deux façons de lancer ce serveur :**
-- **Avec Docker (recommandé)** — voir `DOCKER.md`, une seule commande
-  (`docker compose up --build`) démarre tout.
-- **Sans Docker** — voir les étapes ci-dessous.
+Tu peux ensuite ouvrir les services suivants dans le navigateur :
 
-## Mise en route
+- Site public : http://localhost:8010
+- Gateway Nginx : http://localhost:8090
+- RabbitMQ UI : http://localhost:15672
+- PostgreSQL : localhost:5432
 
-1. **Créer un compte K-PAY** sur https://kpay.site et récupérer :
-   - votre clé API secrète (sandbox d'abord, puis production),
-   - le secret utilisé pour signer les webhooks.
-2. **Vérifier le format exact de l'API dans votre tableau de bord K-PAY**
-   (onglet Documentation). Ce projet utilise le format publié publiquement sur
-   la page d'accueil de K-PAY (`POST https://api.k-pay.app/v1/payments` avec
-   `amount`, `currency`, `provider`, `customer`), mais les noms de champs pour
-   les moyens de paiement (`provider`), le format exact du webhook et le nom
-   de l'en-tête de signature peuvent varier — confirmez-les avant la mise en
-   production. Adaptez `server.js` en conséquence.
-3. **Installer et lancer le backend** (sans Docker) :
-   ```bash
-   npm install
-   cp .env.example .env   # puis remplissez vos vraies valeurs
-   node server.js
-   ```
-   Avec Docker, cette étape se résume à `docker compose up --build` — voir
-   `DOCKER.md`.
-4. `server.js` sert automatiquement `public/index.html` — pas besoin
-   d'hébergement séparé. Configurez seulement l'URL de webhook
-   (`https://votre-domaine.com/webhooks/kpay`) dans votre tableau de bord
-   K-PAY.
-5. Passer `KPAY_SECRET_KEY` en clé **live** et retester tout le tunnel avant
-   d'annoncer l'ouverture des ventes.
+## Comptes de démonstration
 
-## Modifier le contenu
+Les identifiants par défaut sont configurés dans le fichier .env et dans le docker-compose :
 
-- **Prix / quantités** : dans `public/index.html`, variable `UNIT_PRICE` (JS
-  en bas de page) et les `<option>` du champ "Nombre de coupons".
-- **Descriptions des 9 certifications** : section `#certifications`, une
-  `.cert-card` par certificat — le texte vient de votre catalogue PDF.
-- **FAQ** : section `#faq`, blocs `<details>` — ajoutez ou modifiez librement.
+- admin Django : admin / admin12345
+- RabbitMQ : guest / guest
 
-## Recevoir le formulaire d'inscription par e-mail + WhatsApp
+## Variables d’environnement
 
-Dès qu'un paiement est confirmé, `server.js` vous envoie (à vous,
-l'administrateur — pas au client) un récapitulatif du formulaire rempli, par
-e-mail **et** par WhatsApp. Cela ne demande pas votre clé K-PAY : deux autres
-identifiants, distincts, à garder eux aussi uniquement dans `.env`.
+Un fichier .env est présent à la racine du projet. Il contient les paramètres de configuration comme :
 
-`nodemailer` est déjà listé dans `package.json` — rien à installer à part
-(`npm install`, ou automatique avec Docker).
+- DEBUG
+- SECRET_KEY
+- DB_USER / DB_PASSWORD
+- URLs internes des services
+- configuration Chariow
+- paramètres d’email
 
-**1. Créer un mot de passe d'application Gmail** (Gmail bloque désormais le
-SMTP avec votre mot de passe habituel) :
-- Activez la validation en 2 étapes sur votre compte Google.
-- Allez sur `myaccount.google.com/apppasswords`, créez un mot de passe
-  d'application "Mail", copiez la valeur générée.
+Tu peux modifier ce fichier selon ton environnement local.
 
-**2. Obtenir une clé WhatsApp CallMeBot (gratuit, ~2 minutes)** :
-- Ajoutez le contact `+34 644 51 95 23` sur WhatsApp.
-- Envoyez-lui : `I allow callmebot to send me messages`.
-- Il répond avec votre clé API personnelle.
+## Structure du dépôt
 
-**3. Compléter votre `.env`** (voir aussi `.env.example`) :
-```
-GMAIL_USER=sermoshop@gmail.com
-GMAIL_APP_PASSWORD=xxxxxxxxxxxxxxxx
-ADMIN_NOTIFY_EMAIL=sermoshop@gmail.com
-CALLMEBOT_PHONE=+237600000000
-CALLMEBOT_APIKEY=xxxxxxx
+```text
+certifpro/
+├── docker-compose.yml
+├── .env
+├── .env.example
+├── README.md
+├── scripts/
+│   └── init-db.sql
+├── services/
+│   ├── catalog-service/
+│   ├── delivery-service/
+│   ├── gateway/
+│   ├── order-service/
+│   ├── payment-service/
+│   └── site-public/
+└── design/
 ```
 
-Aucune de ces clés — K-PAY, Gmail ou CallMeBot — ne doit jamais être collée
-dans une conversation, ni apparaître dans `public/index.html` : elles
-restent uniquement dans le `.env` de votre serveur, qui n'est jamais envoyé
-au navigateur (et exclu de l'image Docker par `.dockerignore`).
+## Services importants
 
-*Limite à connaître* : CallMeBot est pensé pour des alertes personnelles à
-faible volume (quelques dizaines de messages/jour). Si votre volume de ventes
-grandit, migrez vers l'API officielle WhatsApp Business (Meta Cloud API) ou
-Twilio — je peux réécrire `notifyAdmin()` pour l'un ou l'autre le moment venu.
+### site-public
+C’est le frontend public du site. Il affiche le catalogue, le formulaire d’inscription et le parcours de paiement.
 
-## Ce qui n'est pas inclus (à prévoir)
+### catalog-service
+Il gère les produits et les données du catalogue.
 
-- Base de données réelle pour stocker les commandes (le fichier exemple
-  utilise une simple `Map` en mémoire, effacée à chaque redémarrage).
-- Envoi effectif des e-mails/SMS de coupon (stub `deliverCoupon()` à
-  compléter avec votre prestataire d'e-mail/SMS).
-- Génération et suivi des codes de coupon dans un vrai système de gestion
-  (pour éviter la réutilisation d'un même code par plusieurs personnes).
+### order-service
+Il traite les commandes et les validations de commande.
+
+### payment-service
+Il centralise les paiements, la confirmation de transaction et le traitement webhooks.
+
+### delivery-service
+Il est responsable de la livraison et de l’envoi des messages liés à la commande.
+
+## Gestion des données
+
+Les données sont stockées dans PostgreSQL. Le conteneur est initialisé avec le fichier :
+
+- scripts/init-db.sql
+
+## Redémarrer proprement
+
+Si tu veux relancer tout le projet après des changements :
+
+```bash
+docker compose down
+docker compose up --build
+```
+
+## Dépannage rapide
+
+### Un service ne démarre pas
+Vérifie :
+
+- que Docker tourne bien
+- que le .env est présent
+- que les ports ne sont pas déjà utilisés
+- que les images se reconstruisent correctement
+
+### La base ne répond pas
+Tu peux relancer uniquement PostgreSQL :
+
+```bash
+docker compose up -d postgres
+```
+
+### Le site ne s’ouvre pas
+Vérifie que le service site-public est bien démarré puis ouvre :
+
+```text
+http://localhost:8010
+```
+
+## Notes
+
+Ce projet est un environnement de développement local. Pour une mise en production, il faudra revoir les secrets, les URLs, la sécurité et les configurations réseau.
+
+---
+
+Cette version est plus complète et plus claire pour démarrer le projet.

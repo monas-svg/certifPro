@@ -10,6 +10,9 @@ jobs:
   build:
     name: Build ${{ matrix.service }}
     runs-on: ubuntu-latest
+    env:
+      # Sur les PR Dependabot les secrets sont vides : on garde un nom d'image valide
+      IMAGE: ${{ secrets.DOCKERHUB_USERNAME || 'local' }}/certifpro-${{ matrix.service }}
     strategy:
       fail-fast: false
       matrix:
@@ -34,5 +37,5 @@ jobs:
           cache-from: type=gha,scope=${{ matrix.service }}
           cache-to: type=gha,mode=max,scope=${{ matrix.service }}
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/certifpro-${{ matrix.service }}:latest
-            ${{ secrets.DOCKERHUB_USERNAME }}/certifpro-${{ matrix.service }}:${{ github.sha }}
+            ${{ env.IMAGE }}:latest
+            ${{ env.IMAGE }}:${{ github.sha }}

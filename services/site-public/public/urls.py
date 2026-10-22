@@ -8,5 +8,7 @@ urlpatterns = [
     path("succes/", views.succes, name="succes"),
     path("mock-pay/<str:tx>/", views.mock_pay, name="mock_pay"),
     path("mock-pay/<str:tx>/confirm/", views.mock_pay_confirm, name="mock_pay_confirm"),
+    path("politique-de-confidentialite/", views.politique_confidentialite, name="politique_confidentialite"),
+    path("conditions-utilisation/", views.conditions_utilisation, name="conditions_utilisation"),
     path("renvoyer/", views.renvoyer, name="renvoyer"),
 ]

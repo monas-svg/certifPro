@@ -52,10 +52,10 @@
     </script>
     <style>
         :root {
-            --bg: #f4f5f1;
+            --bg: #f5f5f3;
             --card: #ffffff;
             --primary: #0B2547;
-            --primary-soft: #eaf3fb;
+            --primary-soft: #eef3f8;
             --muted: #637387;
             --accent: #1BA7E5;
         }
@@ -86,26 +86,26 @@
             color: white;
             font-weight: 700;
             padding: 0.85rem 1.35rem;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            box-shadow: 0 10px 20px rgba(11, 37, 71, 0.12);
+            transition: opacity 0.2s ease;
+            box-shadow: none;
         }
 
         .btn-primary:hover {
-            transform: translateY(-1px);
+            opacity: 0.96;
         }
 
         .pack-card {
             background: white;
             border: 1px solid rgba(11, 37, 71, 0.08);
             border-radius: 20px;
-            box-shadow: 0 12px 28px rgba(11, 37, 71, 0.05);
+            box-shadow: none;
         }
 
         .soft-panel {
             background: #ffffff;
             border-radius: 20px;
             border: 1px solid rgba(11, 37, 71, 0.08);
-            box-shadow: 0 12px 28px rgba(11, 37, 71, 0.05);
+            box-shadow: none;
         }
 
         .brand-mark {
@@ -120,7 +120,7 @@
     </style>
 </head>
 <body class="min-h-screen bg-[#f4f5f1] text-text-primary">
-    <header class="border-b border-[#dfe5eb] bg-white/90 backdrop-blur-sm">
+    <header class="border-b border-[#dfe5eb] bg-white">
         <div class="page-shell flex items-center justify-between gap-4 py-4">
             <a href="/" class="flex items-center gap-2 text-xl font-extrabold tracking-tight no-underline md:text-2xl">
                 <span class="brand-mark">Certif</span><span class="brand-accent">pro</span>
@@ -140,13 +140,20 @@
         {% block content %}{% endblock %}
     </main>
 
-    <footer class="border-t border-slate-200 bg-white/80 py-8">
-        <div class="page-shell flex flex-col items-center justify-between gap-4 text-center md:flex-row md:text-left">
-            <div class="text-sm font-medium text-text-muted">Formations métiers • Certifications • Évolution</div>
-            <div class="flex flex-wrap items-center justify-center gap-3 text-sm text-text-muted md:justify-end">
-                <a href="/" class="text-text-muted no-underline hover:text-primary-deep">Accueil</a>
-                <span>•</span>
-                <a href="/renvoyer/" class="text-text-muted no-underline hover:text-primary-deep">Support</a>
+    <footer class="border-t border-[#dfe5eb] bg-white py-2.5">
+        <div class="page-shell flex flex-col items-center justify-center gap-1.5 md:flex-row md:gap-4">
+            <div class="flex items-center gap-1.5 text-[9px] font-bold uppercase tracking-[0.12em] text-text-primary">
+                <span class="brand-mark text-[10px] md:text-xs">Certif</span><span class="brand-accent text-[10px] md:text-xs">pro</span>
+            </div>
+
+            <nav class="flex items-center gap-2 text-[7.5px] font-semibold tracking-[0.08em] uppercase text-text-primary/80">
+                <a href="/politique-de-confidentialite/" class="no-underline text-text-primary/80 hover:text-secondary">Confidentialité</a>
+                <span class="text-text-primary/50">•</span>
+                <a href="/conditions-utilisation/" class="no-underline text-text-primary/80 hover:text-secondary">Conditions d’utilisation</a>
+            </nav>
+
+            <div class="text-[7.5px] font-medium tracking-[0.08em] text-text-primary/80 uppercase">
+                © 2026 Mohamed Nasser Mounchikpou Njiemessa
             </div>
         </div>
     </footer>

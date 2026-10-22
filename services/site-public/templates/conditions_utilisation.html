@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}Conditions d’utilisation - Certifpro{% endblock %}
+{% block content %}
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-[#0b2547]/40 px-4 py-6 backdrop-blur-[1px]" id="legal-overlay">
+    <div class="soft-panel relative max-h-[88vh] w-full max-w-3xl overflow-y-auto p-6 md:p-8" id="legal-panel" role="dialog" aria-modal="true" aria-labelledby="legal-title">
+        <button type="button" id="close-legal" class="absolute right-4 top-4 inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#dfe5eb] bg-white text-lg text-text-primary transition hover:border-secondary hover:text-secondary" aria-label="Fermer">×</button>
+
+        <div class="space-y-6 pr-6">
+            <div>
+                <p class="mb-2 text-xs font-bold uppercase tracking-[0.12em] text-text-muted">Règlement</p>
+                <h1 id="legal-title" class="text-3xl font-extrabold text-primary md:text-4xl">Conditions d’utilisation</h1>
+            </div>
+
+            <div class="space-y-4 text-base leading-8 text-text-primary">
+                <p>En utilisant Certifpro, vous acceptez les présentes conditions d’utilisation. Ces conditions peuvent être modifiées à tout moment, sans préavis, afin de refléter les évolutions du service.</p>
+                <p>Le service est proposé pour fournir des parcours de formation et de certification liés à des métiers de la tech. Les contenus sont fournis à titre éducatif et de mise en relation avec des ressources externes reconnues.</p>
+                <p>Vous vous engagez à utiliser la plateforme uniquement dans un cadre légal, sérieux et conforme à l’usage attendu d’un service d’information et de vente de parcours de formation.</p>
+                <p>Les paiements sont traités via les moyens de paiement autorisés. Une commande n’est considérée comme validée qu’après confirmation du paiement et acceptation du traitement associé.</p>
+                <p>Les liens de formation et de certification sont transmis uniquement après confirmation du paiement, conformément à la politique de livraison du service.</p>
+                <p>Certifpro ne peut être tenu responsable de l’évolution, la disponibilité ou la modification des ressources externes mises à disposition par les organismes de formation ou certification.</p>
+                <p>L’utilisateur est responsable de la vérification des informations saisies lors du passage de commande, notamment l’adresse e-mail de réception.</p>
+                <p>En cas de litige, la plateforme reste soumise aux lois et règlements applicables en vigueur sur le territoire où elle est utilisée.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const overlay = document.getElementById('legal-overlay');
+    const panel = document.getElementById('legal-panel');
+    const closeBtn = document.getElementById('close-legal');
+
+    const closeLegal = () => {
+        if (document.referrer && document.referrer.includes(window.location.hostname)) {
+            window.history.back();
+            return;
+        }
+        window.location.href = '/';
+    };
+
+    closeBtn.addEventListener('click', closeLegal);
+
+    document.addEventListener('click', (event) => {
+        if (event.target === overlay || !panel.contains(event.target)) {
+            closeLegal();
+        }
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+            closeLegal();
+        }
+    });
+
+    panel.addEventListener('click', (event) => {
+        event.stopPropagation();
+    });
+</script>
+{% endblock %}

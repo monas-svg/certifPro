@@ -23,6 +23,11 @@ def _get_metiers():
     return _request_json("GET", f"{settings.CATALOG_URL}/api/metiers/")
 
 
+def _sort_metiers_for_homepage(metiers):
+    priority = {"marketing-digital": 0, "google-ads": 1, "facebook-ads": 2}
+    return sorted(metiers, key=lambda m: priority.get((m or {}).get("slug"), 99))
+
+
 def _validate_customer_data(post_data):
     nom = (post_data.get("nom") or "").strip()
     prenom = (post_data.get("prenom") or "").strip()
@@ -38,7 +43,7 @@ def _validate_customer_data(post_data):
 
 
 def index(request):
-    metiers = _get_metiers()
+    metiers = _sort_metiers_for_homepage(_get_metiers())
     return render(request, "index.html", {"metiers": metiers})
 
 
@@ -109,6 +114,14 @@ def mock_pay_confirm(request, tx):
         return HttpResponseBadRequest("Paiement non confirmé")
 
     return redirect(f"/succes/?ref={reference}")
+
+
+def politique_confidentialite(request):
+    return render(request, "politique_confidentialite.html")
+
+
+def conditions_utilisation(request):
+    return render(request, "conditions_utilisation.html")
 
 
 def renvoyer(request):

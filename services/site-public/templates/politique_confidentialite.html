@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}Politique de confidentialité - Certifpro{% endblock %}
+{% block content %}
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-[#0b2547]/40 px-4 py-6 backdrop-blur-[1px]" id="legal-overlay">
+    <div class="soft-panel relative max-h-[88vh] w-full max-w-3xl overflow-y-auto p-6 md:p-8" id="legal-panel" role="dialog" aria-modal="true" aria-labelledby="legal-title">
+        <button type="button" id="close-legal" class="absolute right-4 top-4 inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#dfe5eb] bg-white text-lg text-text-primary transition hover:border-secondary hover:text-secondary" aria-label="Fermer">×</button>
+
+        <div class="space-y-6 pr-6">
+            <div>
+                <p class="mb-2 text-xs font-bold uppercase tracking-[0.12em] text-text-muted">Protection des données</p>
+                <h1 id="legal-title" class="text-3xl font-extrabold text-primary md:text-4xl">Politique de confidentialité</h1>
+            </div>
+
+            <div class="space-y-4 text-base leading-8 text-text-primary">
+                <p>Certifpro collecte uniquement les informations nécessaires au traitement de votre commande, à la livraison des liens et au suivi des paiements.</p>
+                <p>Les données collectées peuvent inclure votre nom, prénom, adresse e-mail, choix de métier, opérateur de paiement et références de transaction associées.</p>
+                <p>Ces informations sont utilisées uniquement pour : traiter votre achat, vérifier le paiement, envoyer les liens après confirmation, et répondre à vos demandes d’assistance.</p>
+                <p>Nous ne vendons ni ne louons vos données personnelles. Elles ne sont pas partagées avec des tiers, sauf pour l’exécution technique du service de paiement ou de livraison, et uniquement dans le cadre strictement nécessaire.</p>
+                <p>Nous mettons en œuvre des mesures raisonnables pour protéger vos données contre la perte, l’accès non autorisé, la divulgation ou la modification.</p>
+                <p>Vous pouvez demander à consulter, corriger ou supprimer les données vous concernant, en contactant l’équipe Certifpro par le biais du support.</p>
+                <p>Certifpro peut modifier cette politique afin de refléter l’évolution de ses pratiques. Les changements majeurs seront communiqués de manière visible sur la plateforme.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const overlay = document.getElementById('legal-overlay');
+    const panel = document.getElementById('legal-panel');
+    const closeBtn = document.getElementById('close-legal');
+
+    const closeLegal = () => {
+        if (document.referrer && document.referrer.includes(window.location.hostname)) {
+            window.history.back();
+            return;
+        }
+        window.location.href = '/';
+    };
+
+    closeBtn.addEventListener('click', closeLegal);
+
+    document.addEventListener('click', (event) => {
+        if (event.target === overlay || !panel.contains(event.target)) {
+            closeLegal();
+        }
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+            closeLegal();
+        }
+    });
+
+    panel.addEventListener('click', (event) => {
+        event.stopPropagation();
+    });
+</script>
+{% endblock %}

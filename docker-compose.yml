@@ -18,6 +18,9 @@ services:
   rabbitmq:
     image: rabbitmq:3.13-management-alpine
     restart: unless-stopped
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_DEFAULT_USER}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS}
     ports: ["127.0.0.1:5672:5672", "127.0.0.1:15672:15672"]
     healthcheck:
       test: ["CMD", "rabbitmq-diagnostics", "-q", "check_port_connectivity"]
@@ -39,7 +42,7 @@ services:
       DB_PASSWORD: ${DB_PASSWORD:-certifpro}
       DB_HOST: ${DB_HOST:-postgres}
       DB_PORT: ${DB_PORT:-5432}
-      RABBITMQ_URL: amqp://guest:guest@rabbitmq:5672/%2F
+      RABBITMQ_URL: amqp://${RABBITMQ_DEFAULT_USER}:${RABBITMQ_DEFAULT_PASS}@rabbitmq:5672/%2F
       SERVICE_TOKEN: ${SERVICE_TOKEN:-dev-service-token}
       DJANGO_SUPERUSER_USERNAME: ${DJANGO_SUPERUSER_USERNAME:-admin}
       DJANGO_SUPERUSER_PASSWORD: ${DJANGO_SUPERUSER_PASSWORD:-admin12345}
@@ -61,7 +64,7 @@ services:
       DB_PASSWORD: ${DB_PASSWORD:-certifpro}
       DB_HOST: ${DB_HOST:-postgres}
       DB_PORT: ${DB_PORT:-5432}
-      RABBITMQ_URL: amqp://guest:guest@rabbitmq:5672/%2F
+      RABBITMQ_URL: amqp://${RABBITMQ_DEFAULT_USER}:${RABBITMQ_DEFAULT_PASS}@rabbitmq:5672/%2F
       SERVICE_TOKEN: ${SERVICE_TOKEN:-dev-service-token}
       CATALOG_URL: ${CATALOG_URL:-http://catalog-service:8001}
     depends_on:
@@ -82,7 +85,7 @@ services:
       DB_PASSWORD: ${DB_PASSWORD:-certifpro}
       DB_HOST: ${DB_HOST:-postgres}
       DB_PORT: ${DB_PORT:-5432}
-      RABBITMQ_URL: amqp://guest:guest@rabbitmq:5672/%2F
+      RABBITMQ_URL: amqp://${RABBITMQ_DEFAULT_USER}:${RABBITMQ_DEFAULT_PASS}@rabbitmq:5672/%2F
       SERVICE_TOKEN: ${SERVICE_TOKEN:-dev-service-token}
       SITE_URL: ${SITE_URL:-http://localhost:8010}
       CHARIOW_ENABLED: ${CHARIOW_ENABLED:-false}
@@ -108,7 +111,7 @@ services:
       DB_PASSWORD: ${DB_PASSWORD:-certifpro}
       DB_HOST: ${DB_HOST:-postgres}
       DB_PORT: ${DB_PORT:-5432}
-      RABBITMQ_URL: amqp://guest:guest@rabbitmq:5672/%2F
+      RABBITMQ_URL: amqp://${RABBITMQ_DEFAULT_USER}:${RABBITMQ_DEFAULT_PASS}@rabbitmq:5672/%2F
       SERVICE_TOKEN: ${SERVICE_TOKEN:-dev-service-token}
       ORDER_URL: ${ORDER_URL:-http://order-service:8002}
       CATALOG_URL: ${CATALOG_URL:-http://catalog-service:8001}

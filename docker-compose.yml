@@ -1,6 +1,7 @@
 services:
   postgres:
     image: postgres:16-alpine
+    restart: unless-stopped
     environment:
       POSTGRES_USER: ${DB_USER:-certifpro}
       POSTGRES_PASSWORD: ${DB_PASSWORD:-certifpro}
@@ -8,7 +9,7 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
       - ./scripts/init-db.sql:/docker-entrypoint-initdb.d/init.sql:ro
-    ports: ["5432:5432"]
+    ports: ["127.0.0.1:5432:5432"]
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U certifpro"]
       interval: 5s
@@ -16,14 +17,18 @@ services:
 
   rabbitmq:
     image: rabbitmq:3.13-management-alpine
-    ports: ["5672:5672", "15672:15672"]
+    restart: unless-stopped
+    ports: ["127.0.0.1:5672:5672", "127.0.0.1:15672:15672"]
     healthcheck:
-      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
-      interval: 5s
-      retries: 10
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "check_port_connectivity"]
+      interval: 10s
+      timeout: 10s
+      start_period: 30s
+      retries: 12
 
   catalog-service:
     build: ./services/catalog-service
+    restart: unless-stopped
     ports: ["8021:8001"]
     environment:
       DEBUG: ${DEBUG:-True}
@@ -45,6 +50,7 @@ services:
 
   order-service:
     build: ./services/order-service
+    restart: unless-stopped
     ports: ["8022:8002"]
     environment:
       DEBUG: ${DEBUG:-True}
@@ -65,6 +71,7 @@ services:
 
   payment-service:
     build: ./services/payment-service
+    restart: unless-stopped
     ports: ["8023:8003"]
     environment:
       DEBUG: ${DEBUG:-True}
@@ -90,6 +97,7 @@ services:
 
   delivery-service:
     build: ./services/delivery-service
+    restart: unless-stopped
     ports: ["8024:8004"]
     environment:
       DEBUG: ${DEBUG:-True}
@@ -114,6 +122,7 @@ services:
 
   site-public:
     build: ./services/site-public
+    restart: unless-stopped
     ports: ["8010:8000"]
     environment:
       DEBUG: ${DEBUG:-True}
@@ -132,6 +141,7 @@ services:
 
   gateway:
     image: nginx:1.27-alpine
+    restart: unless-stopped
     volumes:
       - ./services/gateway/nginx.conf:/etc/nginx/nginx.conf:ro
     ports: ["8090:80"]

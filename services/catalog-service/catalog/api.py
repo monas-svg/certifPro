@@ -16,14 +16,14 @@ class InternalRessourceSerializer(serializers.ModelSerializer):
 class MetierListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Metier
-        fields = ["id","nom","slug","description","prix_xaf","visuel"]
+        fields = ["id","nom","slug","description","prix_xaf","prix_promo_xaf","prix_actuel","visuel"]
 
 class MetierDetailSerializer(serializers.ModelSerializer):
     competences = CompetenceSerializer(many=True)
     ressources = PublicRessourceSerializer(many=True)
     class Meta:
         model = Metier
-        fields = ["id","nom","slug","description","prix_xaf","visuel","competences","ressources"]
+        fields = ["id","nom","slug","description","prix_xaf","prix_promo_xaf","prix_actuel","visuel","competences","ressources"]
 
 class MetierViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Metier.objects.filter(actif=True).prefetch_related("competences","ressources")

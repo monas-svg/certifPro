@@ -8,7 +8,8 @@ METIERS = [
         "nom": "Cybersécurité",
         "slug": "cybersecurite",
         "description": "Parcours complet pour sécuriser les systèmes, réseaux et applications.",
-        "prix_xaf": 25000,
+        "prix_xaf": 15000,
+        "prix_promo_xaf": 8000,
         "visuel": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80",
         "competences": [
             "Sécurité des réseaux",
@@ -27,7 +28,8 @@ METIERS = [
         "nom": "Ingénieur DevOps",
         "slug": "ingenieur-devops",
         "description": "Automation, CI/CD, conteneurisation et infrastructure cloud pour livrer plus vite.",
-        "prix_xaf": 29000,
+        "prix_xaf": 15000,
+        "prix_promo_xaf": 8000,
         "visuel": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80",
         "competences": [
             "Linux & automation",
@@ -46,7 +48,8 @@ METIERS = [
         "nom": "Ingénieur Cloud",
         "slug": "ingenieur-cloud",
         "description": "Architecture cloud, scalabilité, sécurité et opérations sur AWS, Azure et GCP.",
-        "prix_xaf": 27000,
+        "prix_xaf": 15000,
+        "prix_promo_xaf": 8000,
         "visuel": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=900&q=80",
         "competences": [
             "Architecture cloud",
@@ -65,7 +68,8 @@ METIERS = [
         "nom": "Développeur Backend",
         "slug": "developpeur-backend",
         "description": "API, bases de données, services métier et robustesse applicative.",
-        "prix_xaf": 24000,
+        "prix_xaf": 15000,
+        "prix_promo_xaf": 8000,
         "visuel": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=900&q=80",
         "competences": [
             "Python & Django",
@@ -84,7 +88,8 @@ METIERS = [
         "nom": "Développeur Full Stack",
         "slug": "developpeur-full-stack",
         "description": "Applications web complètes du frontend à l'API, en passant par la persistance.",
-        "prix_xaf": 20000,
+        "prix_xaf": 15000,
+        "prix_promo_xaf": 8000,
         "visuel": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=900&q=80",
         "competences": [
             "Frontend moderne",
@@ -103,7 +108,8 @@ METIERS = [
         "nom": "Data Analyste",
         "slug": "data-analyste",
         "description": "Décodage des données, dashboards, reporting et prise de décision.",
-        "prix_xaf": 18000,
+        "prix_xaf": 15000,
+        "prix_promo_xaf": 8000,
         "visuel": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80",
         "competences": [
             "SQL avancé",
@@ -122,7 +128,8 @@ METIERS = [
         "nom": "Développeur IA",
         "slug": "developpeur-ia",
         "description": "Conception d'applications intelligentes, LLM et pipelines de données augmentées.",
-        "prix_xaf": 32000,
+        "prix_xaf": 15000,
+        "prix_promo_xaf": 8000,
         "visuel": "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=900&q=80",
         "competences": [
             "LLM & RAG",
@@ -142,6 +149,7 @@ METIERS = [
         "slug": "marketing-digital",
         "description": "Acquisition, performance marketing et optimisation des campagnes digitales.",
         "prix_xaf": 15000,
+        "prix_promo_xaf": 8000,
         "visuel": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80",
         "competences": [
             "SEO & contenu",
@@ -160,7 +168,8 @@ METIERS = [
         "nom": "Google Ads",
         "slug": "google-ads",
         "description": "Gestion de campagnes Google Ads, recherche, shopping et optimisation des conversions.",
-        "prix_xaf": 18000,
+        "prix_xaf": 15000,
+        "prix_promo_xaf": 8000,
         "visuel": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80",
         "competences": [
             "Stratégie Search & Display",
@@ -179,7 +188,8 @@ METIERS = [
         "nom": "Facebook Ads",
         "slug": "facebook-ads",
         "description": "Campagnes Meta Ads, ciblage d'audience, création de messages et optimisation du retour sur investissement.",
-        "prix_xaf": 17000,
+        "prix_xaf": 15000,
+        "prix_promo_xaf": 8000,
         "visuel": "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=900&q=80",
         "competences": [
             "Ciblage et audience",
@@ -206,21 +216,20 @@ class Command(BaseCommand):
 
         created = 0
         for payload in METIERS:
-            metier, metier_created = Metier.objects.update_or_create(
+            metier, metier_created = Metier.objects.get_or_create(
                 slug=payload["slug"],
                 defaults={
                     "nom": payload["nom"],
                     "description": payload["description"],
                     "prix_xaf": payload["prix_xaf"],
+                    "prix_promo_xaf": payload["prix_promo_xaf"],
                     "visuel": payload["visuel"],
                     "actif": True,
                 },
             )
-            if metier_created:
-                created += 1
-
-            metier.competences.all().delete()
-            metier.ressources.all().delete()
+            if not metier_created:
+                continue
+            created += 1
 
             for order, libelle in enumerate(payload["competences"], start=1):
                 Competence.objects.create(metier=metier, libelle=libelle, ordre=order)

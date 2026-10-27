@@ -45,7 +45,7 @@ def create_order(request):
         Commande.objects.filter(
             client=client,
             metier_slug=metier["slug"],
-            montant_xaf=metier["prix_xaf"],
+            montant_xaf=metier.get("prix_actuel") or metier["prix_xaf"],
             operateur=d.get("operateur", ""),
         )
         .order_by("-cree_le")
@@ -61,7 +61,7 @@ def create_order(request):
         reference=ref,
         client=client,
         metier_slug=metier["slug"],
-        montant_xaf=metier["prix_xaf"],
+        montant_xaf=metier.get("prix_actuel") or metier["prix_xaf"],
         operateur=d.get("operateur", ""),
     )
     events.publish("order.created", {

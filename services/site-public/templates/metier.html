@@ -53,7 +53,7 @@
     <section class="soft-panel p-5 md:p-6">
         <div class="mb-4 flex items-center gap-3">
             <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-[#eaf6ff] text-primary">
-                <span class="material-symbols-outlined text-xl">terminal</span>
+                {% include "_icon.html" with slug=metier.slug size=24 %}
             </div>
             <div>
                 <h2 class="text-xl font-extrabold text-primary">Le rôle en entreprise africaine &amp; remote</h2>
@@ -157,7 +157,7 @@
         <div class="flex items-center justify-between gap-4">
             <div>
                 <div class="text-xs font-semibold uppercase tracking-[0.12em] text-text-muted">Prix unique</div>
-                <div class="mt-1 text-4xl font-extrabold text-primary">{{ metier.prix_xaf }} <span class="text-lg font-semibold text-text-muted">FCFA</span></div>
+                <div class="mt-1 text-4xl font-extrabold text-primary">{% if metier.prix_promo_xaf %}<s class="mr-2 text-lg font-semibold text-text-muted">{{ metier.prix_xaf }}</s>{{ metier.prix_promo_xaf }}{% else %}{{ metier.prix_xaf }}{% endif %} <span class="text-lg font-semibold text-text-muted">FCFA</span></div>
             </div>
             <span class="inline-flex items-center gap-2 rounded-full bg-[#eaf9f2] px-3 py-1.5 text-sm font-bold text-[#0C6B5B]">
                 <span class="material-symbols-outlined text-base">verified</span>

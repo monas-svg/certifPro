@@ -103,45 +103,28 @@
                         <div class="flex items-start justify-between gap-3">
                             <div class="flex items-center gap-3">
                                 <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-[#eaf6ff] text-xl text-primary">
-                                    <span class="material-symbols-outlined">terminal</span>
+                                    {% include "_icon.html" with slug=m.slug size=28 %}
                                 </div>
                                 <div>
                                     <h3 class="text-xl font-extrabold text-primary">{{ m.nom }}</h3>
-                                    <p class="text-xs font-medium text-text-muted">Niveau recommandé : Intermédiaire</p>
                                 </div>
                             </div>
-                            <span class="rounded-full bg-[#eaf9f2] px-2 py-1 text-[11px] font-bold text-[#0C6B5B]">Forte demande</span>
                         </div>
 
                         <div class="flex flex-wrap gap-2">
                             {% for comp in m.competences|slice:':4' %}
                                 <span class="rounded-lg bg-[#f4f7fa] px-2 py-1 text-[11px] font-semibold text-primary">{{ comp.libelle }}</span>
                             {% empty %}
-                                <span class="rounded-lg bg-[#f4f7fa] px-2 py-1 text-[11px] font-semibold text-primary">Formation</span>
-                                <span class="rounded-lg bg-[#f4f7fa] px-2 py-1 text-[11px] font-semibold text-primary">Certification</span>
                             {% endfor %}
                         </div>
 
-                        <div class="rounded-xl bg-[#f4f9ff] p-3 text-sm text-primary">
-                            <div class="flex items-center justify-between gap-2">
-                                <div class="flex items-center gap-2">
-                                    <span class="material-symbols-outlined text-lg text-[#1BA7E5]">menu_book</span>
-                                    <span class="font-bold">{{ m.ressources|length }} formations</span>
-                                </div>
-                                <span class="text-text-muted">•</span>
-                                <div class="flex items-center gap-2">
-                                    <span class="material-symbols-outlined text-lg text-[#F4B740]">military_tech</span>
-                                    <span class="font-bold">{{ m.ressources|length }} certifs</span>
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
                     <div class="flex items-end justify-between gap-3 pt-2">
                         <div>
                             <div class="text-xs font-medium uppercase tracking-[0.08em] text-text-muted">Tarif unique CEMAC</div>
                             <div class="mt-1 text-3xl font-extrabold text-primary">
-                                {{ m.prix_xaf }}
+                                {% if m.prix_promo_xaf %}<s class="mr-2 text-lg font-semibold text-text-muted">{{ m.prix_xaf }}</s>{{ m.prix_promo_xaf }}{% else %}{{ m.prix_xaf }}{% endif %}
                                 <span class="text-base font-semibold text-text-muted">FCFA</span>
                             </div>
                         </div>

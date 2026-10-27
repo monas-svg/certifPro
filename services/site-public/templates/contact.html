@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Contact - Certifpro{% endblock %}
+{% block content %}
+<section class="mx-auto my-8 w-full max-w-3xl">
+    <div class="soft-panel space-y-6 p-6 md:p-8">
+        <div>
+            <p class="mb-2 text-xs font-bold uppercase tracking-[0.12em] text-text-muted">Nous écrire</p>
+            <h1 class="text-3xl font-extrabold text-primary md:text-4xl">Contact</h1>
+        </div>
+
+        <div class="space-y-4 text-base leading-8 text-text-primary">
+            <p>Une question sur un pack, un paiement ou la réception de vos liens ? Écrivez-nous, nous vous répondons dès que possible.</p>
+            <p>Pour aller plus vite, indiquez dans votre message l’adresse e-mail utilisée lors de l’achat et le métier choisi.</p>
+        </div>
+
+        <div>
+            <a href="mailto:contact@certifpro.site" class="btn-primary h-[52px] text-base">
+                <span class="material-symbols-outlined">mail</span>
+                contact@certifpro.site
+            </a>
+        </div>
+
+        <p class="text-sm leading-7 text-text-muted">Vous n’avez pas reçu vos liens ? Vous pouvez d’abord essayer de <a href="/renvoyer/" class="font-semibold text-secondary">les renvoyer vous-même</a>.</p>
+    </div>
+</section>
+{% endblock %}

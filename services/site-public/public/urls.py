@@ -11,4 +11,6 @@ urlpatterns = [
     path("politique-de-confidentialite/", views.politique_confidentialite, name="politique_confidentialite"),
     path("conditions-utilisation/", views.conditions_utilisation, name="conditions_utilisation"),
     path("renvoyer/", views.renvoyer, name="renvoyer"),
+    path("a-propos/", views.a_propos, name="a_propos"),
+    path("contact/", views.contact, name="contact"),
 ]

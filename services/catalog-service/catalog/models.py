@@ -5,8 +5,12 @@ class Metier(models.Model):
     slug = models.SlugField(unique=True)
     description = models.TextField(blank=True)
     prix_xaf = models.PositiveIntegerField(default=0)
+    prix_promo_xaf = models.PositiveIntegerField(null=True, blank=True)
     visuel = models.URLField(blank=True)
     actif = models.BooleanField(default=True)
+    @property
+    def prix_actuel(self):
+        return self.prix_promo_xaf if self.prix_promo_xaf else self.prix_xaf
     def __str__(self): return self.nom
 
 class Competence(models.Model):
